@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>롯데자이언츠 유튜브 채널 성과 보고 — 2026 Q1</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --red:    #a83848;
+    --navy:   #2e4a82;
+    --navy2:  #5577b0;
+    --bg:     #f3f4f8;
+    --surface:#ffffff;
+    --border: #e3e5ef;
+    --text:   #1e2235;
+    --sub:    #67708f;
+    --up:     #2d7d58;
+    --down:   #a83848;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.65;
+    word-break: keep-all;
+  }
+
+  nav {
+    position: sticky; top: 0; z-index: 200;
+    background: var(--navy);
+    display: flex; align-items: center; gap: 2px;
+    padding: 0 24px; height: 46px;
+    overflow-x: auto;
+  }
+  nav::-webkit-scrollbar { display: none; }
+  nav .brand {
+    color: #fff; font-weight: 700; font-size: 13px;
+    margin-right: 14px; white-space: nowrap; letter-spacing: -0.3px;
+    flex-shrink: 0;
+  }
+  nav a {
+    color: rgba(255,255,255,0.6); text-decoration: none;
+    font-size: 12.5px; font-weight: 500; white-space: nowrap;
+    padding: 5px 10px; border-radius: 6px; transition: all 0.15s;
+  }
+  nav a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+
+  header {
+    background: linear-gradient(135deg, #253d70 0%, #1a2d55 100%);
+    color: #fff; padding: 52px 40px 44px;
+    position: relative;
+  }
+  header .corner-copy {
+    position: absolute; top: 16px; right: 24px;
+    font-size: 11px; color: rgba(255,255,255,0.3);
+    letter-spacing: 0.3px;
+  }
+  header .eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: 1.8px;
+    text-transform: uppercase; color: rgba(255,255,255,0.45);
+    margin-bottom: 12px;
+  }
+  header h1 {
+    font-size: 26px; font-weight: 700; letter-spacing: -0.5px;
+    line-height: 1.25; margin-bottom: 12px;
+  }
+  header h1 em { font-style: normal; color: #e8778a; }
+  header .meta {
+    display: flex; gap: 18px; flex-wrap: wrap;
+    font-size: 13px; color: rgba(255,255,255,0.5);
+  }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 24px 80px; }
+  section { margin-top: 52px; }
+
+  section h2 {
+    font-size: 17px; font-weight: 700; letter-spacing: -0.3px;
+    margin-bottom: 20px; padding-bottom: 10px;
+    border-bottom: 2px solid var(--navy);
+    display: flex; align-items: center; gap: 8px;
+  }
+  section h2 .num {
+    background: var(--navy); color: #fff;
+    font-size: 11px; font-weight: 700;
+    width: 22px; height: 22px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  section h3 {
+    font-size: 13.5px; font-weight: 700; color: var(--navy);
+    margin: 28px 0 12px;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+    gap: 12px; margin-bottom: 20px;
+  }
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px 16px;
+  }
+  .card-label {
+    font-size: 11px; font-weight: 600; color: var(--sub);
+    letter-spacing: 0.3px; margin-bottom: 6px;
+  }
+  .card-val {
+    font-size: 24px; font-weight: 700; letter-spacing: -0.8px; line-height: 1;
+  }
+  .card-delta { font-size: 12px; font-weight: 600; margin-top: 5px; }
+  .up   { color: var(--up); }
+  .down { color: var(--down); }
+  .muted { color: var(--sub); }
+
+  .hc {
+    background: var(--surface); border: 1px solid var(--border);
+    border-left: 4px solid var(--red);
+    border-radius: 10px; padding: 16px 20px; margin-bottom: 10px;
+  }
+  .hc.navy  { border-left-color: var(--navy); }
+  .hc.green { border-left-color: var(--up); }
+  .hc.amber { border-left-color: #b07730; }
+  .hc-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  .hc-body  { font-size: 13px; color: var(--sub); line-height: 1.65; }
+
+  .chart-wrap {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 20px; margin-bottom: 14px;
+  }
+  .chart-wrap canvas { max-height: 300px; }
+
+  .tbl-wrap {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; overflow: hidden; margin-bottom: 14px;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  th {
+    background: var(--navy); color: #fff;
+    font-size: 12px; font-weight: 600;
+    text-align: left; padding: 10px 14px;
+  }
+  td {
+    font-size: 13px; padding: 10px 14px;
+    border-bottom: 1px solid var(--border); color: var(--text);
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #f7f8fb; }
+  td.num  { text-align: right; font-variant-numeric: tabular-nums; }
+  td.bold { font-weight: 700; }
+  td.rank { color: var(--sub); font-size: 12px; }
+  td.hl   { background: #fff8e8 !important; }
+
+  .note {
+    font-size: 12px; color: var(--sub); margin-top: 8px;
+    padding-left: 12px; border-left: 2px solid var(--border); line-height: 1.65;
+  }
+
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    padding: 2px 7px; border-radius: 20px; margin-right: 4px;
+  }
+  .tag.red   { background: #f5e2e5; color: var(--red); }
+  .tag.navy  { background: #e4eaf5; color: var(--navy); }
+  .tag.green { background: #e0f0ea; color: var(--up); }
+
+  hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+
+  .live-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; font-weight: 700; color: var(--red);
+    background: #f5e2e5; padding: 3px 8px; border-radius: 4px;
+    letter-spacing: 0.5px;
+  }
+  .live-badge::before {
+    content: ''; width: 6px; height: 6px;
+    background: var(--red); border-radius: 50%;
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  .info-btn {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 12px; font-weight: 600; color: var(--navy);
+    background: #e4eaf5; border: none; border-radius: 6px;
+    padding: 4px 10px; cursor: pointer; margin-left: 6px;
+    transition: background 0.15s;
+  }
+  .info-btn:hover { background: #d0d9ef; }
+  .info-btn svg { width: 13px; height: 13px; }
+
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 999;
+    background: rgba(20,25,45,0.5);
+    align-items: center; justify-content: center; padding: 20px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--surface); border-radius: 14px;
+    max-width: 520px; width: 100%; max-height: 80vh;
+    overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    animation: modalIn 0.2s ease;
+  }
+  @keyframes modalIn {
+    from { opacity:0; transform:scale(0.95) translateY(8px); }
+    to   { opacity:1; transform:scale(1) translateY(0); }
+  }
+  .modal-header {
+    padding: 20px 24px 14px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .modal-header h3 { font-size: 15px; font-weight: 700; }
+  .modal-close {
+    background: none; border: none; cursor: pointer;
+    color: var(--sub); font-size: 20px; line-height: 1;
+    padding: 2px 6px; border-radius: 6px;
+  }
+  .modal-close:hover { background: var(--bg); }
+  .modal-body { padding: 20px 24px 24px; }
+  .modal-body p { font-size: 13px; color: var(--sub); margin-bottom: 18px; line-height: 1.65; }
+  .modal-section-title {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
+    color: var(--sub); text-transform: uppercase; margin-bottom: 8px;
+  }
+  .keyword-grid { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+  .kw {
+    font-size: 12px; font-weight: 500;
+    padding: 3px 9px; border-radius: 20px; background: var(--bg);
+    border: 1px solid var(--border); color: var(--text);
+  }
+
+  footer {
+    background: #1e2a4a; color: rgba(255,255,255,0.4);
+    font-size: 12px; padding: 28px 40px; line-height: 1.8;
+  }
+  footer .footer-copy {
+    font-size: 13px; font-weight: 600;
+    color: rgba(255,255,255,0.65); margin-bottom: 6px;
+  }
+  footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
+  footer a:hover { color: rgba(255,255,255,0.9); text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="brand">롯데자이언츠 YT</span>
+  <a href="#s1">콘텐츠 구성</a>
+  <a href="#s2">기획 콘텐츠</a>
+  <a href="#s3">구독자 분석</a>
+  <a href="#s4">TOP 10</a>
+  <a href="#s5">핵심 발견</a>
+  <a href="#s6">제언</a>
+  <a href="#s7">라이브 실적</a>
+  <a href="#s8">브랜딩 비교</a>
+</nav>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="classModal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>콘텐츠 분류 기준</h3>
+      <button class="modal-close" onclick="closeModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <p>영상 제목에 포함된 키워드를 기준으로 <strong>고정 콘텐츠</strong>와 <strong>기획 콘텐츠</strong>를 자동 분류했습니다. 고정 콘텐츠는 경기 일정에 연동되어 정해진 포맷으로 반복 발행되는 영상입니다.</p>
+      <div class="modal-section-title">고정 콘텐츠 — 해당 키워드 포함 시</div>
+      <div class="keyword-grid">
+        <span class="kw">라인업</span><span class="kw">선발 라인업</span>
+        <span class="kw">HOTDUG</span><span class="kw">하이파이브</span>
+        <span class="kw">#핫클립</span><span class="kw">[경기 H/L]</span>
+        <span class="kw">[Highlight]</span><span class="kw">퓨처스리그</span>
+        <span class="kw">수훈</span><span class="kw">취소 공지</span>
+        <span class="kw">우천 취소</span><span class="kw">[구춘리그 H/L]</span>
+        <span class="kw">[친선경기 H/L]</span>
+      </div>
+      <div class="modal-section-title">기획 콘텐츠 — 위 키워드 없는 영상</div>
+      <div class="keyword-grid">
+        <span class="kw">콜라보</span>
+        <span class="kw">생중계 (연습경기·구춘리그)</span>
+        <span class="kw">응원가·플레이리스트</span>
+        <span class="kw">선수 인터뷰·특집</span>
+        <span class="kw">G캠</span>
+        <span class="kw">그 외 자체 기획</span>
+      </div>
+      <p style="margin-bottom:0; font-size:12px">※ [사직갈매기], G캠, 주간이슈는 <strong>준고정</strong>으로 별도 집계되며, 이번 보고서에서는 고정 콘텐츠 합산에서 제외했습니다.</p>
+    </div>
+  </div>
+</div>
+
+<header>
+  <span class="corner-copy">© 2026 MJ</span>
+  <div class="eyebrow">YouTube Channel Report</div>
+  <h1>롯데자이언츠 <em>유튜브 채널</em> 성과 보고</h1>
+  <div class="meta">
+    <span>2026 Q1 · 1월 20일 ~ 4월 19일</span>
+    <span>작성일: 2026.04.23</span>
+    <span>기획 / 고정 콘텐츠 분리 분석</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- S1 -->
+  <section id="s1">
+    <h2>
+      <span class="num">1</span> 콘텐츠 구성 변화
+      <button class="info-btn" onclick="openModal()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="8" cy="8" r="7"/><line x1="8" y1="7" x2="8" y2="11"/>
+          <circle cx="8" cy="5" r="0.5" fill="currentColor" stroke="none"/>
+        </svg>
+        분류 기준 보기
+      </button>
+    </h2>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">전체 영상 수</div>
+        <div class="card-val">167개</div>
+        <div class="card-delta up">▲ 37% (2025: 122개)</div>
+      </div>
+      <div class="card">
+        <div class="card-label">기획 콘텐츠</div>
+        <div class="card-val down">79개</div>
+        <div class="card-delta down">▼ 18.5% (2025: 97개)</div>
+      </div>
+      <div class="card">
+        <div class="card-label">고정 콘텐츠</div>
+        <div class="card-val up">89개</div>
+        <div class="card-delta up">▲ 218% (2025: 28개)</div>
+      </div>
+    </div>
+
+    <div class="chart-wrap"><canvas id="chartComposition"></canvas></div>
+    <p class="note">고정 콘텐츠 급증 원인: 2026 개막(3/28)이 2025(3/22)보다 6일 빠름 + HOTDUG·하이파이브·라인업 공지 등 신규 고정 포맷 추가</p>
+  </section>
+
+  <!-- S2 -->
+  <section id="s2">
+    <h2><span class="num">2</span> 기획 콘텐츠 핵심 지표</h2>
+
+    <div class="hc">
+      <div class="hc-title">핵심 정정</div>
+      <div class="hc-body">이전 분석의 "평균 조회수 하락" 결론은 고정 콘텐츠(28→89개) 급증으로 인한 희석 효과였음. 기획 콘텐츠만 분리하면 영상당 평균 조회수는 사실상 보합(+1.2%).</div>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>지표</th><th>2025 Q1</th><th>2026 Q1</th><th>증감</th></tr></thead>
+        <tbody>
+          <tr><td>기획 영상 수</td><td class="num">97개</td><td class="num">79개</td><td class="num down">▼ 18.5%</td></tr>
+          <tr><td>영상당 평균 조회수</td><td class="num">104,593</td><td class="num bold">106,742</td><td class="num up">▲ 2.1%</td></tr>
+          <tr><td>기획 총 조회수</td><td class="num">10,145,590</td><td class="num">8,432,606</td><td class="num down">▼ 16.9%</td></tr>
+          <tr class=""><td class="hl">시청 시간 (h)</td><td class="num hl">961,019</td><td class="num hl">643,253</td><td class="num down hl">▼ 33.1%</td></tr>
+          <tr><td>영상당 평균 시청시간</td><td class="num">5분 41초</td><td class="num">4분 35초</td><td class="num down">▼ 19.4%</td></tr>
+          <tr><td>10만뷰당 구독 전환</td><td class="num">10.5명</td><td class="num bold">4.2명</td><td class="num down">▼ 60%</td></tr>
+          <tr><td>신규 시청자</td><td class="num">515,903</td><td class="num">333,324</td><td class="num down">▼ 35.4%</td></tr>
+          <tr><td>신규 시청자 비중</td><td class="num">8.0%</td><td class="num">6.4%</td><td class="num down">▼ 1.6%p</td></tr>
+          <tr><td>평균 CTR</td><td class="num">6.87%</td><td class="num">7.02%</td><td class="num up">▲ 0.15%p</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="hc amber">
+      <div class="hc-title">숨겨진 문제: 시청 시간 -33%</div>
+      <div class="hc-body">조회수는 -17%인데 시청 시간이 -33% 감소했음. 영상당 평균 시청 지속시간이 5분 41초 → 4분 35초로 단축. 팬이 클릭은 하지만 끝까지 안 보는 콘텐츠가 늘고 있다는 신호. 유튜브 알고리즘이 시청 시간을 중심으로 작동하므로 조회수보다 더 중요한 지표.</div>
+    </div>
+
+    <div class="chart-wrap"><canvas id="chartWatchTime"></canvas></div>
+    <div class="chart-wrap"><canvas id="chartPlannedMetrics"></canvas></div>
+  </section>
+
+  <!-- S3 -->
+  <section id="s3">
+    <h2><span class="num">3</span> 구독자 전환 감소 원인 분석</h2>
+
+    <div class="hc">
+      <div class="hc-title">신규 시청자 감소가 직접 원인</div>
+      <div class="hc-body">10만뷰당 구독 전환이 10.5명 → 4.2명으로 -60% 하락. 단순 비율 변화가 아닌 전환 효율 자체의 하락. 핵심 원인은 신규 시청자 유입이 515,903 → 333,324명으로 -35% 감소한 것. 들어오는 신규 팬 수가 줄었고, 들어온 팬도 구독으로 이어지지 않고 있음.</div>
+    </div>
+
+    <div class="chart-wrap"><canvas id="chartSubs"></canvas></div>
+    <div class="chart-wrap"><canvas id="chartNewViewers"></canvas></div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>구분</th><th>2025 Q1</th><th>2026 Q1</th></tr></thead>
+        <tbody>
+          <tr><td>외부 이슈형</td><td>WBC 친선경기 2연전 (884k + 725k뷰)</td><td class="down">없음</td></tr>
+          <tr><td>생중계 유입</td><td>구춘리그 생중계 (271k뷰)</td><td class="up">미야자키 생중계 (370k뷰) ✓</td></tr>
+          <tr><td>콜라보 유입</td><td class="down">없음</td><td class="up">DAY6 성진 시리즈 (424k + 302k뷰) ✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">2026은 생중계·콜라보로 조회수는 확보했지만 WBC처럼 야구 비팬을 대거 유입시키는 전국구 이슈가 없었음. 신규 유입 규모 자체가 줄어든 것이 구독 전환 감소의 직접 원인.</p>
+  </section>
+
+  <!-- S4 -->
+  <section id="s4">
+    <h2><span class="num">4</span> 2026 기획 콘텐츠 TOP 10</h2>
+    <div class="chart-wrap"><canvas id="chartTop10"></canvas></div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>#</th><th>영상</th><th>조회수</th><th>CTR</th></tr></thead>
+        <tbody>
+          <tr><td class="rank">1</td><td><span class="tag navy">콜라보</span> DAY6 성진 "오늘도 승리한다"</td><td class="num bold">424,713</td><td class="num">6.4%</td></tr>
+          <tr><td class="rank">2</td><td><span class="tag red">생중계</span> 미야자키 생중계 vs 세이부</td><td class="num bold">370,793</td><td class="num">15.9%</td></tr>
+          <tr><td class="rank">3</td><td><span class="tag navy">콜라보</span> DAY6 성진 "영광의 순간"</td><td class="num bold">302,560</td><td class="num">6.4%</td></tr>
+          <tr><td class="rank">4</td><td><span class="tag red">생중계</span> 미야자키 구춘리그 vs 지바롯데</td><td class="num bold">292,139</td><td class="num">14.4%</td></tr>
+          <tr><td class="rank">5</td><td><span class="tag red">생중계</span> 미야자키 연습경기 vs SSG</td><td class="num bold">245,651</td><td class="num">15.1%</td></tr>
+          <tr><td class="rank">6</td><td><span class="tag red">생중계</span> 미야자키 생중계 vs 요미우리</td><td class="num bold">236,550</td><td class="num">16.0%</td></tr>
+          <tr><td class="rank">7</td><td><span class="tag red">생중계</span> 미야자키 구춘리그 vs 두산</td><td class="num bold">227,935</td><td class="num">16.1%</td></tr>
+          <tr><td class="rank">8</td><td><span class="tag green">기획</span> 미야자키 홈런 핫클립 (기획형)</td><td class="num bold">214,366</td><td class="num">8.6%</td></tr>
+          <tr><td class="rank">9</td><td><span class="tag green">기획</span> 주간예열 응원가 "영광의 순간"</td><td class="num bold">198,736</td><td class="num">6.8%</td></tr>
+          <tr><td class="rank">10</td><td><span class="tag green">기획</span> 응원가 플레이리스트</td><td class="num bold">179,724</td><td class="num">7.3%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">TOP 10 중 생중계 5개 · 콜라보 2개 · 자체 기획 3개. 생중계 CTR이 14~16%로 압도적.</p>
+  </section>
+
+  <!-- S5 -->
+  <section id="s5">
+    <h2><span class="num">5</span> 핵심 발견</h2>
+
+    <div class="hc">
+      <div class="hc-title">① 기획 콘텐츠 평균 조회수는 유지됨 (이전 분석 정정)</div>
+      <div class="hc-body">영상당 평균 조회수 104k → 107k으로 보합(+2.1%). 이전의 "평균 하락" 결론은 고정 콘텐츠(28→89개)가 전체 평균을 희석시킨 착시 효과.</div>
+    </div>
+
+    <div class="hc amber">
+      <div class="hc-title">② 시청 시간 -33%가 진짜 위기 신호</div>
+      <div class="hc-body">조회수 -17%보다 훨씬 심각한 수치. 영상당 평균 시청 지속시간이 5분 41초 → 4분 35초로 단축. 유튜브 알고리즘은 조회수보다 시청 시간을 기반으로 추천하므로, 이 하락이 지속되면 채널 노출 자체가 줄어드는 악순환으로 이어질 수 있음.</div>
+    </div>
+
+    <div class="hc">
+      <div class="hc-title">③ 구독 전환 하락은 신규 유입 감소가 원인</div>
+      <div class="hc-body">10만뷰당 구독 전환 10.5명 → 4.2명(-60%). WBC가 없어진 2026에 신규 시청자 유입이 515k → 333k(-35%) 감소했고, 신규 유입 비중도 8.0% → 6.4%로 줄었음. 즉 기존 팬만 보는 채널로 점점 굳어지고 있는 패턴.</div>
+    </div>
+
+    <div class="hc navy">
+      <div class="hc-title">④ 생중계 CTR 15~16% — 업계 상위권</div>
+      <div class="hc-body">스포츠 팬 채널 평균 CTR 8~14% 대비 압도적. 생중계는 팬의 즉각적인 클릭 욕구와 실시간 커뮤니티 효과가 결합되는 포맷으로 구조적으로 CTR이 높음. 비시즌 채널 운영의 핵심 포맷.</div>
+    </div>
+  </section>
+
+  <!-- S6 -->
+  <section id="s6">
+    <h2><span class="num">6</span> 제언</h2>
+    <div class="hc green">
+      <div class="hc-title">① 시청 지속시간 회복이 우선 과제</div>
+      <div class="hc-body">5분 41초 → 4분 35초 단축. 영상 도입부 강화, 편집 속도 조절, 시청 유지율이 높은 포맷(생중계, 시리즈물) 비중 확대 필요. 알고리즘 노출과 직결되는 지표.</div>
+    </div>
+    <div class="hc green">
+      <div class="hc-title">② 신규 시청자 유입 전략 별도 수립</div>
+      <div class="hc-body">구독 전환을 위해서는 먼저 신규 시청자를 늘려야 함. WBC 같은 외부 이슈 의존 없이 자체적으로 비팬을 유입시키는 채널 발굴 필요. 콜라보(DAY6 성진 검증됨)는 유효한 수단이나 구독 유도 장치 강화가 필요.</div>
+    </div>
+    <div class="hc green">
+      <div class="hc-title">③ 생중계 IP 정규시즌으로 확장</div>
+      <div class="hc-body">미야자키 캠프에서 검증된 생중계 수요를 시즌 중에도 활용. 선발 발표, 불펜 훈련, 경기 전후 등 정규시즌에도 생중계 포맷을 정례화하면 CTR과 시청 지속시간 모두 개선 가능.</div>
+    </div>
+    <div class="hc green">
+      <div class="hc-title">④ K-POP 콜라보 시리즈화 + 구독 유도 강화</div>
+      <div class="hc-body">DAY6 성진 콜라보는 도달(reach) 측면에서 검증됨. 다음 콜라보에서는 콘텐츠 내 구독 유도 장치(CTA) 명시 강화 필요.</div>
+    </div>
+  </section>
+
+  <!-- S7 -->
+  <section id="s7">
+    <h2><span class="num">7</span> 라이브 실적 분석 <span class="live-badge">LIVE</span></h2>
+
+    <p class="note" style="margin-bottom:18px">라이브 조회수(생방송 실시간)와 VOD 조회수는 별도 집계. 최대 도달량 = 라이브 + VOD 합산 (중복 시청자 20~30% 포함될 수 있음).</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">라이브 총 조회수</div>
+        <div class="card-val">1.39M</div>
+        <div class="card-delta muted">2026 Q1 전체</div>
+      </div>
+      <div class="card">
+        <div class="card-label">미야자키 캠프</div>
+        <div class="card-val up">1.07M</div>
+        <div class="card-delta up">5경기 평균 214k</div>
+      </div>
+      <div class="card">
+        <div class="card-label">퓨처스리그</div>
+        <div class="card-val">254k</div>
+        <div class="card-delta muted">8경기 평균 28k</div>
+      </div>
+      <div class="card">
+        <div class="card-label">누리라이브</div>
+        <div class="card-val">9.7k</div>
+        <div class="card-delta muted">신규 포맷 초기</div>
+      </div>
+    </div>
+
+    <h3>미야자키 캠프 — 라이브 + VOD 최대 도달량</h3>
+    <div class="chart-wrap"><canvas id="chartMiyazaki"></canvas></div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>경기</th><th>라이브 조회수</th><th>VOD 조회수</th><th>최대 도달량</th></tr></thead>
+        <tbody>
+          <tr><td>vs 세이부라이온즈 (2/22)</td><td class="num">289,082</td><td class="num">370,793</td><td class="num bold up">659,875</td></tr>
+          <tr><td>vs 지바롯데마린스 (3/1)</td><td class="num">235,962</td><td class="num">292,139</td><td class="num bold up">528,101</td></tr>
+          <tr><td>vs SSG (3/3)</td><td class="num">196,703</td><td class="num">245,651</td><td class="num bold up">442,354</td></tr>
+          <tr><td>vs 요미우리자이언츠 (2/23)</td><td class="num">198,479</td><td class="num">236,550</td><td class="num bold up">435,029</td></tr>
+          <tr><td>vs 두산베어스 (2/26)</td><td class="num">152,695</td><td class="num">227,935</td><td class="num bold up">380,630</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">팬 채널 특성상 라이브 시청 후 VOD도 재시청하는 비율이 20~30% 추정. 위 수치는 최대 도달량 기준이며, 유니크 시청자 수는 YouTube Studio 유니크 뷰어 항목 별도 확인 권장.</p>
+
+    <h3>퓨처스리그 생중계</h3>
+    <div class="chart-wrap"><canvas id="chartFutures"></canvas></div>
+
+    <h3>누리라이브 — 신규 포맷 초기 지표</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>회차</th><th>내용</th><th>날짜</th><th>조회수</th></tr></thead>
+        <tbody>
+          <tr><td>ep.1</td><td>개막식 현장 라이브</td><td>4/3</td><td class="num">3,861</td></tr>
+          <tr><td>ep.2</td><td>포켓몬데이 광장행사</td><td>4/4</td><td class="num">3,567</td></tr>
+          <tr><td>ep.3</td><td>댄싱누리</td><td>4/18</td><td class="num">2,284</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr>
+
+    <div class="hc">
+      <div class="hc-title">① 미야자키 캠프 = 채널 최대 도달 구간</div>
+      <div class="hc-body">라이브 + VOD 합산 기준 경기당 38~66만 최대 도달. 비시즌 오프 기간 팬 수요를 실시간으로 충족하는 유일한 포맷. VOD 조회수만으로는 이 규모가 드러나지 않음.</div>
+    </div>
+    <div class="hc navy">
+      <div class="hc-title">② 퓨처스리그 생중계 안정적 수요 확인</div>
+      <div class="hc-body">28k 평균은 비공식 경기임을 감안하면 실수요가 있는 수준. 1군 경기가 없는 시간대 콘텐츠 공백을 채우는 역할.</div>
+    </div>
+    <div class="hc navy">
+      <div class="hc-title">③ 우천 취소도 24k — 팬 체류 수요</div>
+      <div class="hc-body">미야자키 우천 취소 중계진 라이브 토크 24,238뷰. 경기가 없어도 팬이 채널에 체류함. "아무것도 없는 날"의 팬 접점 포맷으로 가치 있음.</div>
+    </div>
+    <div class="hc">
+      <div class="hc-title">④ 누리라이브 초기 지표 미약</div>
+      <div class="hc-body">3회차 평균 3,237뷰. 현재 기존 팬 대상 소비에 그침. 이벤트 규모나 콜라보 대상에 따라 성과가 달라질 가능성 있음.</div>
+    </div>
+  </section>
+
+
+  <!-- S8 -->
+  <section id="s8">
+    <h2><span class="num">8</span> #플레이볼 → HOTDUG 브랜딩 비교</h2>
+
+    <div class="hc navy">
+      <div class="hc-title">콘텐츠 개요</div>
+      <div class="hc-body">이겼을 때 경기 내내 덕아웃을 담아내는 포맷. 2025년 <strong>#플레이볼</strong>에서 2026년 <strong>[HOTDUG]</strong>로 컨셉 리브랜딩. 단, 현재 분류 기준상 #플레이볼은 <strong>기획 콘텐츠</strong>로, HOTDUG는 <strong>고정 콘텐츠</strong>로 각각 다른 버킷에 들어가 있어 YoY 기획 콘텐츠 비교 시 이 포맷이 서로 다른 카테고리로 집계됨.</div>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">영상당 평균 조회수</div>
+        <div class="card-val up">129k</div>
+        <div class="card-delta up">▲ 70% (2025: 76k)</div>
+      </div>
+      <div class="card">
+        <div class="card-label">총 시청시간</div>
+        <div class="card-val up">84,392h</div>
+        <div class="card-delta up">▲ 92% (2025: 43,905h)</div>
+      </div>
+      <div class="card">
+        <div class="card-label">평균 조회율</div>
+        <div class="card-val up">51.1%</div>
+        <div class="card-delta up">▲ 7.1%p (2025: 44.0%)</div>
+      </div>
+      <div class="card">
+        <div class="card-label">평균 CTR</div>
+        <div class="card-val down">8.03%</div>
+        <div class="card-delta down">▼ 3.76%p (2025: 11.79%)</div>
+      </div>
+    </div>
+
+    <div class="chart-wrap"><canvas id="chartHotdug"></canvas></div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>지표</th><th>#플레이볼 (2025)</th><th>HOTDUG (2026)</th><th>증감</th></tr></thead>
+        <tbody>
+          <tr><td>영상 수</td><td class="num">6개</td><td class="num">6개</td><td class="num muted">동일</td></tr>
+          <tr><td>영상당 평균 조회수</td><td class="num">76,184</td><td class="num bold">129,182</td><td class="num up">▲ 70%</td></tr>
+          <tr><td>총 시청 시간 (h)</td><td class="num">43,905</td><td class="num bold">84,392</td><td class="num up">▲ 92%</td></tr>
+          <tr><td>구독자 기여</td><td class="num">367명</td><td class="num">541명</td><td class="num up">▲ 47%</td></tr>
+          <tr><td>평균 CTR</td><td class="num bold">11.79%</td><td class="num">8.03%</td><td class="num down">▼ 3.76%p</td></tr>
+          <tr><td>평균 조회율</td><td class="num">44.0%</td><td class="num bold">51.1%</td><td class="num up">▲ 7.1%p</td></tr>
+          <tr><td>현재 분류</td><td class="num">기획 콘텐츠</td><td class="num">고정 콘텐츠</td><td class="num down">불일치</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="hc green">
+      <div class="hc-title">브랜딩 성과: 조회수·시청시간 모두 대폭 성장</div>
+      <div class="hc-body">영상당 평균 조회수 76k → 129k(+70%), 시청시간 +92%. 리브랜딩 후 포맷 소비 자체는 크게 개선됨. 팬들이 경기 덕아웃 콘텐츠를 더 오래, 더 많이 보고 있음.</div>
+    </div>
+
+    <div class="hc amber">
+      <div class="hc-title">CTR 하락(-3.76%p)은 위험 신호가 아님</div>
+      <div class="hc-body">2025 #플레이볼 CTR 11.79%는 당시 구독자 수(30만대)·노출 환경이 달랐던 영향. 2026 HOTDUG 8.03%도 스포츠 팬 채널 평균(8~14%) 하단에 위치하므로 썸네일·제목 최적화 여지는 있음. CTR이 낮아진 게 아니라 고정 콘텐츠로 전환되며 노출 패턴이 바뀐 것.</div>
+    </div>
+
+    <hr>
+
+    <h3>분류 정확도 이슈</h3>
+
+    <div class="hc">
+      <div class="hc-title">① #플레이볼(기획) ↔ HOTDUG(고정) 불일치</div>
+      <div class="hc-body">같은 포맷인데 연도별로 분류 버킷이 달라 2025 기획 콘텐츠 평균에 플레이볼이 포함되고 2026 기획에는 빠짐. YoY 기획 콘텐츠 비교 정확도에 영향을 줌. 다음 분석 시 #플레이볼도 고정 키워드에 추가하거나, 두 포맷을 별도 트래킹하는 것을 권장.</div>
+    </div>
+
+    <div class="hc">
+      <div class="hc-title">② 시범경기 더그아웃 카메라 (2026 기획 포함, 2개)</div>
+      <div class="hc-body">"8회 빅이닝으로 역전!! | 시범경기 더그아웃 카메라" 등 2개 영상이 HOTDUG와 동일한 개념이지만 제목에 [HOTDUG] 표기가 없어 기획으로 분류됨. 실질적으로는 고정 포맷에 해당.</div>
+    </div>
+
+    <div class="hc navy">
+      <div class="hc-title">③ G캠·주간이슈 — 준고정 혼입</div>
+      <div class="hc-body">2026 기획 목록에 "연장 역전승 G캠"이, 2025 기획에 "#주간이슈" 영상이 포함됨. 두 키워드 모두 준고정으로 분류 예정이었으나 스크립트에서 기획 버킷으로 빠져나옴. 다음 업데이트 시 분류 스크립트 키워드 재점검 필요.</div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-copy">© 2026 <a href="https://www.instagram.com/min_jaja_/" target="_blank">@min_jaja_</a></div>
+  데이터 출처: YouTube Studio 채널 분석 &nbsp;|&nbsp; 기간: 2026.01.20 ~ 04.19<br>
+  분류 기준: 라인업·HOTDUG·하이파이브·핫클립·경기H/L·수훈인터뷰·퓨처스경기·취소공지 = 고정 콘텐츠
+</footer>
+
+<script>
+function openModal()  { document.getElementById('classModal').classList.add('open'); }
+function closeModal() { document.getElementById('classModal').classList.remove('open'); }
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+
+const C = { red:'#a83848', navy:'#2e4a82', navy2:'#5577b0', green:'#2d7d58', amber:'#b07730', grid:'#eceef5' };
+
+Chart.defaults.font.family = '"Pretendard", -apple-system, sans-serif';
+Chart.defaults.font.size   = 12;
+Chart.defaults.color       = '#67708f';
+Chart.defaults.plugins.legend.labels.boxWidth = 12;
+Chart.defaults.plugins.legend.labels.padding  = 16;
+
+const T = text => ({ display:true, text, font:{size:13,weight:'600'}, color:'#1e2235', padding:{bottom:16} });
+
+// 1. 콘텐츠 구성
+new Chart(document.getElementById('chartComposition'), {
+  type: 'bar',
+  data: {
+    labels: ['2025 Q1', '2026 Q1'],
+    datasets: [
+      { label:'기획 콘텐츠', data:[97,79],  backgroundColor:C.navy },
+      { label:'고정 콘텐츠', data:[28,89],  backgroundColor:C.red  },
+    ]
+  },
+  options: {
+    responsive:true,
+    plugins:{ title:T('콘텐츠 유형별 영상 수') },
+    scales:{
+      x:{ stacked:true, grid:{display:false} },
+      y:{ stacked:true, grid:{color:C.grid}, ticks:{stepSize:20} }
+    }
+  }
+});
+
+// 2-a. Watch Time 비교
+new Chart(document.getElementById('chartWatchTime'), {
+  type: 'bar',
+  data: {
+    labels: ['2025 Q1', '2026 Q1'],
+    datasets: [{
+      label:'기획 콘텐츠 시청 시간 (h)',
+      data: [961019, 643253],
+      backgroundColor: [C.navy2, C.red],
+    }]
+  },
+  options: {
+    responsive:true,
+    plugins:{
+      title:T('기획 콘텐츠 시청 시간 (h) 비교'),
+      legend:{display:false},
+      tooltip:{ callbacks:{ label: ctx => ` ${ctx.parsed.y.toLocaleString()}h` } }
+    },
+    scales:{
+      x:{ grid:{display:false} },
+      y:{ grid:{color:C.grid}, ticks:{ callback: v => (v/1000).toFixed(0)+'k' } }
+    }
+  }
+});
+
+// 2-b. 기획 콘텐츠 지표 비교 (조회수)
+new Chart(document.getElementById('chartPlannedMetrics'), {
+  type: 'bar',
+  data: {
+    labels: ['영상당 평균 조회수'],
+    datasets: [
+      { label:'2025 Q1', data:[104593], backgroundColor:C.navy2 },
+      { label:'2026 Q1', data:[106742], backgroundColor:C.red   },
+    ]
+  },
+  options: {
+    responsive:true,
+    plugins:{
+      title:T('기획 콘텐츠 영상당 평균 조회수'),
+      tooltip:{ callbacks:{ label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()}` } }
+    },
+    scales:{
+      x:{ grid:{display:false} },
+      y:{ grid:{color:C.grid}, ticks:{ callback: v => (v/10000).toFixed(0)+'만' } }
+    }
+  }
+});
+
+// 3-a. 구독 전환
+new Chart(document.getElementById('chartSubs'), {
+  type: 'bar',
+  data: {
+    labels: ['구독자 기여 (절대값)', '10만뷰당 구독전환 (×1,000)'],
+    datasets: [
+      { label:'2025 Q1', data:[10662, 10500], backgroundColor:C.navy2 },
+      { label:'2026 Q1', data:[3509,  4200],  backgroundColor:C.red   },
+    ]
+  },
+  options: {
+    responsive:true,
+    plugins:{
+      title:T('기획 콘텐츠 구독 전환 비교'),
+      tooltip:{ callbacks:{
+        label: ctx => {
+          if (ctx.dataIndex === 1)
+            return ` ${ctx.dataset.label}: ${(ctx.parsed.y/1000).toFixed(1)}명 (10만뷰당)`;
+          return ` ${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()}명`;
+        }
+      }}
+    },
+    scales:{
+      x:{ grid:{display:false} },
+      y:{ grid:{color:C.grid}, ticks:{ callback: v => v.toLocaleString() } }
+    }
+  }
+});
+
+// 3-b. 신규/재방문 시청자
+new Chart(document.getElementById('chartNewViewers'), {
+  type: 'bar',
+  data: {
+    labels: ['2025 Q1', '2026 Q1'],
+    datasets: [
+      { label:'신규 시청자',   data:[515903, 333324], backgroundColor:C.navy  },
+      { label:'재방문 시청자', data:[5970940,4891259], backgroundColor:C.navy2 },
+    ]
+  },
+  options: {
+    responsive:true,
+    plugins:{
+      title:T('기획 콘텐츠 신규 vs 재방문 시청자'),
+      tooltip:{ callbacks:{ label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()}명` } }
+    },
+    scales:{
+      x:{ stacked:true, grid:{display:false} },
+      y:{ stacked:true, grid:{color:C.grid}, ticks:{ callback: v => (v/10000).toFixed(0)+'만' } }
+    }
+  }
+});
+
+// 4. TOP 10
+new Chart(document.getElementById('chartTop10'), {
+  type:'bar',
+  data:{
+    labels:[
+      'DAY6 성진 "오늘도 승리한다"','미야자키 생중계 vs 세이부',
+      'DAY6 성진 "영광의 순간"',    '미야자키 구춘리그 vs 지바롯데',
+      '미야자키 연습경기 vs SSG',   '미야자키 생중계 vs 요미우리',
+      '미야자키 구춘리그 vs 두산',  '미야자키 홈런 핫클립',
+      '주간예열 응원가 "영광의 순간"','응원가 플레이리스트',
+    ],
+    datasets:[{
+      label:'조회수',
+      data:[424713,370793,302560,292139,245651,236550,227935,214366,198736,179724],
+      backgroundColor:[C.navy,C.red,C.navy,C.red,C.red,C.red,C.red,C.green,C.green,C.green],
+    }]
+  },
+  options:{
+    indexAxis:'y', responsive:true,
+    plugins:{
+      title:T('2026 Q1 기획 콘텐츠 TOP 10 (조회수)'),
+      legend:{display:false},
+      tooltip:{ callbacks:{ label: ctx => ` ${ctx.parsed.x.toLocaleString()}회` } }
+    },
+    scales:{
+      x:{ grid:{color:C.grid}, ticks:{ callback: v => (v/10000).toFixed(0)+'만' } },
+      y:{ grid:{display:false}, ticks:{ font:{size:11} } }
+    }
+  }
+});
+
+// 7-1. 미야자키 grouped bar
+new Chart(document.getElementById('chartMiyazaki'), {
+  type:'bar',
+  data:{
+    labels:['vs 세이부 (2/22)','vs 지바롯데 (3/1)','vs SSG (3/3)','vs 요미우리 (2/23)','vs 두산 (2/26)'],
+    datasets:[
+      { label:'라이브 조회수', data:[289082,235962,196703,198479,152695], backgroundColor:C.red   },
+      { label:'VOD 조회수',   data:[370793,292139,245651,236550,227935], backgroundColor:C.navy2 },
+    ]
+  },
+  options:{
+    responsive:true,
+    plugins:{
+      title:T('미야자키 캠프 라이브 + VOD 최대 도달량'),
+      tooltip:{ callbacks:{ label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()}` } }
+    },
+    scales:{
+      x:{ grid:{display:false}, ticks:{font:{size:11}} },
+      y:{ grid:{color:C.grid},  ticks:{ callback: v => (v/10000).toFixed(0)+'만' } }
+    }
+  }
+});
+
+// 8. 플레이볼 vs HOTDUG
+new Chart(document.getElementById('chartHotdug'), {
+  type: 'bar',
+  data: {
+    labels: ['영상당 평균 조회수', '총 시청시간 (h)', 'CTR × 10,000', '평균 조회율 × 1,000'],
+    datasets: [
+      { label:'#플레이볼 (2025)', data:[76184, 43905, 117900, 44000], backgroundColor:C.navy2 },
+      { label:'HOTDUG (2026)',    data:[129182,84392,  80300, 51100], backgroundColor:C.red   },
+    ]
+  },
+  options: {
+    responsive:true,
+    plugins:{
+      title:T('#플레이볼 (2025) vs HOTDUG (2026) 주요 지표'),
+      tooltip:{ callbacks:{
+        label: ctx => {
+          const labels = ['조회수','시청시간(h)','CTR','평균 조회율'];
+          const vals = [[76184,129182],[43905,84392],[11.79,8.03],[44.0,51.1]];
+          const di = ctx.datasetIndex;
+          const li = ctx.dataIndex;
+          if(li===2) return ` ${ctx.dataset.label}: CTR ${vals[2][di]}%`;
+          if(li===3) return ` ${ctx.dataset.label}: 평균 조회율 ${vals[3][di]}%`;
+          return ` ${ctx.dataset.label}: ${vals[li][di].toLocaleString()}`;
+        }
+      }}
+    },
+    scales:{
+      x:{ grid:{display:false} },
+      y:{ grid:{color:C.grid}, ticks:{ callback: v => v >= 10000 ? (v/10000).toFixed(0)+'만' : v } }
+    }
+  }
+});
+
+// 7-2. 퓨처스리그
+new Chart(document.getElementById('chartFutures'), {
+  type:'bar',
+  data:{
+    labels:['KT (03.26)','NC (04.01)','삼성 (04.13)','KT (03.25)','KT (03.27)','NC (04.02)','KT (03.25) b','NC (04.03)'],
+    datasets:[{ label:'라이브 조회수', data:[46444,43374,38076,33075,27544,27369,19204,18051], backgroundColor:C.navy }]
+  },
+  options:{
+    responsive:true,
+    plugins:{
+      title:T('퓨처스리그 생중계 라이브 조회수'),
+      legend:{display:false},
+      tooltip:{ callbacks:{ label: ctx => ` ${ctx.parsed.y.toLocaleString()}회` } }
+    },
+    scales:{
+      x:{ grid:{display:false}, ticks:{font:{size:11}} },
+      y:{ grid:{color:C.grid},  ticks:{ callback: v => (v/1000).toFixed(0)+'k' } }
+    }
+  }
+});
+</script>
+</body>
+</html>
