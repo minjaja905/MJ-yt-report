@@ -258,6 +258,7 @@
   <a href="#s6">제언</a>
   <a href="#s7">라이브 실적</a>
   <a href="#s8">브랜딩 비교</a>
+  <a href="#s9">트래픽 소스</a>
 </nav>
 
 <!-- MODAL -->
@@ -632,6 +633,73 @@
     </div>
   </section>
 
+  <!-- SECTION 9 -->
+  <section id="s9">
+    <h2><span class="num">9</span> 트래픽 소스 &amp; 반응도 분석</h2>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">전체 노출수 (Q1)</div>
+        <div class="card-val">1.06억</div>
+        <div class="card-delta muted">임프레션</div>
+      </div>
+      <div class="card">
+        <div class="card-label">탐색 기능 CTR</div>
+        <div class="card-val up">8.51%</div>
+        <div class="card-delta up">▲ 0.96%p vs 2025년</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Shorts 유입 비중</div>
+        <div class="card-val">25.3%</div>
+        <div class="card-delta down">▲ 7.2%p (2025년 18.1%)</div>
+      </div>
+      <div class="card">
+        <div class="card-label">검색 유입 비중</div>
+        <div class="card-val">7.5%</div>
+        <div class="card-delta down">▼ 2.4%p (2025년 9.9%)</div>
+      </div>
+    </div>
+
+    <div class="chart-wrap">
+      <canvas id="chartTraffic"></canvas>
+    </div>
+    <p class="note">※ 2025는 전체년(1/1~12/31) 기준, 2026은 Q1(1/1~4/22) 기준. 비중(%)은 기간 무관하게 비교 가능.</p>
+
+    <h3>트래픽 소스별 CTR (2026 Q1)</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>트래픽 소스</th><th>조회수 비중</th><th>노출수</th><th>CTR</th></tr></thead>
+        <tbody>
+          <tr><td>탐색 기능</td><td class="num">43.4%</td><td class="num">64,610,285</td><td class="num up">8.51%</td></tr>
+          <tr><td>YouTube 검색</td><td class="num">7.5%</td><td class="num">9,446,756</td><td class="num up">8.65%</td></tr>
+          <tr><td>채널 페이지</td><td class="num">8.4%</td><td class="num">12,989,676</td><td class="num">6.03%</td></tr>
+          <tr><td>재생목록</td><td class="num">0.8%</td><td class="num">446,449</td><td class="num">6.18%</td></tr>
+          <tr><td>추천 동영상</td><td class="num">8.1%</td><td class="num">18,020,340</td><td class="num down">4.56%</td></tr>
+          <tr><td>Shorts 피드</td><td class="num">25.3%</td><td class="num">—</td><td class="num muted">N/A</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="hc navy">
+      <div class="hc-title">① Shorts 유입 25.3% — 조회수 기여, 평균 시청은 22초</div>
+      <div class="hc-body">Shorts 피드 유입이 18.1%→25.3%로 7.2%p 급증. 조회수 총량을 올리는 효과는 있지만 해당 트래픽의 평균 시청 시간이 22초. VOD 콘텐츠로의 전환 유도 장치 없으면 노출만 소비되고 끝남. Shorts 유입 시청자가 장편 콘텐츠를 어느 정도 이어보는지 별도 추적 필요.</div>
+    </div>
+    <div class="hc green">
+      <div class="hc-title">② 탐색 기능 CTR 8.51% — 알고리즘 피처링 효율 개선</div>
+      <div class="hc-body">2025년 CTR 7.55%에서 8.51%로 0.96%p 상승. 6,461만 노출에 CTR 8.5%면 실질 클릭 약 550만. 홈피드 알고리즘 추천이 채널의 핵심 트래픽 엔진. 썸네일·제목 최적화의 직접 성과로 해석 가능.</div>
+    </div>
+    <div class="hc">
+      <div class="hc-title">③ 채널 페이지 8.4%, 검색 7.5% — 기존 팬 직접 방문 감소</div>
+      <div class="hc-body">채널 페이지(11.8%→8.4%)와 검색(9.9%→7.5%) 유입 비중 모두 하락. 알고리즘 의존도가 높아지는 구조. 구독자 알림 활용률 및 검색 SEO 최적화 개선 시점.</div>
+    </div>
+
+    <h3>일별 좋아요 추이 (2026 Q1 · 1/20~4/19)</h3>
+    <div class="chart-wrap">
+      <canvas id="chartLikes"></canvas>
+    </div>
+    <p class="note">※ 주요 피크: 3/14 DAY6 성진 응원가 발행(18,450) → 3/28 정규시즌 개막일(27,656) → 4/8·10·11 경기 하이라이트 연속(17k~20k)</p>
+  </section>
+
 </div>
 
 <footer>
@@ -858,6 +926,67 @@ new Chart(document.getElementById('chartHotdug'), {
     scales:{
       x:{ grid:{display:false} },
       y:{ grid:{color:C.grid}, ticks:{ callback: v => v >= 10000 ? (v/10000).toFixed(0)+'만' : v } }
+    }
+  }
+});
+
+// 9-1. 트래픽 소스 비중 비교
+new Chart(document.getElementById('chartTraffic'), {
+  type: 'bar',
+  data: {
+    labels: ['탐색 기능', 'Shorts 피드', '채널 페이지', '추천 동영상', 'YouTube 검색', '기타'],
+    datasets: [
+      { label:'2025 전체년', data:[42.4, 18.1, 11.8, 11.0, 9.9, 6.8], backgroundColor:C.navy2 },
+      { label:'2026 Q1',    data:[43.4, 25.3,  8.4,  8.1, 7.5, 7.3], backgroundColor:C.red   },
+    ]
+  },
+  options: {
+    responsive:true,
+    plugins:{
+      title:T('트래픽 소스 비중 비교 (%)'),
+      tooltip:{ callbacks:{ label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y}%` } }
+    },
+    scales:{
+      x:{ grid:{display:false} },
+      y:{ grid:{color:C.grid}, max:50, ticks:{ callback: v => v+'%' } }
+    }
+  }
+});
+
+// 9-2. 일별 좋아요 트렌드
+new Chart(document.getElementById('chartLikes'), {
+  type:'line',
+  data:{
+    labels:[
+      '1/20','1/21','1/22','1/23','1/24','1/25','1/26','1/27','1/28','1/29','1/30','1/31',
+      '2/1','2/2','2/3','2/4','2/5','2/6','2/7','2/8','2/9','2/10','2/11','2/12','2/13','2/14','2/15','2/16','2/17','2/18','2/19','2/20','2/21','2/22','2/23','2/24','2/25','2/26','2/27','2/28',
+      '3/1','3/2','3/3','3/4','3/5','3/6','3/7','3/8','3/9','3/10','3/11','3/12','3/13','3/14','3/15','3/16','3/17','3/18','3/19','3/20','3/21','3/22','3/23','3/24','3/25','3/26','3/27','3/28','3/29','3/30','3/31',
+      '4/1','4/2','4/3','4/4','4/5','4/6','4/7','4/8','4/9','4/10','4/11','4/12','4/13','4/14','4/15','4/16','4/17','4/18','4/19'
+    ],
+    datasets:[{
+      label:'일별 좋아요',
+      data:[
+        6,2,5,1,2,3,2027,1107,2201,2679,2671,2266,
+        2591,2771,3383,2545,2561,2675,2335,2987,2246,2447,846,2188,192,117,62,47,56,32,28,24,4239,5084,1727,1054,4202,3423,604,3554,
+        2966,2968,1430,690,98,72,47,1598,1299,2423,2910,8144,12911,18450,12384,7473,1639,3055,4926,1104,2869,5520,6917,5756,3123,3293,4294,27656,18351,3865,999,
+        679,495,693,306,78,114,95,18005,4795,20119,17127,1199,396,271,16596,1372,4236,1918,463
+      ],
+      borderColor:C.red,
+      backgroundColor:'rgba(168,56,72,0.07)',
+      fill:true, tension:0.35,
+      pointRadius:0, pointHoverRadius:4,
+    }]
+  },
+  options:{
+    responsive:true,
+    plugins:{
+      title:T('일별 좋아요 추이 (2026 Q1)'),
+      legend:{display:false},
+      tooltip:{ callbacks:{ label: ctx => ` ${ctx.parsed.y.toLocaleString()}개` } }
+    },
+    scales:{
+      x:{ grid:{display:false}, ticks:{ maxTicksLimit:16, font:{size:10} } },
+      y:{ grid:{color:C.grid}, ticks:{ callback: v => v>=1000 ? (v/1000).toFixed(0)+'k' : v } }
     }
   }
 });
