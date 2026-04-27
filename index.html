@@ -3,27 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>
-(function(){
-  if(sessionStorage.getItem('auth')!=='ok'){
-    document.addEventListener('DOMContentLoaded',function(){
-      document.body.style.display='none';
-      var overlay=document.createElement('div');
-      overlay.style.cssText='position:fixed;inset:0;background:#1a2d55;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;font-family:Pretendard,sans-serif;';
-      overlay.innerHTML='<div style="color:rgba(255,255,255,0.4);font-size:12px;letter-spacing:2px;margin-bottom:24px;">YOUTUBE CHANNEL REPORT ©️MJ</div><input id="pw" type="password" placeholder="비밀번호" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#fff;padding:12px 20px;border-radius:8px;font-size:15px;width:220px;text-align:center;outline:none;" /><div id="pw-err" style="color:#e8778a;font-size:12px;margin-top:12px;height:16px;"></div>';
-      document.body.appendChild(overlay);
-      document.body.style.display='';
-      var input=document.getElementById('pw');
-      input.focus();
-      function check(){
-        if(input.value==='0905'){sessionStorage.setItem('auth','ok');overlay.remove();}
-        else{document.getElementById('pw-err').textContent='비밀번호가 틀렸습니다.';input.value='';input.focus();}
-      }
-      input.addEventListener('keydown',function(e){if(e.key==='Enter')check();});
-    });
-  }
-})();
-</script>
 <title>롯데자이언츠 유튜브 채널 성과 보고 — 2026 Q1</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%233ECFB2'/%3E%3Cpath d='M10 9.5 L10 22.5 L24 16 Z' fill='white'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
