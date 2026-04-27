@@ -3,7 +3,7 @@ export const config = { matcher: '/' };
 export default function middleware(req) {
   const auth = req.headers.get('authorization');
   const pw = process.env.REPORT_PASSWORD || '0905';
-  const expected = 'Basic ' + btoa('mj:' + pw);
+  const expected = 'Basic ' + btoa('yt:' + pw);
 
   if (auth !== expected) {
     return new Response('Unauthorized', {
