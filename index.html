@@ -304,6 +304,12 @@
     <span id="meta-date">작성일: 2026.04.23</span>
     <span>기획 / 고정 콘텐츠 분리 분석</span>
   </div>
+  <div style="margin-top:12px; font-size:11px; color:rgba(255,255,255,0.3); line-height:1.7;">
+    <span style="letter-spacing:0.5px;">DATA SOURCE</span><br>
+    <span id="meta-src-cur"></span><br>
+    <span id="meta-src-prev"></span><br>
+    <span id="meta-src-traffic"></span>
+  </div>
 </header>
 
 <div class="container">
@@ -746,6 +752,11 @@ function render() {
   // Header
   setEl('meta-period', D.meta.period+' · '+D.meta.dateRange);
   setEl('meta-date',   '작성일: '+D.meta.generatedAt);
+  if (D.meta.sources) {
+    setEl('meta-src-cur',     '현재: ' + D.meta.sources.cur);
+    setEl('meta-src-prev',    '전년: ' + D.meta.sources.prev);
+    setEl('meta-src-traffic', '트래픽: ' + D.meta.sources.traffic);
+  }
 
   // S1 cards
   const totC=D.counts.total.cur, totP=D.counts.total.prev;
