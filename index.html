@@ -7,6 +7,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%233ECFB2'/%3E%3Cpath d='M10 9.5 L10 22.5 L24 16 Z' fill='white'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="data.js"></script>
 <style>
   :root {
     --red:    #a83848;
@@ -299,8 +300,8 @@
   <div class="eyebrow">YouTube Channel Report</div>
   <h1>롯데자이언츠 <em>유튜브 채널</em> 성과 보고</h1>
   <div class="meta">
-    <span>2026 Q1 · 1월 20일 ~ 4월 19일</span>
-    <span>작성일: 2026.04.23</span>
+    <span id="meta-period">2026 Q1 · 1월 20일 ~ 4월 19일</span>
+    <span id="meta-date">작성일: 2026.04.23</span>
     <span>기획 / 고정 콘텐츠 분리 분석</span>
   </div>
 </header>
@@ -323,18 +324,18 @@
     <div class="card-grid">
       <div class="card">
         <div class="card-label">전체 영상 수</div>
-        <div class="card-val">167개</div>
-        <div class="card-delta up">▲ 37% (2025: 122개)</div>
+        <div class="card-val" id="cnt-total-cur">167개</div>
+        <div class="card-delta up" id="cnt-total-delta">▲ 37% (2025: 122개)</div>
       </div>
       <div class="card">
         <div class="card-label">기획 콘텐츠</div>
-        <div class="card-val down">79개</div>
-        <div class="card-delta down">▼ 18.5% (2025: 97개)</div>
+        <div class="card-val down" id="cnt-planned-cur">79개</div>
+        <div class="card-delta down" id="cnt-planned-delta">▼ 18.5% (2025: 97개)</div>
       </div>
       <div class="card">
         <div class="card-label">고정 콘텐츠</div>
-        <div class="card-val up">89개</div>
-        <div class="card-delta up">▲ 218% (2025: 28개)</div>
+        <div class="card-val up" id="cnt-fixed-cur">89개</div>
+        <div class="card-delta up" id="cnt-fixed-delta">▲ 218% (2025: 28개)</div>
       </div>
     </div>
 
@@ -346,15 +347,10 @@
   <section id="s2">
     <h2><span class="num">2</span> 기획 콘텐츠 핵심 지표</h2>
 
-    <div class="hc">
-      <div class="hc-title">핵심 정정</div>
-      <div class="hc-body">이전 분석의 "평균 조회수 하락" 결론은 고정 콘텐츠(28→89개) 급증으로 인한 희석 효과였음. 기획 콘텐츠만 분리하면 영상당 평균 조회수는 사실상 보합(+1.2%).</div>
-    </div>
-
     <div class="tbl-wrap">
       <table>
         <thead><tr><th>지표</th><th>2025 Q1</th><th>2026 Q1</th><th>증감</th></tr></thead>
-        <tbody>
+        <tbody id="s2-tbody">
           <tr><td>기획 영상 수</td><td class="num">97개</td><td class="num">79개</td><td class="num down">▼ 18.5%</td></tr>
           <tr><td>영상당 평균 조회수</td><td class="num">104,593</td><td class="num bold">106,742</td><td class="num up">▲ 2.1%</td></tr>
           <tr><td>기획 총 조회수</td><td class="num">10,145,590</td><td class="num">8,432,606</td><td class="num down">▼ 16.9%</td></tr>
@@ -409,7 +405,7 @@
     <div class="tbl-wrap">
       <table>
         <thead><tr><th>#</th><th>영상</th><th>조회수</th><th>CTR</th></tr></thead>
-        <tbody>
+        <tbody id="top10-tbody">
           <tr><td class="rank">1</td><td><span class="tag navy">콜라보</span> DAY6 성진 "오늘도 승리한다"</td><td class="num bold">424,713</td><td class="num">6.4%</td></tr>
           <tr><td class="rank">2</td><td><span class="tag red">생중계</span> 미야자키 생중계 vs 세이부</td><td class="num bold">370,793</td><td class="num">15.9%</td></tr>
           <tr><td class="rank">3</td><td><span class="tag navy">콜라보</span> DAY6 성진 "영광의 순간"</td><td class="num bold">302,560</td><td class="num">6.4%</td></tr>
@@ -431,8 +427,8 @@
     <h2><span class="num">5</span> 핵심 발견</h2>
 
     <div class="hc">
-      <div class="hc-title">① 기획 콘텐츠 평균 조회수는 유지됨 (이전 분석 정정)</div>
-      <div class="hc-body">영상당 평균 조회수 104k → 107k으로 보합(+2.1%). 이전의 "평균 하락" 결론은 고정 콘텐츠(28→89개)가 전체 평균을 희석시킨 착시 효과.</div>
+      <div class="hc-title">① 기획 콘텐츠 평균 조회수는 유지됨</div>
+      <div class="hc-body">영상당 평균 조회수 104k → 107k으로 보합(+2.1%). 전체 채널 평균은 고정 콘텐츠(28→89개) 급증으로 희석됐지만, 기획 콘텐츠 단독 성과는 견조하게 유지됨.</div>
     </div>
 
     <div class="hc amber">
@@ -560,29 +556,29 @@
 
     <div class="hc navy">
       <div class="hc-title">콘텐츠 개요</div>
-      <div class="hc-body">이겼을 때 경기 내내 덕아웃을 담아내는 포맷. 2025년 <strong>#플레이볼</strong>에서 2026년 <strong>[HOTDUG]</strong>로 컨셉 리브랜딩. 단, 현재 분류 기준상 #플레이볼은 <strong>기획 콘텐츠</strong>로, HOTDUG는 <strong>고정 콘텐츠</strong>로 각각 다른 버킷에 들어가 있어 YoY 기획 콘텐츠 비교 시 이 포맷이 서로 다른 카테고리로 집계됨.</div>
+      <div class="hc-body">이겼을 때 경기 내내 덕아웃을 담아내는 <strong>승리 고정콘텐츠</strong>. 2025년 <strong>#플레이볼</strong>에서 2026년 <strong>[HOTDUG]</strong>로 컨셉 리브랜딩. 두 포맷 모두 고정 콘텐츠로 분류되며 YoY 비교 가능.</div>
     </div>
 
     <div class="card-grid">
       <div class="card">
         <div class="card-label">영상당 평균 조회수</div>
-        <div class="card-val up">129k</div>
-        <div class="card-delta up">▲ 70% (2025: 76k)</div>
+        <div class="card-val up" id="hd-avgViews">129k</div>
+        <div class="card-delta up" id="hd-avgViews-delta">▲ 70% (2025: 76k)</div>
       </div>
       <div class="card">
         <div class="card-label">총 시청시간</div>
-        <div class="card-val up">84,392h</div>
-        <div class="card-delta up">▲ 92% (2025: 43,905h)</div>
+        <div class="card-val up" id="hd-watchTime">84,392h</div>
+        <div class="card-delta up" id="hd-watchTime-delta">▲ 92% (2025: 43,905h)</div>
       </div>
       <div class="card">
         <div class="card-label">평균 조회율</div>
-        <div class="card-val up">51.1%</div>
-        <div class="card-delta up">▲ 7.1%p (2025: 44.0%)</div>
+        <div class="card-val up" id="hd-viewRate">51.1%</div>
+        <div class="card-delta up" id="hd-viewRate-delta">▲ 7.1%p (2025: 44.0%)</div>
       </div>
       <div class="card">
         <div class="card-label">평균 CTR</div>
-        <div class="card-val down">8.03%</div>
-        <div class="card-delta down">▼ 3.76%p (2025: 11.79%)</div>
+        <div class="card-val down" id="hd-ctr">8.03%</div>
+        <div class="card-delta down" id="hd-ctr-delta">▼ 3.76%p (2025: 11.79%)</div>
       </div>
     </div>
 
@@ -590,15 +586,15 @@
 
     <div class="tbl-wrap">
       <table>
-        <thead><tr><th>지표</th><th>#플레이볼 (2025)</th><th>HOTDUG (2026)</th><th>증감</th></tr></thead>
-        <tbody>
+        <thead><tr><th>지표</th><th id="hotdug-prev-label">#플레이볼 (2025)</th><th id="hotdug-cur-label">HOTDUG (2026)</th><th>증감</th></tr></thead>
+        <tbody id="hotdug-tbody">
           <tr><td>영상 수</td><td class="num">6개</td><td class="num">6개</td><td class="num muted">동일</td></tr>
           <tr><td>영상당 평균 조회수</td><td class="num">76,184</td><td class="num bold">129,182</td><td class="num up">▲ 70%</td></tr>
           <tr><td>총 시청 시간 (h)</td><td class="num">43,905</td><td class="num bold">84,392</td><td class="num up">▲ 92%</td></tr>
           <tr><td>구독자 기여</td><td class="num">367명</td><td class="num">541명</td><td class="num up">▲ 47%</td></tr>
           <tr><td>평균 CTR</td><td class="num bold">11.79%</td><td class="num">8.03%</td><td class="num down">▼ 3.76%p</td></tr>
           <tr><td>평균 조회율</td><td class="num">44.0%</td><td class="num bold">51.1%</td><td class="num up">▲ 7.1%p</td></tr>
-          <tr><td>현재 분류</td><td class="num">기획 콘텐츠</td><td class="num">고정 콘텐츠</td><td class="num down">불일치</td></tr>
+          <tr><td>분류</td><td class="num">고정 콘텐츠</td><td class="num">고정 콘텐츠</td><td class="num up">일치</td></tr>
         </tbody>
       </table>
     </div>
@@ -709,308 +705,246 @@
 </footer>
 
 <script>
+// ── Modal
 function openModal()  { document.getElementById('classModal').classList.add('open'); }
 function closeModal() { document.getElementById('classModal').classList.remove('open'); }
 document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
 
+// ── Chart defaults
 const C = { red:'#a83848', navy:'#2e4a82', navy2:'#5577b0', green:'#2d7d58', amber:'#b07730', grid:'#eceef5' };
-
 Chart.defaults.font.family = '"Pretendard", -apple-system, sans-serif';
 Chart.defaults.font.size   = 12;
 Chart.defaults.color       = '#67708f';
 Chart.defaults.plugins.legend.labels.boxWidth = 12;
 Chart.defaults.plugins.legend.labels.padding  = 16;
-
 const T = text => ({ display:true, text, font:{size:13,weight:'600'}, color:'#1e2235', padding:{bottom:16} });
 
-// 1. 콘텐츠 구성
-new Chart(document.getElementById('chartComposition'), {
-  type: 'bar',
-  data: {
-    labels: ['2025 Q1', '2026 Q1'],
-    datasets: [
-      { label:'기획 콘텐츠', data:[97,79],  backgroundColor:C.navy },
-      { label:'고정 콘텐츠', data:[28,89],  backgroundColor:C.red  },
-    ]
-  },
-  options: {
-    responsive:true,
-    plugins:{ title:T('콘텐츠 유형별 영상 수') },
-    scales:{
-      x:{ stacked:true, grid:{display:false} },
-      y:{ stacked:true, grid:{color:C.grid}, ticks:{stepSize:20} }
-    }
-  }
-});
+// ── Helpers
+const N = v => (v != null) ? v.toLocaleString() : '—';
+function pctDelta(cur, prev) {
+  if (!prev) return null;
+  return ((cur - prev) / prev * 100).toFixed(1);
+}
+function arrowClass(pct) {
+  const v = parseFloat(pct); if(isNaN(v)||v===0) return 'muted';
+  return v > 0 ? 'up' : 'down';
+}
+function arrowSym(pct) {
+  const v = parseFloat(pct); if(isNaN(v)||v===0) return '─';
+  return v > 0 ? '▲' : '▼';
+}
+function setEl(id, val) { const e=document.getElementById(id); if(e) e.textContent=val; }
+function setHtml(id, html) { const e=document.getElementById(id); if(e) e.innerHTML=html; }
 
-// 2-a. Watch Time 비교
-new Chart(document.getElementById('chartWatchTime'), {
-  type: 'bar',
-  data: {
-    labels: ['2025 Q1', '2026 Q1'],
-    datasets: [{
-      label:'기획 콘텐츠 시청 시간 (h)',
-      data: [961019, 643253],
-      backgroundColor: [C.navy2, C.red],
-    }]
-  },
-  options: {
-    responsive:true,
-    plugins:{
-      title:T('기획 콘텐츠 시청 시간 (h) 비교'),
-      legend:{display:false},
-      tooltip:{ callbacks:{ label: ctx => ` ${ctx.parsed.y.toLocaleString()}h` } }
-    },
-    scales:{
-      x:{ grid:{display:false} },
-      y:{ grid:{color:C.grid}, ticks:{ callback: v => (v/1000).toFixed(0)+'k' } }
-    }
-  }
-});
+// ── Render
+function render() {
+  const D = window.REPORT_DATA;
+  if (!D) { console.warn('data.js not loaded'); return; }
+  const p = D.planned, yr = D.meta.curYear, yrP = D.meta.prevYear;
+  const yL = yrP+' Q1', yC = yr+' Q1';
 
-// 2-b. 기획 콘텐츠 지표 비교 (조회수)
-new Chart(document.getElementById('chartPlannedMetrics'), {
-  type: 'bar',
-  data: {
-    labels: ['영상당 평균 조회수'],
-    datasets: [
-      { label:'2025 Q1', data:[104593], backgroundColor:C.navy2 },
-      { label:'2026 Q1', data:[106742], backgroundColor:C.red   },
-    ]
-  },
-  options: {
-    responsive:true,
-    plugins:{
-      title:T('기획 콘텐츠 영상당 평균 조회수'),
-      tooltip:{ callbacks:{ label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()}` } }
-    },
-    scales:{
-      x:{ grid:{display:false} },
-      y:{ grid:{color:C.grid}, ticks:{ callback: v => (v/10000).toFixed(0)+'만' } }
-    }
-  }
-});
+  // Header
+  setEl('meta-period', D.meta.period+' · '+D.meta.dateRange);
+  setEl('meta-date',   '작성일: '+D.meta.generatedAt);
 
-// 3-a. 구독 전환
-new Chart(document.getElementById('chartSubs'), {
-  type: 'bar',
-  data: {
-    labels: ['구독자 기여 (절대값)', '10만뷰당 구독전환 (×1,000)'],
-    datasets: [
-      { label:'2025 Q1', data:[10662, 10500], backgroundColor:C.navy2 },
-      { label:'2026 Q1', data:[3509,  4200],  backgroundColor:C.red   },
-    ]
-  },
-  options: {
-    responsive:true,
-    plugins:{
-      title:T('기획 콘텐츠 구독 전환 비교'),
-      tooltip:{ callbacks:{
-        label: ctx => {
-          if (ctx.dataIndex === 1)
-            return ` ${ctx.dataset.label}: ${(ctx.parsed.y/1000).toFixed(1)}명 (10만뷰당)`;
-          return ` ${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()}명`;
-        }
-      }}
-    },
-    scales:{
-      x:{ grid:{display:false} },
-      y:{ grid:{color:C.grid}, ticks:{ callback: v => v.toLocaleString() } }
-    }
-  }
-});
+  // S1 cards
+  const totC=D.counts.total.cur, totP=D.counts.total.prev;
+  const plC=D.counts.planned.cur, plP=D.counts.planned.prev;
+  const fxC=D.counts.fixed.cur,   fxP=D.counts.fixed.prev;
+  const totPct=pctDelta(totC,totP), plPct=pctDelta(plC,plP), fxPct=pctDelta(fxC,fxP);
 
-// 3-b. 신규/재방문 시청자
-new Chart(document.getElementById('chartNewViewers'), {
-  type: 'bar',
-  data: {
-    labels: ['2025 Q1', '2026 Q1'],
-    datasets: [
-      { label:'신규 시청자',   data:[515903, 333324], backgroundColor:C.navy  },
-      { label:'재방문 시청자', data:[5970940,4891259], backgroundColor:C.navy2 },
-    ]
-  },
-  options: {
-    responsive:true,
-    plugins:{
-      title:T('기획 콘텐츠 신규 vs 재방문 시청자'),
-      tooltip:{ callbacks:{ label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()}명` } }
-    },
-    scales:{
-      x:{ stacked:true, grid:{display:false} },
-      y:{ stacked:true, grid:{color:C.grid}, ticks:{ callback: v => (v/10000).toFixed(0)+'만' } }
-    }
-  }
-});
+  setEl('cnt-total-cur',     totC+'개');
+  setEl('cnt-total-delta',   arrowSym(totPct)+' '+Math.abs(totPct)+'% ('+yrP+': '+totP+'개)');
+  setEl('cnt-planned-cur',   plC+'개');
+  setEl('cnt-planned-delta', arrowSym(plPct)+' '+Math.abs(plPct)+'% ('+yrP+': '+plP+'개)');
+  setEl('cnt-fixed-cur',     fxC+'개');
+  setEl('cnt-fixed-delta',   arrowSym(fxPct)+' '+Math.abs(fxPct)+'% ('+yrP+': '+fxP+'개)');
 
-// 4. TOP 10
-new Chart(document.getElementById('chartTop10'), {
-  type:'bar',
-  data:{
-    labels:[
-      'DAY6 성진 "오늘도 승리한다"','미야자키 생중계 vs 세이부',
-      'DAY6 성진 "영광의 순간"',    '미야자키 구춘리그 vs 지바롯데',
-      '미야자키 연습경기 vs SSG',   '미야자키 생중계 vs 요미우리',
-      '미야자키 구춘리그 vs 두산',  '미야자키 홈런 핫클립',
-      '주간예열 응원가 "영광의 순간"','응원가 플레이리스트',
-    ],
-    datasets:[{
-      label:'조회수',
-      data:[424713,370793,302560,292139,245651,236550,227935,214366,198736,179724],
-      backgroundColor:[C.navy,C.red,C.navy,C.red,C.red,C.red,C.red,C.green,C.green,C.green],
-    }]
-  },
-  options:{
-    indexAxis:'y', responsive:true,
-    plugins:{
-      title:T('2026 Q1 기획 콘텐츠 TOP 10 (조회수)'),
-      legend:{display:false},
-      tooltip:{ callbacks:{ label: ctx => ` ${ctx.parsed.x.toLocaleString()}회` } }
-    },
-    scales:{
-      x:{ grid:{color:C.grid}, ticks:{ callback: v => (v/10000).toFixed(0)+'만' } },
-      y:{ grid:{display:false}, ticks:{ font:{size:11} } }
-    }
+  // S2 table
+  function deltaCell(cur, prev, fmt, invert) {
+    const pct = pctDelta(cur, prev);
+    if(pct==null) return '<td class="num muted">—</td>';
+    const cls = invert ? (parseFloat(pct)>0?'down':'up') : arrowClass(pct);
+    return '<td class="num '+cls+'">'+arrowSym(pct)+' '+Math.abs(parseFloat(pct))+'%</td>';
   }
-});
+  setHtml('s2-tbody', [
+    ['기획 영상 수',        p.countPrev+'개',       p.count+'개',           pctDelta(p.count,p.countPrev),     false, false, true],
+    ['영상당 평균 조회수',  N(p.avgViewsPrev),       N(p.avgViews),          pctDelta(p.avgViews,p.avgViewsPrev),false,true, false],
+    ['기획 총 조회수',      N(p.totalViewsPrev),     N(p.totalViews),        pctDelta(p.totalViews,p.totalViewsPrev),false,false,true],
+    ['시청 시간 (h)',       N(p.watchTimeHPrev),     N(p.watchTimeH),        pctDelta(p.watchTimeH,p.watchTimeHPrev),false,false,true],
+    ['영상당 평균 시청시간',p.avgDurFmtPrev,         p.avgDurFmt,            null,                               false,false,false],
+    ['구독 전환 (per 100k)',p.subConvPrev+'명',      p.subConv+'명',         pctDelta(p.subConv,p.subConvPrev),false,true, false],
+    ['신규 시청자',         N(p.newViewersPrev),     N(p.newViewers),        pctDelta(p.newViewers,p.newViewersPrev),false,false,true],
+    ['신규 시청자 비중',    p.newViewersPctPrev+'%', p.newViewersPct+'%',    null,                               false,false,false],
+    ['평균 CTR',            p.avgCTRPrev+'%',        p.avgCTR+'%',           pctDelta(p.avgCTR,p.avgCTRPrev),  false,false,false],
+  ].map(([lbl,prev,cur,pct,_,boldCur,invert])=>{
+    const hlCls = (lbl==='시청 시간 (h)') ? ' hl' : '';
+    const bCls  = boldCur ? ' bold' : '';
+    const dCls  = pct!=null ? (invert?(parseFloat(pct)>0?'down':'up'):arrowClass(pct)) : 'muted';
+    const dTxt  = pct!=null ? arrowSym(pct)+' '+Math.abs(parseFloat(pct))+'%' : '—';
+    return '<tr><td class="'+hlCls.trim()+'">'+lbl+'</td><td class="num'+hlCls+'">'+prev+'</td><td class="num'+bCls+hlCls+'">'+cur+'</td><td class="num '+dCls+hlCls+'">'+dTxt+'</td></tr>';
+  }).join(''));
 
-// 7-1. 미야자키 grouped bar
-new Chart(document.getElementById('chartMiyazaki'), {
-  type:'bar',
-  data:{
-    labels:['vs 세이부 (2/22)','vs 지바롯데 (3/1)','vs SSG (3/3)','vs 요미우리 (2/23)','vs 두산 (2/26)'],
-    datasets:[
-      { label:'라이브 조회수', data:[289082,235962,196703,198479,152695], backgroundColor:C.red   },
-      { label:'VOD 조회수',   data:[370793,292139,245651,236550,227935], backgroundColor:C.navy2 },
-    ]
-  },
-  options:{
-    responsive:true,
-    plugins:{
-      title:T('미야자키 캠프 라이브 + VOD 최대 도달량'),
-      tooltip:{ callbacks:{ label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()}` } }
-    },
-    scales:{
-      x:{ grid:{display:false}, ticks:{font:{size:11}} },
-      y:{ grid:{color:C.grid},  ticks:{ callback: v => (v/10000).toFixed(0)+'만' } }
-    }
-  }
-});
+  // S4 TOP 10
+  const tagColor = {'콜라보':'navy','생중계':'red','기획':'green'};
+  setHtml('top10-tbody', D.top10.map((v,i)=>
+    '<tr><td class="rank">'+(i+1)+'</td><td><span class="tag '+(tagColor[v.tag]||'green')+'">'+v.tag+'</span> '+v.title+'</td><td class="num bold">'+N(v.views)+'</td><td class="num">'+v.ctr+'%</td></tr>'
+  ).join(''));
 
-// 8. 플레이볼 vs HOTDUG
-new Chart(document.getElementById('chartHotdug'), {
-  type: 'bar',
-  data: {
-    labels: ['영상당 평균 조회수', '총 시청시간 (h)', 'CTR × 10,000', '평균 조회율 × 1,000'],
-    datasets: [
-      { label:'#플레이볼 (2025)', data:[76184, 43905, 117900, 44000], backgroundColor:C.navy2 },
-      { label:'HOTDUG (2026)',    data:[129182,84392,  80300, 51100], backgroundColor:C.red   },
-    ]
-  },
-  options: {
-    responsive:true,
-    plugins:{
-      title:T('#플레이볼 (2025) vs HOTDUG (2026) 주요 지표'),
-      tooltip:{ callbacks:{
-        label: ctx => {
-          const labels = ['조회수','시청시간(h)','CTR','평균 조회율'];
-          const vals = [[76184,129182],[43905,84392],[11.79,8.03],[44.0,51.1]];
-          const di = ctx.datasetIndex;
-          const li = ctx.dataIndex;
-          if(li===2) return ` ${ctx.dataset.label}: CTR ${vals[2][di]}%`;
-          if(li===3) return ` ${ctx.dataset.label}: 평균 조회율 ${vals[3][di]}%`;
-          return ` ${ctx.dataset.label}: ${vals[li][di].toLocaleString()}`;
-        }
-      }}
-    },
-    scales:{
-      x:{ grid:{display:false} },
-      y:{ grid:{color:C.grid}, ticks:{ callback: v => v >= 10000 ? (v/10000).toFixed(0)+'만' : v } }
-    }
-  }
-});
+  // S8 HOTDUG
+  const hc=D.hotdug.cur, hp=D.hotdug.prev;
+  setEl('hotdug-cur-label',  hc.label+' ('+yr+')');
+  setEl('hotdug-prev-label', hp.label+' ('+yrP+')');
+  const hdAvg=pctDelta(hc.avgViews,hp.avgViews);
+  const hdWt =pctDelta(hc.watchTimeH,hp.watchTimeH);
+  const hdVr =hc.avgViewRate-hp.avgViewRate;
+  const hdCtr=hc.avgCTR-hp.avgCTR;
+  setEl('hd-avgViews',        Math.round(hc.avgViews/1000)+'k');
+  setEl('hd-avgViews-delta',  '▲ '+Math.abs(hdAvg)+'% ('+yrP+': '+Math.round(hp.avgViews/1000)+'k)');
+  setEl('hd-watchTime',       N(hc.watchTimeH)+'h');
+  setEl('hd-watchTime-delta', '▲ '+Math.abs(parseFloat(hdWt))+'% ('+yrP+': '+N(hp.watchTimeH)+'h)');
+  setEl('hd-viewRate',        hc.avgViewRate+'%');
+  setEl('hd-viewRate-delta',  (hdVr>=0?'▲':'▼')+' '+Math.abs(hdVr).toFixed(1)+'%p ('+yrP+': '+hp.avgViewRate+'%)');
+  setEl('hd-ctr',             hc.avgCTR+'%');
+  setEl('hd-ctr-delta',       (hdCtr>=0?'▲':'▼')+' '+Math.abs(hdCtr).toFixed(2)+'%p ('+yrP+': '+hp.avgCTR+'%)');
 
-// 9-1. 트래픽 소스 비중 비교
-new Chart(document.getElementById('chartTraffic'), {
-  type: 'bar',
-  data: {
-    labels: ['탐색 기능', 'Shorts 피드', '채널 페이지', '추천 동영상', 'YouTube 검색', '기타'],
-    datasets: [
-      { label:'2025 전체년', data:[42.4, 18.1, 11.8, 11.0, 9.9, 6.8], backgroundColor:C.navy2 },
-      { label:'2026 Q1',    data:[43.4, 25.3,  8.4,  8.1, 7.5, 7.3], backgroundColor:C.red   },
-    ]
-  },
-  options: {
-    responsive:true,
-    plugins:{
-      title:T('트래픽 소스 비중 비교 (%)'),
-      tooltip:{ callbacks:{ label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y}%` } }
-    },
-    scales:{
-      x:{ grid:{display:false} },
-      y:{ grid:{color:C.grid}, max:50, ticks:{ callback: v => v+'%' } }
-    }
-  }
-});
+  setHtml('hotdug-tbody', [
+    ['영상 수',           hp.count+'개',          hc.count+'개',         pctDelta(hc.count,hp.count)],
+    ['영상당 평균 조회수',N(hp.avgViews),          '<strong>'+N(hc.avgViews)+'</strong>', pctDelta(hc.avgViews,hp.avgViews)],
+    ['총 시청 시간 (h)',  N(hp.watchTimeH),        '<strong>'+N(hc.watchTimeH)+'</strong>', pctDelta(hc.watchTimeH,hp.watchTimeH)],
+    ['구독자 기여',       N(hp.subs)+'명',         N(hc.subs)+'명',       pctDelta(hc.subs,hp.subs)],
+    ['평균 CTR',          '<strong>'+hp.avgCTR+'%</strong>', hc.avgCTR+'%', null],
+    ['평균 조회율',       hp.avgViewRate+'%',      '<strong>'+hc.avgViewRate+'%</strong>', null],
+    ['분류',              '고정 콘텐츠',           '고정 콘텐츠',         null],
+  ].map(([lbl,prev,cur,pct])=>{
+    const cls = pct!=null ? arrowClass(pct) : 'up';
+    const dTxt = pct!=null ? arrowSym(pct)+' '+Math.abs(parseFloat(pct))+'%' : '일치';
+    return '<tr><td>'+lbl+'</td><td class="num">'+prev+'</td><td class="num">'+cur+'</td><td class="num '+cls+'">'+dTxt+'</td></tr>';
+  }).join(''));
 
-// 9-2. 일별 좋아요 트렌드
-new Chart(document.getElementById('chartLikes'), {
-  type:'line',
-  data:{
-    labels:[
-      '1/20','1/21','1/22','1/23','1/24','1/25','1/26','1/27','1/28','1/29','1/30','1/31',
-      '2/1','2/2','2/3','2/4','2/5','2/6','2/7','2/8','2/9','2/10','2/11','2/12','2/13','2/14','2/15','2/16','2/17','2/18','2/19','2/20','2/21','2/22','2/23','2/24','2/25','2/26','2/27','2/28',
-      '3/1','3/2','3/3','3/4','3/5','3/6','3/7','3/8','3/9','3/10','3/11','3/12','3/13','3/14','3/15','3/16','3/17','3/18','3/19','3/20','3/21','3/22','3/23','3/24','3/25','3/26','3/27','3/28','3/29','3/30','3/31',
-      '4/1','4/2','4/3','4/4','4/5','4/6','4/7','4/8','4/9','4/10','4/11','4/12','4/13','4/14','4/15','4/16','4/17','4/18','4/19'
-    ],
-    datasets:[{
-      label:'일별 좋아요',
-      data:[
-        6,2,5,1,2,3,2027,1107,2201,2679,2671,2266,
-        2591,2771,3383,2545,2561,2675,2335,2987,2246,2447,846,2188,192,117,62,47,56,32,28,24,4239,5084,1727,1054,4202,3423,604,3554,
-        2966,2968,1430,690,98,72,47,1598,1299,2423,2910,8144,12911,18450,12384,7473,1639,3055,4926,1104,2869,5520,6917,5756,3123,3293,4294,27656,18351,3865,999,
-        679,495,693,306,78,114,95,18005,4795,20119,17127,1199,396,271,16596,1372,4236,1918,463
-      ],
-      borderColor:C.red,
-      backgroundColor:'rgba(168,56,72,0.07)',
-      fill:true, tension:0.35,
-      pointRadius:0, pointHoverRadius:4,
-    }]
-  },
-  options:{
-    responsive:true,
-    plugins:{
-      title:T('일별 좋아요 추이 (2026 Q1)'),
-      legend:{display:false},
-      tooltip:{ callbacks:{ label: ctx => ` ${ctx.parsed.y.toLocaleString()}개` } }
-    },
-    scales:{
-      x:{ grid:{display:false}, ticks:{ maxTicksLimit:16, font:{size:10} } },
-      y:{ grid:{color:C.grid}, ticks:{ callback: v => v>=1000 ? (v/1000).toFixed(0)+'k' : v } }
-    }
-  }
-});
+  buildCharts(D, yL, yC, yr, yrP);
+}
 
-// 7-2. 퓨처스리그
-new Chart(document.getElementById('chartFutures'), {
-  type:'bar',
-  data:{
-    labels:['KT (03.26)','NC (04.01)','삼성 (04.13)','KT (03.25)','KT (03.27)','NC (04.02)','KT (03.25) b','NC (04.03)'],
-    datasets:[{ label:'라이브 조회수', data:[46444,43374,38076,33075,27544,27369,19204,18051], backgroundColor:C.navy }]
-  },
-  options:{
-    responsive:true,
-    plugins:{
-      title:T('퓨처스리그 생중계 라이브 조회수'),
-      legend:{display:false},
-      tooltip:{ callbacks:{ label: ctx => ` ${ctx.parsed.y.toLocaleString()}회` } }
-    },
-    scales:{
-      x:{ grid:{display:false}, ticks:{font:{size:11}} },
-      y:{ grid:{color:C.grid},  ticks:{ callback: v => (v/1000).toFixed(0)+'k' } }
-    }
-  }
-});
+function buildCharts(D, yL, yC, yr, yrP) {
+  const p = D.planned;
+  const hc = D.hotdug.cur, hp = D.hotdug.prev;
+
+  // 1. 콘텐츠 구성
+  new Chart(document.getElementById('chartComposition'), {
+    type:'bar', data:{ labels:[yL,yC],
+      datasets:[
+        {label:'기획 콘텐츠',data:[D.counts.planned.prev,D.counts.planned.cur],backgroundColor:C.navy},
+        {label:'고정 콘텐츠',data:[D.counts.fixed.prev,  D.counts.fixed.cur  ],backgroundColor:C.red },
+      ]
+    }, options:{responsive:true,plugins:{title:T('콘텐츠 유형별 영상 수')},
+      scales:{x:{stacked:true,grid:{display:false}},y:{stacked:true,grid:{color:C.grid},ticks:{stepSize:20}}}}
+  });
+
+  // 2-a. 시청 시간
+  new Chart(document.getElementById('chartWatchTime'), {
+    type:'bar', data:{labels:[yL,yC],datasets:[{label:'기획 콘텐츠 시청 시간 (h)',data:[p.watchTimeHPrev,p.watchTimeH],backgroundColor:[C.navy2,C.red]}]},
+    options:{responsive:true,plugins:{title:T('기획 콘텐츠 시청 시간 (h) 비교'),legend:{display:false},tooltip:{callbacks:{label:ctx=>` ${ctx.parsed.y.toLocaleString()}h`}}},
+      scales:{x:{grid:{display:false}},y:{grid:{color:C.grid},ticks:{callback:v=>(v/1000).toFixed(0)+'k'}}}}
+  });
+
+  // 2-b. 평균 조회수
+  new Chart(document.getElementById('chartPlannedMetrics'), {
+    type:'bar', data:{labels:['영상당 평균 조회수'],datasets:[
+      {label:yL,data:[p.avgViewsPrev],backgroundColor:C.navy2},
+      {label:yC,data:[p.avgViews],    backgroundColor:C.red  }]},
+    options:{responsive:true,plugins:{title:T('기획 콘텐츠 영상당 평균 조회수'),tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()}`}}},
+      scales:{x:{grid:{display:false}},y:{grid:{color:C.grid},ticks:{callback:v=>(v/10000).toFixed(0)+'만'}}}}
+  });
+
+  // 3-a. 구독 전환
+  new Chart(document.getElementById('chartSubs'), {
+    type:'bar', data:{labels:['구독자 기여 (절대값)','100k뷰당 구독전환 (×10)'],datasets:[
+      {label:yL,data:[p.totalSubsPrev,Math.round(p.subConvPrev*10)],backgroundColor:C.navy2},
+      {label:yC,data:[p.totalSubs,    Math.round(p.subConv*10)    ],backgroundColor:C.red  }]},
+    options:{responsive:true,plugins:{title:T('기획 콘텐츠 구독 전환 비교'),tooltip:{callbacks:{label:ctx=>{
+      if(ctx.dataIndex===1) return ` ${ctx.dataset.label}: ${(ctx.parsed.y/10).toFixed(1)}명 (100k당)`;
+      return ` ${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()}명`;
+    }}}},scales:{x:{grid:{display:false}},y:{grid:{color:C.grid},ticks:{callback:v=>v.toLocaleString()}}}}
+  });
+
+  // 3-b. 신규/재방문
+  new Chart(document.getElementById('chartNewViewers'), {
+    type:'bar', data:{labels:[yL,yC],datasets:[
+      {label:'신규 시청자',  data:[p.newViewersPrev,p.newViewers ],backgroundColor:C.navy },
+      {label:'재방문 시청자',data:[p.reVisitorsPrev,p.reVisitors],backgroundColor:C.navy2}]},
+    options:{responsive:true,plugins:{title:T('기획 콘텐츠 신규 vs 재방문 시청자'),tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()}명`}}},
+      scales:{x:{stacked:true,grid:{display:false}},y:{stacked:true,grid:{color:C.grid},ticks:{callback:v=>(v/10000).toFixed(0)+'만'}}}}
+  });
+
+  // 4. TOP 10
+  new Chart(document.getElementById('chartTop10'), {
+    type:'bar', data:{
+      labels:D.top10.map(v=>v.title.length>22?v.title.slice(0,22)+'…':v.title),
+      datasets:[{label:'조회수',data:D.top10.map(v=>v.views),backgroundColor:D.top10.map(v=>({'콜라보':C.navy,'생중계':C.red}[v.tag]||C.green))}]},
+    options:{indexAxis:'y',responsive:true,plugins:{title:T(yr+' Q1 기획 콘텐츠 TOP 10 (조회수)'),legend:{display:false},tooltip:{callbacks:{label:ctx=>` ${ctx.parsed.x.toLocaleString()}회`}}},
+      scales:{x:{grid:{color:C.grid},ticks:{callback:v=>(v/10000).toFixed(0)+'만'}},y:{grid:{display:false},ticks:{font:{size:11}}}}}
+  });
+
+  // 7-1. 미야자키 (고정 데이터)
+  new Chart(document.getElementById('chartMiyazaki'), {
+    type:'bar', data:{
+      labels:['vs 세이부 (2/22)','vs 지바롯데 (3/1)','vs SSG (3/3)','vs 요미우리 (2/23)','vs 두산 (2/26)'],
+      datasets:[
+        {label:'라이브 조회수',data:[289082,235962,196703,198479,152695],backgroundColor:C.red  },
+        {label:'VOD 조회수',  data:[370793,292139,245651,236550,227935],backgroundColor:C.navy2}]},
+    options:{responsive:true,plugins:{title:T('미야자키 캠프 라이브 + VOD 최대 도달량'),tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()}`}}},
+      scales:{x:{grid:{display:false},ticks:{font:{size:11}}},y:{grid:{color:C.grid},ticks:{callback:v=>(v/10000).toFixed(0)+'만'}}}}
+  });
+
+  // 8. HOTDUG
+  new Chart(document.getElementById('chartHotdug'), {
+    type:'bar', data:{labels:['영상당 평균 조회수','총 시청시간 (h)','CTR × 10,000','평균 조회율 × 1,000'],datasets:[
+      {label:hp.label+' ('+yrP+')',data:[hp.avgViews,hp.watchTimeH,Math.round(hp.avgCTR*10000),Math.round(hp.avgViewRate*1000)],backgroundColor:C.navy2},
+      {label:hc.label+' ('+yr+')', data:[hc.avgViews,hc.watchTimeH,Math.round(hc.avgCTR*10000),Math.round(hc.avgViewRate*1000)],backgroundColor:C.red  }]},
+    options:{responsive:true,plugins:{title:T(hp.label+' vs '+hc.label+' 주요 지표'),tooltip:{callbacks:{label:ctx=>{
+      const src=ctx.datasetIndex===0?hp:hc;
+      const vs=[src.avgViews,src.watchTimeH,src.avgCTR,src.avgViewRate];
+      const u=['회','h','%','%'];const lb=['조회수','시청시간','CTR','평균 조회율'];
+      return ` ${ctx.dataset.label}: ${lb[ctx.dataIndex]} ${vs[ctx.dataIndex]}${u[ctx.dataIndex]}`;
+    }}}},scales:{x:{grid:{display:false}},y:{grid:{color:C.grid},ticks:{callback:v=>v>=10000?(v/10000).toFixed(0)+'만':v}}}}
+  });
+
+  // 9-1. 트래픽 소스
+  const t26=D.traffic.cur.data, t25=D.traffic.prev.data;
+  const tLbls=t26.slice(0,6).map(r=>r.source);
+  new Chart(document.getElementById('chartTraffic'), {
+    type:'bar', data:{labels:tLbls,datasets:[
+      {label:D.traffic.prev.label,data:tLbls.map(l=>{const m=t25.find(r=>r.source===l);return m?m.pct:0;}),backgroundColor:C.navy2},
+      {label:D.traffic.cur.label, data:t26.slice(0,6).map(r=>r.pct),backgroundColor:C.red}]},
+    options:{responsive:true,plugins:{title:T('트래픽 소스 비중 비교 (%)'),tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: ${ctx.parsed.y}%`}}},
+      scales:{x:{grid:{display:false}},y:{grid:{color:C.grid},max:50,ticks:{callback:v=>v+'%'}}}}
+  });
+
+  // 9-2. 일별 좋아요
+  const lk=D.daily.likes;
+  new Chart(document.getElementById('chartLikes'), {
+    type:'line', data:{
+      labels:lk.map(r=>{const d=new Date(r.date);return (d.getMonth()+1)+'/'+(d.getDate());}),
+      datasets:[{label:'일별 좋아요',data:lk.map(r=>r.likes),borderColor:C.red,backgroundColor:'rgba(168,56,72,0.07)',fill:true,tension:0.35,pointRadius:0,pointHoverRadius:4}]},
+    options:{responsive:true,plugins:{title:T('일별 좋아요 추이 ('+yr+' Q1)'),legend:{display:false},tooltip:{callbacks:{label:ctx=>` ${ctx.parsed.y.toLocaleString()}개`}}},
+      scales:{x:{grid:{display:false},ticks:{maxTicksLimit:16,font:{size:10}}},y:{grid:{color:C.grid},ticks:{callback:v=>v>=1000?(v/1000).toFixed(0)+'k':v}}}}
+  });
+
+  // 7-2. 퓨처스리그 (고정 데이터)
+  new Chart(document.getElementById('chartFutures'), {
+    type:'bar', data:{
+      labels:['KT (03.26)','NC (04.01)','삼성 (04.13)','KT (03.25)','KT (03.27)','NC (04.02)','KT (03.25) b','NC (04.03)'],
+      datasets:[{label:'라이브 조회수',data:[46444,43374,38076,33075,27544,27369,19204,18051],backgroundColor:C.navy}]},
+    options:{responsive:true,plugins:{title:T('퓨처스리그 생중계 라이브 조회수'),legend:{display:false},tooltip:{callbacks:{label:ctx=>` ${ctx.parsed.y.toLocaleString()}회`}}},
+      scales:{x:{grid:{display:false},ticks:{font:{size:11}}},y:{grid:{color:C.grid},ticks:{callback:v=>(v/1000).toFixed(0)+'k'}}}}
+  });
+}
+
+if (document.readyState==='loading') {
+  document.addEventListener('DOMContentLoaded', render);
+} else {
+  render();
+}
 </script>
 </body>
 </html>
