@@ -10,8 +10,8 @@ window.REPORT_DATA = {
     "prevYear": 2025,
     "sources": {
       "cur": "고급모드->분석 데이터(2026)/콘텐츠 2026-01-01_2026-04-27 Giants TV",
-      "prev": "고정 데이터/콘텐츠 2025-01-01_2026-01-01 Giants TV",
-      "traffic": "트래픽소스/트래픽 소스 2026-01-01_2026-04-27 Giants TV"
+      "prev": "과거 데이터/콘텐츠 2025-01-01_2025-04-27 Giants TV",
+      "traffic": "고급모드->트래픽소스(2026)/트래픽 소스 2026-01-01_2026-04-27 Giants TV"
     }
   },
   "subscribers": {
@@ -76,11 +76,11 @@ window.REPORT_DATA = {
   "counts": {
     "planned": {
       "cur": 81,
-      "prev": 327
+      "prev": 96
     },
     "fixed": {
       "cur": 104,
-      "prev": 171
+      "prev": 44
     },
     "semi": {
       "cur": 0,
@@ -88,36 +88,36 @@ window.REPORT_DATA = {
     },
     "total": {
       "cur": 185,
-      "prev": 500
+      "prev": 142
     }
   },
   "planned": {
     "count": 81,
-    "countPrev": 327,
+    "countPrev": 96,
     "avgViews": 107533,
-    "avgViewsPrev": 130591,
+    "avgViewsPrev": 114637,
     "totalViews": 8710181,
-    "totalViewsPrev": 42703240,
+    "totalViewsPrev": 11005111,
     "watchTimeH": 650651,
-    "watchTimeHPrev": 2913384,
+    "watchTimeHPrev": 953053,
     "avgDurFmt": "0분 00초",
-    "avgDurFmtPrev": "0분 00초",
+    "avgDurFmtPrev": "2분 52초",
     "avgCTR": 7.06,
-    "avgCTRPrev": 5.96,
+    "avgCTRPrev": 6.46,
     "totalSubs": 3578,
-    "totalSubsPrev": 32875,
+    "totalSubsPrev": 11656,
     "subConv": 41.1,
-    "subConvPrev": 77.0,
+    "subConvPrev": 105.9,
     "newViewers": 0,
     "newViewersPrev": 0,
     "reVisitors": 0,
     "reVisitorsPrev": 0,
     "newViewersPct": 0,
-    "newViewersPctPrev": 0
+    "newViewersPctPrev": 0.0
   },
   "fixed": {
     "count": 104,
-    "countPrev": 171,
+    "countPrev": 44,
     "avgViews": 62935,
     "watchTimeH": 299992
   },
@@ -133,12 +133,12 @@ window.REPORT_DATA = {
     },
     "prev": {
       "label": "#플레이볼",
-      "count": 31,
-      "avgViews": 163741,
-      "watchTimeH": 651008,
-      "subs": 4298,
-      "avgCTR": 6.39,
-      "avgViewRate": 0.0
+      "count": 7,
+      "avgViews": 90377,
+      "watchTimeH": 63387,
+      "subs": 641,
+      "avgCTR": 10.79,
+      "avgViewRate": 44.8
     }
   },
   "top10": [
@@ -306,107 +306,101 @@ window.REPORT_DATA = {
       ]
     },
     "prev": {
-      "label": "2025 전체",
+      "label": "2025 1~4월",
       "data": [
         {
           "source": "탐색 기능",
-          "views": 26350961,
-          "ctr": 7.55,
-          "pct": 42.4
+          "views": 6779909,
+          "ctr": 8.21,
+          "pct": 46.8
         },
         {
           "source": "Shorts 피드",
-          "views": 11227314,
+          "views": 2620041,
           "ctr": 0.0,
           "pct": 18.1
         },
         {
           "source": "채널 페이지",
-          "views": 7322935,
-          "ctr": 3.67,
-          "pct": 11.8
-        },
-        {
-          "source": "추천 동영상",
-          "views": 6817335,
-          "ctr": 4.29,
-          "pct": 11.0
+          "views": 1547265,
+          "ctr": 5.66,
+          "pct": 10.7
         },
         {
           "source": "YouTube 검색",
-          "views": 6126426,
-          "ctr": 7.76,
-          "pct": 9.9
+          "views": 1336993,
+          "ctr": 9.98,
+          "pct": 9.2
+        },
+        {
+          "source": "추천 동영상",
+          "views": 1141242,
+          "ctr": 3.79,
+          "pct": 7.9
         },
         {
           "source": "알림",
-          "views": 1202545,
+          "views": 271302,
           "ctr": 0.0,
           "pct": 1.9
         },
         {
+          "source": "기타 YouTube 기능",
+          "views": 224699,
+          "ctr": 0.0,
+          "pct": 1.6
+        },
+        {
           "source": "외부",
-          "views": 779087,
+          "views": 201729,
+          "ctr": 0.0,
+          "pct": 1.4
+        },
+        {
+          "source": "직접 입력 또는 알 수 없음",
+          "views": 191984,
           "ctr": 0.0,
           "pct": 1.3
         },
         {
-          "source": "직접 입력 또는 알 수 없음",
-          "views": 726881,
-          "ctr": 0.0,
-          "pct": 1.2
-        },
-        {
-          "source": "기타 YouTube 기능",
-          "views": 726829,
-          "ctr": 0.0,
-          "pct": 1.2
-        },
-        {
           "source": "최종 화면",
-          "views": 659379,
+          "views": 113226,
           "ctr": 0.0,
-          "pct": 1.1
+          "pct": 0.8
         },
         {
           "source": "재생목록",
-          "views": 157101,
-          "ctr": 4.28,
-          "pct": 0.3
+          "views": 22887,
+          "ctr": 7.44,
+          "pct": 0.2
         },
         {
           "source": "관련 Shorts 동영상",
-          "views": 49665,
+          "views": 15598,
           "ctr": 0.0,
           "pct": 0.1
         },
         {
           "source": "세로형 실시간 피드",
-          "views": 31060,
+          "views": 3153,
           "ctr": 0.0,
           "pct": 0.0
         },
         {
           "source": "해시태그 페이지",
-          "views": 10874,
+          "views": 1487,
           "ctr": 0.0,
           "pct": 0.0
         },
         {
           "source": "사운드 페이지",
-          "views": 1616,
-          "ctr": 0.0,
-          "pct": 0.0
-        },
-        {
-          "source": "동영상 카드 및 특수효과",
-          "views": 330,
+          "views": 240,
           "ctr": 0.0,
           "pct": 0.0
         },
         {
           "source": "리믹스 동영상",
-          "views": 28,
+          "views": 7,
           "ctr": 0.0,
           "pct": 0.0
         }
