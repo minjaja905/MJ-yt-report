@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="data.js"></script>
+<script src="notion_data.js"></script>
 <style>
   :root {
     --red:    #a83848;
@@ -260,6 +261,7 @@
   <a href="#s7">라이브 실적</a>
   <a href="#s8">브랜딩 비교</a>
   <a href="#s9">트래픽 소스</a>
+  <a href="#s10">메타 인사이트</a>
 </nav>
 
 <!-- MODAL -->
@@ -706,6 +708,30 @@
     <p class="note">※ 주요 피크: 3/14 DAY6 성진 응원가 발행(18,450) → 3/28 정규시즌 개막일(27,656) → 4/8·10·11 경기 하이라이트 연속(17k~20k)</p>
   </section>
 
+
+  <!-- S10 -->
+  <section id="s10">
+    <h2><span class="num">10</span> 콘텐츠 메타 인사이트 <span id="notion-updated" style="font-size:11px;font-weight:400;color:var(--sub);margin-left:8px"></span></h2>
+    <p class="note" style="margin-bottom:20px">Notion DB 기반 · 완료 항목 중 YT 조회수 있는 영상만 집계 · n=1 항목은 참고용</p>
+
+    <h3>카테고리별 평균 조회수</h3>
+    <div class="chart-wrap"><canvas id="chartCat" style="max-height:340px"></canvas></div>
+
+    <h3>업로드 시간대별 평균 조회수</h3>
+    <div class="chart-wrap"><canvas id="chartHour"></canvas></div>
+
+    <h3>요일별 평균 조회수</h3>
+    <div class="chart-wrap"><canvas id="chartWeekday"></canvas></div>
+
+    <h3>경기 승패별 평균 조회수</h3>
+    <div class="chart-wrap"><canvas id="chartWinLoss"></canvas></div>
+    <p class="note">승패 데이터는 경기 관련 콘텐츠만 해당. 데이터가 쌓일수록 정확도 향상.</p>
+
+    <h3>주인공별 평균 조회수</h3>
+    <div class="chart-wrap"><canvas id="chartSubject" style="max-height:400px"></canvas></div>
+    <p class="note">주인공 미입력 항목 제외. 데이터가 쌓일수록 정확도 향상.</p>
+  </section>
+
 </div>
 
 <footer>
@@ -960,6 +986,96 @@ if (document.readyState==='loading') {
 } else {
   render();
 }
+
+// ── Notion 메타 인사이트
+(function() {
+  if (typeof NOTION_DATA === 'undefined') return;
+  const ND = NOTION_DATA;
+
+  const ts = new Date(ND.generated_at);
+  const el = document.getElementById('notion-updated');
+  if (el) el.textContent = `(${ts.getMonth()+1}/${ts.getDate()} 기준 · ${ND.total_items}개 영상)`;
+
+  const bar = (id, labels, data, counts, title, axisY=false) => {
+    const ctx = document.getElementById(id);
+    if (!ctx) return;
+    const tooltipFn = (ctx2) => {
+      const n = counts ? counts[ctx2.dataIndex] : null;
+      return ` ${ctx2.parsed[axisY?'x':'y'].toLocaleString()}회${n!=null?' (n='+n+')':''}`;
+    };
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [{
+          data,
+          backgroundColor: data.map((v, i) => {
+            const mx = Math.max(...data);
+            return v === mx ? C.red : C.navy2;
+          }),
+          borderRadius: 4,
+        }]
+      },
+      options: {
+        indexAxis: axisY ? 'y' : 'x',
+        responsive: true,
+        plugins: {
+          title: T(title),
+          legend: { display: false },
+          tooltip: { callbacks: { label: tooltipFn } },
+        },
+        scales: {
+          [axisY?'x':'y']: {
+            ticks: { callback: v => (v/1000).toFixed(0)+'k' },
+            grid: { color: C.grid },
+          }
+        }
+      }
+    });
+  };
+
+  // 카테고리별 (n≥2 우선, n=1은 연한색으로)
+  const cats = ND.by_category.filter(d => d.count >= 1);
+  bar('chartCat',
+    cats.map(d => `${d.label} (${d.count})`),
+    cats.map(d => d.avg),
+    cats.map(d => d.count),
+    '카테고리별 평균 조회수', true);
+
+  // 시간대별
+  const hours = ND.by_hour;
+  bar('chartHour',
+    hours.map(d => d.label),
+    hours.map(d => d.avg),
+    hours.map(d => d.count),
+    '업로드 시간대별 평균 조회수');
+
+  // 요일별
+  const days = ND.by_weekday;
+  bar('chartWeekday',
+    days.map(d => d.label+'요일'),
+    days.map(d => d.avg),
+    days.map(d => d.count),
+    '요일별 평균 조회수');
+
+  // 경기 승패별
+  const wl = ND.by_win_loss;
+  bar('chartWinLoss',
+    wl.map(d => `${d.label} (n=${d.count})`),
+    wl.map(d => d.avg),
+    null,
+    '경기 승패별 평균 조회수');
+
+  // 주인공별 (n≥2)
+  const subjs = ND.by_subject.filter(d => d.count >= 2);
+  if (subjs.length > 0) {
+    bar('chartSubject',
+      subjs.map(d => `${d.label} (${d.count})`),
+      subjs.map(d => d.avg),
+      subjs.map(d => d.count),
+      '주인공별 평균 조회수 (n≥2)', true);
+  }
+})();
 </script>
 </body>
 </html>
