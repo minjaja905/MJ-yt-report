@@ -738,38 +738,62 @@
   <!-- S11 -->
   <section id="s11">
     <h2><span class="num">11</span> 6/21~22 집중 업로드 영향 분석</h2>
-    <p class="note" style="margin-bottom:18px">묵혀뒀던 영상을 이틀간 대거 발행했을 때 채널 반응이 긍정적이었는지 부정적이었는지 평가합니다.</p>
+    <p class="note" style="margin-bottom:18px">묵혀뒀던 영상을 이틀간 대거 발행했을 때의 채널 영향 평가. 숏츠와 롱폼을 분리해야 정확한 분석이 가능합니다.</p>
 
-    <div class="card-grid" id="burst-cards">
+    <div class="hc navy" style="margin-bottom:20px">
+      <div class="hc-title">📌 숏츠 vs 롱폼 — 왜 분리해야 하나</div>
+      <div class="hc-body">숏츠는 유튜브 숏츠 피드를 통해 조회수가 집계되고, 롱폼은 홈피드·탐색 임프레션(CTR)으로 집계됨. 두 포맷은 알고리즘 노출 경로가 완전히 달라 서로 노출을 빼앗지 않음. 숏츠를 아무리 많이 올려도 롱폼 CTR에 직접 영향은 없음. 그러나 <strong>채널 정체성 혼선</strong>이나 <strong>롱폼 업로드 빈도 희석</strong> 효과는 장기적으로 존재할 수 있음.</div>
+    </div>
+
+    <div class="card-grid">
       <div class="card">
-        <div class="card-label">집중 업로드 영상 수</div>
+        <div class="card-label">집중 업로드 총 영상 수</div>
         <div class="card-val" id="burst-count">—</div>
-        <div class="card-delta muted">6/21 + 6/22</div>
+        <div class="card-delta muted" id="burst-date-label">—</div>
       </div>
       <div class="card">
-        <div class="card-label">버스트 평균 CTR</div>
-        <div class="card-val" id="burst-ctr">—</div>
-        <div class="card-delta" id="burst-ctr-delta">채널 평균 대비</div>
+        <div class="card-label">숏츠 업로드</div>
+        <div class="card-val down" id="burst-shorts-count">—</div>
+        <div class="card-delta muted">60초 미만</div>
       </div>
       <div class="card">
-        <div class="card-label">버스트 평균 조회수</div>
-        <div class="card-val" id="burst-views">—</div>
-        <div class="card-delta" id="burst-views-delta">채널 평균 대비</div>
+        <div class="card-label">롱폼 업로드</div>
+        <div class="card-val" id="burst-longform-count">—</div>
+        <div class="card-delta muted">60초 이상</div>
       </div>
       <div class="card">
         <div class="card-label">버스트 총 조회수</div>
         <div class="card-val" id="burst-total">—</div>
-        <div class="card-delta muted" id="burst-date-label">—</div>
+        <div class="card-delta muted">숏츠+롱폼 합산</div>
       </div>
     </div>
 
-    <div id="burst-verdict"></div>
+    <h3 style="margin:24px 0 12px">롱폼 성과 (CTR 비교 — 숏츠 제외)</h3>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">롱폼 평균 CTR</div>
+        <div class="card-val" id="burst-ctr">—</div>
+        <div class="card-delta" id="burst-ctr-delta">채널 평균 대비</div>
+      </div>
+      <div class="card">
+        <div class="card-label">롱폼 평균 조회수</div>
+        <div class="card-val" id="burst-views">—</div>
+        <div class="card-delta" id="burst-views-delta">채널 평균 대비</div>
+      </div>
+      <div class="card">
+        <div class="card-label">숏츠 평균 조회수</div>
+        <div class="card-val" id="burst-shorts-views">—</div>
+        <div class="card-delta muted">참고용 (CTR 무관)</div>
+      </div>
+    </div>
+
+    <div id="burst-verdict" style="margin-top:20px"></div>
 
     <div class="chart-wrap"><canvas id="chartBurst"></canvas></div>
 
     <div class="tbl-wrap">
       <table>
-        <thead><tr><th>영상</th><th>분류</th><th>조회수</th><th>CTR</th></tr></thead>
+        <thead><tr><th>영상</th><th>포맷</th><th>분류</th><th>조회수</th><th>CTR</th></tr></thead>
         <tbody id="burst-tbody"></tbody>
       </table>
     </div>
@@ -1017,59 +1041,63 @@ function buildCharts(D, yL, yC, yr, yrP) {
   // 11. 버스트 분석
   if (D.burst) {
     const B = D.burst;
-    const ctrDiff = (B.avgCTR - B.channelAvgCTR).toFixed(2);
-    const viewsDiff = Math.round((B.avgViews - B.channelAvgViews) / B.channelAvgViews * 100);
-    const ctrUp = B.avgCTR >= B.channelAvgCTR;
-    const viewsUp = B.avgViews >= B.channelAvgViews;
+    const ctrDiff = +(B.avgCTR - B.channelAvgCTR).toFixed(2);
+    const viewsDiff = B.channelAvgViews ? Math.round((B.avgViews - B.channelAvgViews) / B.channelAvgViews * 100) : 0;
+    const ctrUp = ctrDiff >= 0;
+    const viewsUp = viewsDiff >= 0;
 
     setEl('burst-count', B.count + '개');
-    const ctrEl = document.getElementById('burst-ctr');
-    if (ctrEl) { ctrEl.textContent = B.avgCTR + '%'; ctrEl.className = 'card-val ' + (ctrUp ? 'up' : 'down'); }
-    const ctrDeltaEl = document.getElementById('burst-ctr-delta');
-    if (ctrDeltaEl) { ctrDeltaEl.textContent = (ctrUp ? '▲' : '▼') + ' ' + Math.abs(ctrDiff) + '%p vs 채널 평균 ' + B.channelAvgCTR + '%'; ctrDeltaEl.className = 'card-delta ' + (ctrUp ? 'up' : 'down'); }
-    const vEl = document.getElementById('burst-views');
-    if (vEl) { vEl.textContent = B.avgViews.toLocaleString(); vEl.className = 'card-val ' + (viewsUp ? 'up' : 'down'); }
-    const vDeltaEl = document.getElementById('burst-views-delta');
-    if (vDeltaEl) { vDeltaEl.textContent = (viewsUp ? '▲' : '▼') + ' ' + Math.abs(viewsDiff) + '% vs 채널 평균'; vDeltaEl.className = 'card-delta ' + (viewsUp ? 'up' : 'down'); }
+    setEl('burst-shorts-count', B.shortsCount + '개');
+    setEl('burst-longform-count', B.longformCount + '개');
     setEl('burst-total', (B.totalViews / 10000).toFixed(1) + '만');
     setEl('burst-date-label', B.byDate.map(d => d.date.slice(5) + ' ' + d.count + '개').join(' / '));
+    setEl('burst-shorts-views', B.shortsAvgViews ? B.shortsAvgViews.toLocaleString() : '—');
+
+    const ctrEl = document.getElementById('burst-ctr');
+    if (ctrEl) { ctrEl.textContent = B.avgCTR + '%'; ctrEl.className = 'card-val ' + (ctrUp ? 'up' : 'down'); }
+    const ctrDEl = document.getElementById('burst-ctr-delta');
+    if (ctrDEl) { ctrDEl.textContent = (ctrUp?'▲':'▼')+' '+Math.abs(ctrDiff)+'%p vs 채널 평균 '+B.channelAvgCTR+'%'; ctrDEl.className='card-delta '+(ctrUp?'up':'down'); }
+    const vEl = document.getElementById('burst-views');
+    if (vEl) { vEl.textContent = B.avgViews.toLocaleString(); vEl.className = 'card-val ' + (viewsUp ? 'up' : 'down'); }
+    const vDEl = document.getElementById('burst-views-delta');
+    if (vDEl) { vDEl.textContent = (viewsUp?'▲':'▼')+' '+Math.abs(viewsDiff)+'% vs 채널 롱폼 평균'; vDEl.className='card-delta '+(viewsUp?'up':'down'); }
 
     // 판정
     const verdictEl = document.getElementById('burst-verdict');
     if (verdictEl) {
-      const diff1 = B.avgCTR - B.channelAvgCTR;
-      const isPos = diff1 >= 0;
-      const isNeg = diff1 < -1;
+      const isPos = ctrDiff >= 0;
+      const isNeg = ctrDiff < -1;
       const cls = isPos ? 'hc green' : (isNeg ? 'hc amber' : 'hc');
-      const icon = isPos ? '✅ 긍정적' : (isNeg ? '⚠️ 부분 부정적' : '➖ 중립');
+      const icon = isPos ? '✅ 긍정적 (롱폼 기준)' : (isNeg ? '⚠️ 부분 부정적' : '➖ 중립');
       const body = isPos
-        ? `버스트 CTR(${B.avgCTR}%)이 채널 평균(${B.channelAvgCTR}%)보다 높음. 영상을 한꺼번에 올려도 알고리즘 노출이 유지됐고 팬들이 클릭했다는 뜻. 개별 영상 간 노출 경쟁보다 콘텐츠 품질과 팬 관심도가 더 크게 작용한 결과. 앞으로도 이벤트성 집중 업로드는 부정적 영향이 없는 것으로 판단 가능.`
+        ? `롱폼 기준 CTR ${B.avgCTR}%로 채널 평균 ${B.channelAvgCTR}%보다 높음. 숏츠를 대거 올려도 롱폼의 알고리즘 노출에는 영향 없음 — 숏츠는 별도 피드로 소화되기 때문. 다만 숏츠 ${B.shortsCount}개 집중 발행은 채널 피드 첫 화면을 단기 점유해 구독자에게 숏츠 채널처럼 보일 수 있어 장기 반복 시 유의 필요.`
         : isNeg
-          ? `버스트 CTR(${B.avgCTR}%)이 채널 평균(${B.channelAvgCTR}%)보다 ${Math.abs(diff1.toFixed(2))}%p 낮음. 한꺼번에 올라간 영상들이 서로 노출을 나눠가지면서 개별 영상의 도달이 희석됐을 가능성이 있음. 주요 기획 영상은 하루 1~2개씩 분산 발행이 더 유리함.`
-          : `버스트 CTR(${B.avgCTR}%)이 채널 평균(${B.channelAvgCTR}%)과 유사함. 집중 업로드가 채널 성과에 큰 영향을 주지 않은 중립적 결과.`;
+          ? `롱폼 CTR ${B.avgCTR}%가 채널 평균 ${B.channelAvgCTR}%보다 낮음. 롱폼 영상 간 노출 경쟁이 발생했거나, 해당 날짜의 콘텐츠 자체가 반응이 낮은 포맷일 가능성이 있음. 기획 롱폼은 단독 발행을 권장.`
+          : `롱폼 CTR이 채널 평균과 유사한 수준. 집중 업로드의 부정적 영향은 없음.`;
       verdictEl.innerHTML = `<div class="${cls}"><div class="hc-title">${icon} — 버스트 업로드 종합 판정</div><div class="hc-body">${body}</div></div>`;
     }
 
-    // 날짜별 바 차트
+    // 날짜별 바 차트 (롱폼 CTR 기준)
     new Chart(document.getElementById('chartBurst'), {
       type: 'bar',
       data: {
-        labels: B.byDate.map(d => d.date.slice(5) + ' (' + d.count + '개)'),
+        labels: B.byDate.map(d => d.date.slice(5) + ' (롱폼 ' + d.longformCount + '개 / 숏츠 ' + d.shortsCount + '개)'),
         datasets: [
-          {label: '평균 CTR (%)', data: B.byDate.map(d => d.avgCTR), backgroundColor: C.navy2, yAxisID: 'yCTR'},
-          {label: '평균 조회수', data: B.byDate.map(d => d.avgViews), backgroundColor: C.red, yAxisID: 'yViews'}
+          {label: '롱폼 평균 CTR (%)', data: B.byDate.map(d => d.avgCTR), backgroundColor: C.navy2, yAxisID: 'yCTR'},
+          {label: '롱폼 평균 조회수', data: B.byDate.map(d => d.avgViews), backgroundColor: C.red, yAxisID: 'yViews'}
         ]
       },
-      options: {responsive: true, plugins: {title: T('6/21~22 날짜별 평균 CTR·조회수'), tooltip: {callbacks: {label: ctx => ctx.datasetIndex === 0 ? ` CTR: ${ctx.parsed.y}%` : ` 조회수: ${ctx.parsed.y.toLocaleString()}회`}}},
-        scales: {x: {grid: {display: false}}, yCTR: {type: 'linear', position: 'left', grid: {color: C.grid}, ticks: {callback: v => v + '%'}}, yViews: {type: 'linear', position: 'right', grid: {display: false}, ticks: {callback: v => (v / 1000).toFixed(0) + 'k'}}}}
+      options: {responsive: true, plugins: {title: T('날짜별 롱폼 CTR·조회수 (숏츠 제외)'), tooltip: {callbacks: {label: ctx => ctx.datasetIndex===0 ? ` CTR: ${ctx.parsed.y}%` : ` 조회수: ${ctx.parsed.y.toLocaleString()}회`}}},
+        scales: {x: {grid:{display:false}}, yCTR: {type:'linear',position:'left',grid:{color:C.grid},ticks:{callback:v=>v+'%'}}, yViews: {type:'linear',position:'right',grid:{display:false},ticks:{callback:v=>(v/1000).toFixed(0)+'k'}}}}
     });
 
-    // 영상 목록 테이블
+    // 영상 목록 (숏츠 뱃지 포함)
     const tbody = document.getElementById('burst-tbody');
     if (tbody) {
       tbody.innerHTML = B.videos.map(v => {
-        const tagCls = v.category === '기획' ? 'tag green' : (v.category === '고정' ? 'tag red' : 'tag');
-        return `<tr><td>${v.title}</td><td><span class="${tagCls}">${v.category}</span></td><td class="num bold">${v.views.toLocaleString()}</td><td class="num">${v.ctr}%</td></tr>`;
+        const fmtTag = v.is_shorts ? '<span class="tag" style="background:#f59e0b;color:#fff">숏츠</span>' : '<span class="tag navy">롱폼</span>';
+        const catCls = v.category==='기획'?'tag green':(v.category==='고정'?'tag red':'tag');
+        return `<tr><td>${v.title}</td><td>${fmtTag}</td><td><span class="${catCls}">${v.category}</span></td><td class="num bold">${v.views.toLocaleString()}</td><td class="num">${v.is_shorts?'—':v.ctr+'%'}</td></tr>`;
       }).join('');
     }
   }

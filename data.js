@@ -4,7 +4,7 @@ window.REPORT_DATA = {
     "dateRange": "1월 1일 ~ 6월 21일",
     "startDate": "2026-01-01",
     "endDate": "2026-06-21",
-    "generatedAt": "2026-06-23 18:00",
+    "generatedAt": "2026-06-23 18:38",
     "curYear": 2026,
     "prevYear": 2025,
     "sources": {
@@ -16,19 +16,19 @@ window.REPORT_DATA = {
   "subscribers": {
     "lotte": {
       "name": "롯데",
-      "subs": 377000,
-      "delta": 377000
+      "subs": 378000,
+      "delta": 378000
     },
     "teams": [
       {
         "name": "한화",
-        "subs": 560000,
-        "delta": 560000
+        "subs": 561000,
+        "delta": 561000
       },
       {
         "name": "기아",
-        "subs": 407000,
-        "delta": 407000
+        "subs": 408000,
+        "delta": 408000
       },
       {
         "name": "삼성",
@@ -37,8 +37,8 @@ window.REPORT_DATA = {
       },
       {
         "name": "롯데",
-        "subs": 377000,
-        "delta": 377000
+        "subs": 378000,
+        "delta": 378000
       },
       {
         "name": "lg",
@@ -52,8 +52,8 @@ window.REPORT_DATA = {
       },
       {
         "name": "ssg",
-        "subs": 225000,
-        "delta": 225000
+        "subs": 226000,
+        "delta": 226000
       },
       {
         "name": "NC",
@@ -203,18 +203,31 @@ window.REPORT_DATA = {
     }
   ],
   "burst": {
-    "count": 7,
-    "avgCTR": 6.86,
-    "avgViews": 50291,
-    "totalViews": 352040,
-    "channelAvgCTR": 5.4,
-    "channelAvgViews": 68360,
+    "count": 16,
+    "shortsCount": 12,
+    "longformCount": 4,
+    "avgCTR": 9.44,
+    "avgViews": 58280,
+    "shortsAvgViews": 20407,
+    "totalViews": 478006,
+    "channelAvgCTR": 7.13,
+    "channelAvgViews": 92420,
     "byDate": [
       {
         "date": "2026-06-21",
         "count": 7,
-        "avgCTR": 6.86,
-        "avgViews": 50291
+        "shortsCount": 4,
+        "longformCount": 3,
+        "avgCTR": 8.99,
+        "avgViews": 65599
+      },
+      {
+        "date": "2026-06-22",
+        "count": 9,
+        "shortsCount": 8,
+        "longformCount": 1,
+        "avgCTR": 10.81,
+        "avgViews": 36321
       }
     ],
     "videos": [
@@ -222,43 +235,113 @@ window.REPORT_DATA = {
         "title": "[HIGHLIGHT] 롯데 VS 키움(06.21) | 한동희의 선취 적시타와 김동현의 쓰리런, 팀의 리드를 지켜낸 불펜진!🔥",
         "views": 82863,
         "ctr": 8.0,
-        "category": "고정"
+        "category": "고정",
+        "is_shorts": false
       },
       {
         "title": "팬들과 함께 | 끝까지 포기하지 마 (Return to Giants' home)",
         "views": 67570,
         "ctr": 10.7,
-        "category": "기획"
+        "category": "기획",
+        "is_shorts": false
       },
       {
         "title": "점수 차를 벌리는 김동현의 쓰리런🔥 #핫클립 #김동현",
         "views": 60240,
         "ctr": 7.4,
-        "category": "고정"
+        "category": "고정",
+        "is_shorts": true
       },
       {
         "title": "승리의 하이파이브✋",
         "views": 58832,
         "ctr": 10.0,
-        "category": "고정"
+        "category": "고정",
+        "is_shorts": true
       },
       {
         "title": "[HOTDUG] 투타 완벽 조화로 완성한 승리🔥 (06.20)",
         "views": 46365,
         "ctr": 8.2,
-        "category": "고정"
+        "category": "고정",
+        "is_shorts": false
+      },
+      {
+        "title": "[HOTDUG] 김동현의 쓰리런, 윤동희 멀티히트 활약🔥(06.21)",
+        "views": 36321,
+        "ctr": 10.8,
+        "category": "고정",
+        "is_shorts": false
       },
       {
         "title": "선취점을 얻어내는 한동희의 적시타🔥 #핫클립 #한동희",
         "views": 27551,
         "ctr": 3.7,
-        "category": "고정"
+        "category": "고정",
+        "is_shorts": true
+      },
+      {
+        "title": "김원중이 가르쳐주는 슬라이더 | 시구자 최초(?) 변화구 시도? #롯데자이언츠 #DAY6 #성진",
+        "views": 21081,
+        "ctr": 10.0,
+        "category": "기획",
+        "is_shorts": true
+      },
+      {
+        "title": "요리로 따지자면? | 윤남노다운 시구 소감✨ #롯데자이언츠 #윤남노",
+        "views": 15914,
+        "ctr": 4.8,
+        "category": "기획",
+        "is_shorts": true
+      },
+      {
+        "title": "오랜만에 만난 DAY6 성진과 김원중 | 머리카락 근황 토크(?) #롯데자이언츠 #DAY6 #성진",
+        "views": 15319,
+        "ctr": 10.6,
+        "category": "기획",
+        "is_shorts": true
+      },
+      {
+        "title": "DAY6 성진과 함께하는 롯데자이언츠 아웃송 메들리🎵 #롯데자이언츠 #DAY6 #성진",
+        "views": 14137,
+        "ctr": 7.9,
+        "category": "기획",
+        "is_shorts": true
+      },
+      {
+        "title": "시구 전 토크 | 윤남노가 등번호 11번을 한 이유? #롯데자이언츠 #윤남노",
+        "views": 11111,
+        "ctr": 8.7,
+        "category": "기획",
+        "is_shorts": true
       },
       {
         "title": "LINEUP\n6월 21일 (일) vs 키움\n선발 라인업을 공개합니다🔥\n\n등록: -\n말소: -",
         "views": 8619,
         "ctr": 0.0,
-        "category": "고정"
+        "category": "고정",
+        "is_shorts": true
+      },
+      {
+        "title": "공이랑 낯가리는 윤남노💦⚾️ (feat. 시구 지도 선생님 김진욱) #롯데자이언츠 #윤남노",
+        "views": 6031,
+        "ctr": 8.6,
+        "category": "기획",
+        "is_shorts": true
+      },
+      {
+        "title": "칭찬만 가득한 시구 연습 현장✨ with 시구 경력 만렙 성진 #롯데자이언츠 #DAY6 #성진",
+        "views": 4056,
+        "ctr": 5.5,
+        "category": "기획",
+        "is_shorts": true
+      },
+      {
+        "title": "DAY6 성진이 라이브로 부르는 영광의 순간✨ #롯데자이언츠 #DAY6 #성진",
+        "views": 1996,
+        "ctr": 6.7,
+        "category": "기획",
+        "is_shorts": true
       }
     ]
   },
