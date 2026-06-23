@@ -4,7 +4,7 @@ window.REPORT_DATA = {
     "dateRange": "1월 1일 ~ 6월 21일",
     "startDate": "2026-01-01",
     "endDate": "2026-06-21",
-    "generatedAt": "2026-06-23 19:08",
+    "generatedAt": "2026-06-23 19:37",
     "curYear": 2026,
     "prevYear": 2025,
     "sources": {
@@ -397,6 +397,113 @@ window.REPORT_DATA = {
         "avgViews": 57113,
         "avgImpr": 892317,
         "avgCTR": 5.24
+      }
+    ]
+  },
+  "contentTypeConv": {
+    "typeStats": [
+      {
+        "type": "생중계",
+        "count": 9,
+        "conv": 76.9,
+        "avgViews": 78025,
+        "avgCTR": 6.4,
+        "avgSubs": 68.6
+      },
+      {
+        "type": "예능",
+        "count": 2,
+        "conv": 61.1,
+        "avgViews": 148964,
+        "avgCTR": 5.8,
+        "avgSubs": 92.0
+      },
+      {
+        "type": "응원/플리",
+        "count": 4,
+        "conv": 58.1,
+        "avgViews": 200906,
+        "avgCTR": 8.2,
+        "avgSubs": 139.5
+      },
+      {
+        "type": "전지훈련",
+        "count": 16,
+        "conv": 44.9,
+        "avgViews": 136963,
+        "avgCTR": 8.3,
+        "avgSubs": 73.2
+      },
+      {
+        "type": "기타기획",
+        "count": 18,
+        "conv": 38.2,
+        "avgViews": 86056,
+        "avgCTR": 7.1,
+        "avgSubs": 34.3
+      },
+      {
+        "type": "공식행사",
+        "count": 7,
+        "conv": 35.5,
+        "avgViews": 99562,
+        "avgCTR": 6.6,
+        "avgSubs": 40.0
+      },
+      {
+        "type": "G캠",
+        "count": 6,
+        "conv": 32.7,
+        "avgViews": 57336,
+        "avgCTR": 7.5,
+        "avgSubs": 21.2
+      },
+      {
+        "type": "화보",
+        "count": 3,
+        "conv": 27.7,
+        "avgViews": 85852,
+        "avgCTR": 6.2,
+        "avgSubs": 24.7
+      },
+      {
+        "type": "인터뷰/예고",
+        "count": 2,
+        "conv": 24.0,
+        "avgViews": 78261,
+        "avgCTR": 6.9,
+        "avgSubs": 19.0
+      },
+      {
+        "type": "주간시리즈",
+        "count": 3,
+        "conv": 22.1,
+        "avgViews": 77600,
+        "avgCTR": 7.1,
+        "avgSubs": 18.0
+      }
+    ],
+    "catCompare": [
+      {
+        "label": "기획 롱폼",
+        "count": 71,
+        "conv": 44.0,
+        "avgViews": 103327,
+        "totalSubs": 3754
+      },
+      {
+        "label": "기획 숏츠",
+        "count": 37,
+        "conv": 14.5,
+        "avgViews": 100428,
+        "totalSubs": 811
+      },
+      {
+        "label": "고정 롱폼",
+        "count": 84,
+        "conv": 47.8,
+        "avgViews": 82243,
+        "totalSubs": 3067
       }
     ]
   },

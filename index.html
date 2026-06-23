@@ -78,8 +78,8 @@
   }
 
   .container { max-width: 900px; margin: 0 auto; padding: 0 24px 80px; display:flex; flex-direction:column; }
-  #s2  { order:1; } #s3  { order:2; } #s12 { order:3; } #s4  { order:4; }
-  #s8  { order:5; } #s11 { order:6; } #s9  { order:7; } #s1  { order:8; } #s10 { order:9; }
+  #s2  { order:1; } #s13 { order:2; } #s3  { order:3; } #s12 { order:4; } #s4  { order:5; }
+  #s8  { order:6; } #s11 { order:7; } #s9  { order:8; } #s1  { order:9; } #s10 { order:10; }
   section { margin-top: 52px; }
 
   section h2 {
@@ -256,6 +256,7 @@
   <span class="brand">롯데자이언츠 YT</span>
   <a href="comments.html">💬 댓글 분석</a>
   <a href="#s2">기획 KPI</a>
+  <a href="#s13">유형 분석</a>
   <a href="#s3">구독자 분석</a>
   <a href="#s12">업로드 타이밍</a>
   <a href="#s4">TOP 10</a>
@@ -605,6 +606,27 @@
     <p class="note">주인공 미입력 항목 제외. 데이터가 쌓일수록 정확도 향상.</p>
   </section>
 
+
+  <!-- S13 기획 콘텐츠 유형별 구독 전환 분석 -->
+  <section id="s13">
+    <h2><span class="num">2</span> 기획 콘텐츠 유형별 구독 전환 분석</h2>
+    <p class="note" style="margin-bottom:18px">기존 구독자는 이미 구독 중 → 영상 보고 구독한 사람 = 신규 유입 팬. 10만뷰당 구독자 증가 수로 "비팬 획득력"을 측정.</p>
+
+    <h3>기획 유형별 10만뷰당 구독 전환율</h3>
+    <div class="chart-wrap"><canvas id="chartTypeConv" style="max-height:360px"></canvas></div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>콘텐츠 유형</th><th>영상 수</th><th>10만뷰당 구독</th><th>평균 조회수</th><th>평균 CTR</th></tr></thead>
+        <tbody id="type-conv-tbody"></tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:28px">기획 vs 고정 콘텐츠 — 구독 전환 효율 비교</h3>
+    <div class="card-grid" id="cat-compare-cards"></div>
+
+    <div id="type-conv-verdict"></div>
+  </section>
 
   <!-- S12 업로드 타이밍 분석 -->
   <section id="s12">
@@ -996,6 +1018,56 @@ function buildCharts(D, yL, yC, yr, yrP) {
         const catCls = v.category==='기획'?'tag green':(v.category==='고정'?'tag red':'tag');
         return `<tr><td>${v.title}</td><td>${fmtTag}</td><td><span class="${catCls}">${v.category}</span></td><td class="num bold">${v.views.toLocaleString()}</td><td class="num">${v.is_shorts?'—':v.ctr+'%'}</td></tr>`;
       }).join('');
+    }
+  }
+
+  // 13. 기획 유형별 구독 전환 분석
+  if (D.contentTypeConv) {
+    const CT = D.contentTypeConv;
+
+    // 유형별 바 차트 (horizontal)
+    const typeLabels = CT.typeStats.map(r => r.type);
+    const typeConvs  = CT.typeStats.map(r => r.conv);
+    const barColors  = typeConvs.map((v, i) => i === 0 ? C.green : (i === 1 ? C.navy : C.navy2));
+    new Chart(document.getElementById('chartTypeConv'), {
+      type: 'bar',
+      data: {
+        labels: typeLabels,
+        datasets: [{ label: '10만뷰당 구독자 증가', data: typeConvs, backgroundColor: barColors }]
+      },
+      options: {
+        indexAxis: 'y', responsive: true,
+        plugins: { title: T('기획 콘텐츠 유형별 구독 전환율 (10만뷰당)'), legend: { display: false },
+          tooltip: { callbacks: { label: ctx => ` ${ctx.parsed.x.toFixed(1)} 명/10만뷰` } } },
+        scales: { x: { grid: { color: C.grid }, ticks: { callback: v => v + '명' } }, y: { grid: { display: false } } }
+      }
+    });
+
+    // 유형별 테이블
+    const typeTbody = document.getElementById('type-conv-tbody');
+    if (typeTbody) {
+      typeTbody.innerHTML = CT.typeStats.map((r, i) => {
+        const cls = i === 0 ? 'up bold' : (i === 1 ? 'up' : '');
+        return `<tr><td>${r.type}</td><td class="num">${r.count}개</td><td class="num ${cls}">${r.conv.toFixed(1)}</td><td class="num">${r.avgViews.toLocaleString()}</td><td class="num">${r.avgCTR}%</td></tr>`;
+      }).join('');
+    }
+
+    // 기획 vs 고정 카드
+    const catEl = document.getElementById('cat-compare-cards');
+    if (catEl && CT.catCompare) {
+      catEl.innerHTML = CT.catCompare.map(r => {
+        const cls = r.label === '기획 숏츠' ? 'down' : '';
+        return `<div class="card"><div class="card-label">${r.label}</div><div class="card-val ${cls}">${r.conv.toFixed(1)}<span style="font-size:0.55em;font-weight:400"> 명/10만뷰</span></div><div class="card-delta muted">${r.count}개 · 평균 ${r.avgViews.toLocaleString()}뷰</div></div>`;
+      }).join('');
+    }
+
+    // 판정
+    const verdictEl = document.getElementById('type-conv-verdict');
+    if (verdictEl && CT.typeStats.length >= 2) {
+      const top = CT.typeStats[0], bottom = CT.typeStats[CT.typeStats.length - 1];
+      const sh  = CT.catCompare?.find(r => r.label === '기획 숏츠');
+      const shNote = sh ? ` 기획 숏츠(${sh.conv.toFixed(1)}명)는 롱폼 대비 구독 전환이 ${Math.round((1 - sh.conv / (CT.catCompare.find(r=>r.label==='기획 롱폼')?.conv||1))*100)}% 낮다.` : '';
+      verdictEl.innerHTML = `<div class="hc amber" style="margin-top:16px"><div class="hc-title">${top.type} 최강, ${bottom.type} 최약 — 포맷 ROI 격차 ${Math.round(top.conv / bottom.conv)}배</div><div class="hc-body">${top.type}(${top.conv.toFixed(1)}명/10만뷰)이 구독 전환 1위. 공식적 분위기의 ${bottom.type}(${bottom.conv.toFixed(1)}명)는 최하위. 현장감·재미 요소가 있는 콘텐츠가 비팬 유입에 효과적.${shNote}</div></div>`;
     }
   }
 
