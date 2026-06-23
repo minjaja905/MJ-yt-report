@@ -77,7 +77,9 @@
     font-size: 13px; color: rgba(255,255,255,0.5);
   }
 
-  .container { max-width: 900px; margin: 0 auto; padding: 0 24px 80px; }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 24px 80px; display:flex; flex-direction:column; }
+  #s2  { order:1; } #s3  { order:2; } #s12 { order:3; } #s4  { order:4; }
+  #s8  { order:5; } #s11 { order:6; } #s9  { order:7; } #s1  { order:8; } #s10 { order:9; }
   section { margin-top: 52px; }
 
   section h2 {
@@ -253,17 +255,15 @@
 <nav>
   <span class="brand">롯데자이언츠 YT</span>
   <a href="comments.html">💬 댓글 분석</a>
-  <a href="#s1">콘텐츠 구성</a>
-  <a href="#s2">기획 콘텐츠</a>
+  <a href="#s2">기획 KPI</a>
   <a href="#s3">구독자 분석</a>
+  <a href="#s12">업로드 타이밍</a>
   <a href="#s4">TOP 10</a>
-  <a href="#s5">핵심 발견</a>
-  <a href="#s6">제언</a>
-  <a href="#s7">라이브 실적</a>
-  <a href="#s8">브랜딩 비교</a>
-  <a href="#s9">트래픽 소스</a>
-  <a href="#s10">메타 인사이트</a>
+  <a href="#s8">HOTDUG</a>
   <a href="#s11">집중업로드</a>
+  <a href="#s9">트래픽 소스</a>
+  <a href="#s1">콘텐츠 구성</a>
+  <a href="#s10">메타 인사이트</a>
 </nav>
 
 <!-- MODAL -->
@@ -432,132 +432,6 @@
     <p class="note">TOP 10 중 생중계 5개 · 콜라보 2개 · 자체 기획 3개. 생중계 CTR이 14~16%로 압도적.</p>
   </section>
 
-  <!-- S5 -->
-  <section id="s5">
-    <h2><span class="num">5</span> 핵심 발견</h2>
-
-    <div class="hc">
-      <div class="hc-title">① 기획 콘텐츠 평균 조회수는 유지됨</div>
-      <div class="hc-body">영상당 평균 조회수 104k → 107k으로 보합(+2.1%). 전체 채널 평균은 고정 콘텐츠(28→89개) 급증으로 희석됐지만, 기획 콘텐츠 단독 성과는 견조하게 유지됨.</div>
-    </div>
-
-    <div class="hc amber">
-      <div class="hc-title">② 시청 시간 -33%가 진짜 위기 신호</div>
-      <div class="hc-body">조회수 -17%보다 훨씬 심각한 수치. 영상당 평균 시청 지속시간이 5분 41초 → 4분 35초로 단축. 유튜브 알고리즘은 조회수보다 시청 시간을 기반으로 추천하므로, 이 하락이 지속되면 채널 노출 자체가 줄어드는 악순환으로 이어질 수 있음.</div>
-    </div>
-
-    <div class="hc">
-      <div class="hc-title">③ 구독 전환 하락은 신규 유입 감소가 원인</div>
-      <div class="hc-body">10만뷰당 구독 전환 10.5명 → 4.2명(-60%). WBC가 없어진 2026에 신규 시청자 유입이 515k → 333k(-35%) 감소했고, 신규 유입 비중도 8.0% → 6.4%로 줄었음. 즉 기존 팬만 보는 채널로 점점 굳어지고 있는 패턴.</div>
-    </div>
-
-    <div class="hc navy">
-      <div class="hc-title">④ 생중계 CTR 15~16% — 업계 상위권</div>
-      <div class="hc-body">스포츠 팬 채널 평균 CTR 8~14% 대비 압도적. 생중계는 팬의 즉각적인 클릭 욕구와 실시간 커뮤니티 효과가 결합되는 포맷으로 구조적으로 CTR이 높음. 비시즌 채널 운영의 핵심 포맷.</div>
-    </div>
-  </section>
-
-  <!-- S6 -->
-  <section id="s6">
-    <h2><span class="num">6</span> 제언</h2>
-    <div class="hc green">
-      <div class="hc-title">① 시청 지속시간 회복이 우선 과제</div>
-      <div class="hc-body">5분 41초 → 4분 35초 단축. 영상 도입부 강화, 편집 속도 조절, 시청 유지율이 높은 포맷(생중계, 시리즈물) 비중 확대 필요. 알고리즘 노출과 직결되는 지표.</div>
-    </div>
-    <div class="hc green">
-      <div class="hc-title">② 신규 시청자 유입 전략 별도 수립</div>
-      <div class="hc-body">구독 전환을 위해서는 먼저 신규 시청자를 늘려야 함. WBC 같은 외부 이슈 의존 없이 자체적으로 비팬을 유입시키는 채널 발굴 필요. 콜라보(DAY6 성진 검증됨)는 유효한 수단이나 구독 유도 장치 강화가 필요.</div>
-    </div>
-    <div class="hc green">
-      <div class="hc-title">③ 생중계 IP 정규시즌으로 확장</div>
-      <div class="hc-body">미야자키 캠프에서 검증된 생중계 수요를 시즌 중에도 활용. 선발 발표, 불펜 훈련, 경기 전후 등 정규시즌에도 생중계 포맷을 정례화하면 CTR과 시청 지속시간 모두 개선 가능.</div>
-    </div>
-    <div class="hc green">
-      <div class="hc-title">④ K-POP 콜라보 시리즈화 + 구독 유도 강화</div>
-      <div class="hc-body">DAY6 성진 콜라보는 도달(reach) 측면에서 검증됨. 다음 콜라보에서는 콘텐츠 내 구독 유도 장치(CTA) 명시 강화 필요.</div>
-    </div>
-  </section>
-
-  <!-- S7 -->
-  <section id="s7">
-    <h2><span class="num">7</span> 라이브 실적 분석 <span class="live-badge">LIVE</span></h2>
-
-    <p class="note" style="margin-bottom:18px">라이브 조회수(생방송 실시간)와 VOD 조회수는 별도 집계. 최대 도달량 = 라이브 + VOD 합산 (중복 시청자 20~30% 포함될 수 있음).</p>
-
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-label">라이브 총 조회수</div>
-        <div class="card-val">1.39M</div>
-        <div class="card-delta muted">2026 전체</div>
-      </div>
-      <div class="card">
-        <div class="card-label">미야자키 캠프</div>
-        <div class="card-val up">1.07M</div>
-        <div class="card-delta up">5경기 평균 214k</div>
-      </div>
-      <div class="card">
-        <div class="card-label">퓨처스리그</div>
-        <div class="card-val">254k</div>
-        <div class="card-delta muted">8경기 평균 28k</div>
-      </div>
-      <div class="card">
-        <div class="card-label">누리라이브</div>
-        <div class="card-val">9.7k</div>
-        <div class="card-delta muted">신규 포맷 초기</div>
-      </div>
-    </div>
-
-    <h3>미야자키 캠프 — 라이브 + VOD 최대 도달량</h3>
-    <div class="chart-wrap"><canvas id="chartMiyazaki"></canvas></div>
-
-    <div class="tbl-wrap">
-      <table>
-        <thead><tr><th>경기</th><th>라이브 조회수</th><th>VOD 조회수</th><th>최대 도달량</th></tr></thead>
-        <tbody>
-          <tr><td>vs 세이부라이온즈 (2/22)</td><td class="num">289,082</td><td class="num">370,793</td><td class="num bold up">659,875</td></tr>
-          <tr><td>vs 지바롯데마린스 (3/1)</td><td class="num">235,962</td><td class="num">292,139</td><td class="num bold up">528,101</td></tr>
-          <tr><td>vs SSG (3/3)</td><td class="num">196,703</td><td class="num">245,651</td><td class="num bold up">442,354</td></tr>
-          <tr><td>vs 요미우리자이언츠 (2/23)</td><td class="num">198,479</td><td class="num">236,550</td><td class="num bold up">435,029</td></tr>
-          <tr><td>vs 두산베어스 (2/26)</td><td class="num">152,695</td><td class="num">227,935</td><td class="num bold up">380,630</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="note">팬 채널 특성상 라이브 시청 후 VOD도 재시청하는 비율이 20~30% 추정. 위 수치는 최대 도달량 기준이며, 유니크 시청자 수는 YouTube Studio 유니크 뷰어 항목 별도 확인 권장.</p>
-
-    <h3>퓨처스리그 생중계</h3>
-    <div class="chart-wrap"><canvas id="chartFutures"></canvas></div>
-
-    <h3>누리라이브 — 신규 포맷 초기 지표</h3>
-    <div class="tbl-wrap">
-      <table>
-        <thead><tr><th>회차</th><th>내용</th><th>날짜</th><th>조회수</th></tr></thead>
-        <tbody>
-          <tr><td>ep.1</td><td>개막식 현장 라이브</td><td>4/3</td><td class="num">3,861</td></tr>
-          <tr><td>ep.2</td><td>포켓몬데이 광장행사</td><td>4/4</td><td class="num">3,567</td></tr>
-          <tr><td>ep.3</td><td>댄싱누리</td><td>4/18</td><td class="num">2,284</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <hr>
-
-    <div class="hc">
-      <div class="hc-title">① 미야자키 캠프 = 채널 최대 도달 구간</div>
-      <div class="hc-body">라이브 + VOD 합산 기준 경기당 38~66만 최대 도달. 비시즌 오프 기간 팬 수요를 실시간으로 충족하는 유일한 포맷. VOD 조회수만으로는 이 규모가 드러나지 않음.</div>
-    </div>
-    <div class="hc navy">
-      <div class="hc-title">② 퓨처스리그 생중계 안정적 수요 확인</div>
-      <div class="hc-body">28k 평균은 비공식 경기임을 감안하면 실수요가 있는 수준. 1군 경기가 없는 시간대 콘텐츠 공백을 채우는 역할.</div>
-    </div>
-    <div class="hc navy">
-      <div class="hc-title">③ 우천 취소도 24k — 팬 체류 수요</div>
-      <div class="hc-body">미야자키 우천 취소 중계진 라이브 토크 24,238뷰. 경기가 없어도 팬이 채널에 체류함. "아무것도 없는 날"의 팬 접점 포맷으로 가치 있음.</div>
-    </div>
-    <div class="hc">
-      <div class="hc-title">④ 누리라이브 초기 지표 미약</div>
-      <div class="hc-body">3회차 평균 3,237뷰. 현재 기존 팬 대상 소비에 그침. 이벤트 규모나 콜라보 대상에 따라 성과가 달라질 가능성 있음.</div>
-    </div>
-  </section>
 
 
   <!-- S8 -->
@@ -716,9 +590,6 @@
     <h2><span class="num">10</span> 콘텐츠 메타 인사이트 <span id="notion-updated" style="font-size:11px;font-weight:400;color:var(--sub);margin-left:8px"></span></h2>
     <p class="note" style="margin-bottom:20px">Notion DB 기반 · 완료 항목 중 YT 조회수 있는 영상만 집계 · n=1 항목은 참고용</p>
 
-    <h3>카테고리별 평균 조회수</h3>
-    <div class="chart-wrap"><canvas id="chartCat" style="max-height:340px"></canvas></div>
-
     <h3>업로드 시간대별 평균 조회수</h3>
     <div class="chart-wrap"><canvas id="chartHour"></canvas></div>
 
@@ -734,6 +605,32 @@
     <p class="note">주인공 미입력 항목 제외. 데이터가 쌓일수록 정확도 향상.</p>
   </section>
 
+
+  <!-- S12 업로드 타이밍 분석 -->
+  <section id="s12">
+    <h2><span class="num">3</span> 업로드 타이밍 분석</h2>
+    <p class="note" style="margin-bottom:18px">정규시즌 롱폼 영상 기준 (숏츠 제외). 하루에 몇 개 올리느냐, 그리고 언제 올리느냐가 노출에 얼마나 영향을 주는지 데이터로 검증.</p>
+
+    <h3>하루 롱폼 업로드 수 vs 영상당 평균 노출수</h3>
+    <div class="chart-wrap"><canvas id="chartUploadImpr"></canvas></div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>하루 업로드 수</th><th>해당 일수</th><th>영상 수</th><th>영상당 평균 노출수</th><th>영상당 평균 조회수</th></tr></thead>
+        <tbody id="timing-tbody"></tbody>
+      </table>
+    </div>
+    <div id="timing-verdict-q1"></div>
+
+    <h3 style="margin-top:28px">하이라이트 발행 타이밍 vs 조회수 (D+0 당일 vs D+1 다음날)</h3>
+    <div class="chart-wrap"><canvas id="chartTimeliness"></canvas></div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>발행 타이밍</th><th>영상 수</th><th>평균 조회수</th><th>평균 노출수</th><th>CTR</th></tr></thead>
+        <tbody id="timeliness-tbody"></tbody>
+      </table>
+    </div>
+    <div id="timing-verdict-q2"></div>
+  </section>
 
   <!-- S11 -->
   <section id="s11">
@@ -1102,14 +999,78 @@ function buildCharts(D, yL, yC, yr, yrP) {
     }
   }
 
-  // 7-2. 퓨처스리그 (고정 데이터)
-  new Chart(document.getElementById('chartFutures'), {
-    type:'bar', data:{
-      labels:['KT (03.26)','NC (04.01)','삼성 (04.13)','KT (03.25)','KT (03.27)','NC (04.02)','KT (03.25) b','NC (04.03)'],
-      datasets:[{label:'라이브 조회수',data:[46444,43374,38076,33075,27544,27369,19204,18051],backgroundColor:C.navy}]},
-    options:{responsive:true,plugins:{title:T('퓨처스리그 생중계 라이브 조회수'),legend:{display:false},tooltip:{callbacks:{label:ctx=>` ${ctx.parsed.y.toLocaleString()}회`}}},
-      scales:{x:{grid:{display:false},ticks:{font:{size:11}}},y:{grid:{color:C.grid},ticks:{callback:v=>(v/1000).toFixed(0)+'k'}}}}
-  });
+  // 12. 업로드 타이밍 분석
+  if (D.timing) {
+    const TM = D.timing;
+
+    // Q1 테이블
+    const timingTbody = document.getElementById('timing-tbody');
+    if (timingTbody) {
+      timingTbody.innerHTML = TM.uploadVsImpr.map(r => {
+        const imprCls = r.uploadCount >= 5 ? 'down' : (r.uploadCount === 1 ? '' : '');
+        return `<tr><td class="num${r.uploadCount>=5?' bold':''}">${r.uploadCount}개</td><td class="num">${r.days}일</td><td class="num">${r.videoCount}개</td><td class="num ${imprCls}">${r.avgImpr.toLocaleString()}</td><td class="num ${imprCls}">${r.avgViews.toLocaleString()}</td></tr>`;
+      }).join('');
+    }
+
+    // Q1 차트
+    new Chart(document.getElementById('chartUploadImpr'), {
+      type:'bar',
+      data:{
+        labels: TM.uploadVsImpr.map(r => r.uploadCount+'개'),
+        datasets:[
+          {label:'영상당 평균 노출수', data:TM.uploadVsImpr.map(r=>r.avgImpr), backgroundColor:C.navy2, yAxisID:'yI'},
+          {label:'영상당 평균 조회수', data:TM.uploadVsImpr.map(r=>r.avgViews), backgroundColor:C.red,   yAxisID:'yV'},
+        ]
+      },
+      options:{responsive:true,plugins:{title:T('하루 롱폼 업로드 수별 영상당 노출·조회수'),tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: ${ctx.parsed.y.toLocaleString()}`}}},
+        scales:{x:{grid:{display:false}},yI:{type:'linear',position:'left',grid:{color:C.grid},ticks:{callback:v=>(v/10000).toFixed(0)+'만'}},yV:{type:'linear',position:'right',grid:{display:false},ticks:{callback:v=>(v/10000).toFixed(1)+'만'}}}}
+    });
+
+    // Q1 판정
+    const q1El = document.getElementById('timing-verdict-q1');
+    if (q1El) {
+      const last = TM.uploadVsImpr[TM.uploadVsImpr.length-1];
+      const first = TM.uploadVsImpr[0];
+      const drop = last && first ? Math.round((1 - last.avgImpr/first.avgImpr)*100) : 0;
+      q1El.innerHTML = `<div class="hc amber" style="margin-top:16px"><div class="hc-title">롱폼 ${last?.uploadCount}개+ 올린 날 노출 -${drop}% 급락</div><div class="hc-body">1~4개 업로드 시 영상당 노출수는 큰 차이가 없음(86만~101만). 그러나 ${last?.uploadCount}개 이상 올리는 날은 영상당 노출이 ${last?.avgImpr.toLocaleString()}으로 ${drop}% 이상 줄어듦. 유튜브 알고리즘이 같은 채널의 영상을 동시에 밀어주는 데 한계가 있음을 보여줌.</div></div>`;
+    }
+
+    // Q2 테이블
+    const tlTbody = document.getElementById('timeliness-tbody');
+    if (tlTbody && TM.timelinessHL.length) {
+      tlTbody.innerHTML = TM.timelinessHL.map(r => {
+        const cls = r.label==='D+0' ? 'up bold' : (r.label==='D+1' ? '' : 'down');
+        return `<tr><td class="num bold">${r.label}</td><td class="num">${r.count}개</td><td class="num ${cls}">${r.avgViews.toLocaleString()}</td><td class="num">${r.avgImpr.toLocaleString()}</td><td class="num">${r.avgCTR}%</td></tr>`;
+      }).join('');
+    }
+
+    // Q2 차트
+    if (TM.timelinessHL.length) {
+      new Chart(document.getElementById('chartTimeliness'), {
+        type:'bar',
+        data:{
+          labels: TM.timelinessHL.map(r=>r.label+' ('+r.count+'개)'),
+          datasets:[
+            {label:'평균 조회수', data:TM.timelinessHL.map(r=>r.avgViews), backgroundColor:[C.green,...Array(10).fill(C.navy2)]},
+          ]
+        },
+        options:{responsive:true,plugins:{title:T('하이라이트 발행 타이밍별 평균 조회수'),legend:{display:false},tooltip:{callbacks:{label:ctx=>` ${ctx.parsed.y.toLocaleString()}회`}}},
+          scales:{x:{grid:{display:false}},y:{grid:{color:C.grid},ticks:{callback:v=>(v/10000).toFixed(0)+'만'}}}}
+      });
+
+      // Q2 판정
+      const q2El = document.getElementById('timing-verdict-q2');
+      if (q2El && TM.timelinessHL.length >= 2) {
+        const d0 = TM.timelinessHL.find(r=>r.label==='D+0');
+        const d1 = TM.timelinessHL.find(r=>r.label==='D+1');
+        if (d0 && d1) {
+          const viewDiff = Math.round((1 - d1.avgViews/d0.avgViews)*100);
+          const imprDiff = Math.round((1 - d1.avgImpr/d0.avgImpr)*100);
+          q2El.innerHTML = `<div class="hc amber" style="margin-top:16px"><div class="hc-title">D+1 발행 시 조회수 -${viewDiff}%, 노출 -${imprDiff}%</div><div class="hc-body">하이라이트를 경기 당일(D+0) 올리면 평균 ${d0.avgViews.toLocaleString()}뷰 / 노출 ${d0.avgImpr.toLocaleString()}. 다음날(D+1) 올리면 ${d1.avgViews.toLocaleString()}뷰 / 노출 ${d1.avgImpr.toLocaleString()}. 유튜브가 시의성 콘텐츠에 더 많은 노출을 부여하는 것으로 보임. 하이라이트는 경기 직후 최대한 빠르게 올리는 것이 유리.</div></div>`;
+        }
+      }
+    }
+  }
 }
 
 if (document.readyState==='loading') {

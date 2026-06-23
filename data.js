@@ -4,7 +4,7 @@ window.REPORT_DATA = {
     "dateRange": "1월 1일 ~ 6월 21일",
     "startDate": "2026-01-01",
     "endDate": "2026-06-21",
-    "generatedAt": "2026-06-23 18:38",
+    "generatedAt": "2026-06-23 19:08",
     "curYear": 2026,
     "prevYear": 2025,
     "sources": {
@@ -342,6 +342,61 @@ window.REPORT_DATA = {
         "ctr": 6.7,
         "category": "기획",
         "is_shorts": true
+      }
+    ]
+  },
+  "timing": {
+    "uploadVsImpr": [
+      {
+        "uploadCount": 1,
+        "days": 28,
+        "videoCount": 28,
+        "avgImpr": 933227,
+        "avgViews": 79001
+      },
+      {
+        "uploadCount": 2,
+        "days": 15,
+        "videoCount": 30,
+        "avgImpr": 1009904,
+        "avgViews": 88216
+      },
+      {
+        "uploadCount": 3,
+        "days": 11,
+        "videoCount": 33,
+        "avgImpr": 913066,
+        "avgViews": 84830
+      },
+      {
+        "uploadCount": 4,
+        "days": 4,
+        "videoCount": 16,
+        "avgImpr": 886052,
+        "avgViews": 79204
+      },
+      {
+        "uploadCount": 5,
+        "days": 1,
+        "videoCount": 5,
+        "avgImpr": 324664,
+        "avgViews": 34166
+      }
+    ],
+    "timelinessHL": [
+      {
+        "label": "D+0",
+        "count": 28,
+        "avgViews": 121271,
+        "avgImpr": 1480126,
+        "avgCTR": 6.82
+      },
+      {
+        "label": "D+1",
+        "count": 1,
+        "avgViews": 57113,
+        "avgImpr": 892317,
+        "avgCTR": 5.24
       }
     ]
   },
