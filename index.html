@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>롯데자이언츠 유튜브 채널 성과 보고 — 2026 Q1</title>
+<title>롯데자이언츠 유튜브 채널 성과 보고</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%233ECFB2'/%3E%3Cpath d='M10 9.5 L10 22.5 L24 16 Z' fill='white'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -263,6 +263,7 @@
   <a href="#s8">브랜딩 비교</a>
   <a href="#s9">트래픽 소스</a>
   <a href="#s10">메타 인사이트</a>
+  <a href="#s11">집중업로드</a>
 </nav>
 
 <!-- MODAL -->
@@ -358,7 +359,7 @@
 
     <div class="tbl-wrap">
       <table>
-        <thead><tr><th>지표</th><th>2025 Q1</th><th>2026 Q1</th><th>증감</th></tr></thead>
+        <thead><tr><th>지표</th><th id="s2-th-prev">2025</th><th id="s2-th-cur">2026</th><th>증감</th></tr></thead>
         <tbody id="s2-tbody">
           <tr><td>기획 영상 수</td><td class="num">97개</td><td class="num">79개</td><td class="num down">▼ 18.5%</td></tr>
           <tr><td>영상당 평균 조회수</td><td class="num">104,593</td><td class="num bold">106,742</td><td class="num up">▲ 2.1%</td></tr>
@@ -396,7 +397,7 @@
 
     <div class="tbl-wrap">
       <table>
-        <thead><tr><th>구분</th><th>2025 Q1</th><th>2026 Q1</th></tr></thead>
+        <thead><tr><th>구분</th><th>2025</th><th>2026</th></tr></thead>
         <tbody>
           <tr><td>외부 이슈형</td><td>WBC 친선경기 2연전 (884k + 725k뷰)</td><td class="down">없음</td></tr>
           <tr><td>생중계 유입</td><td>구춘리그 생중계 (271k뷰)</td><td class="up">미야자키 생중계 (370k뷰) ✓</td></tr>
@@ -487,7 +488,7 @@
       <div class="card">
         <div class="card-label">라이브 총 조회수</div>
         <div class="card-val">1.39M</div>
-        <div class="card-delta muted">2026 Q1 전체</div>
+        <div class="card-delta muted">2026 전체</div>
       </div>
       <div class="card">
         <div class="card-label">미야자키 캠프</div>
@@ -644,7 +645,7 @@
 
     <div class="card-grid">
       <div class="card">
-        <div class="card-label">전체 노출수 (Q1)</div>
+        <div class="card-label">전체 노출수</div>
         <div class="card-val">1.06억</div>
         <div class="card-delta muted">임프레션</div>
       </div>
@@ -670,7 +671,7 @@
     </div>
     <p class="note">※ 2025·2026 모두 동기간(1/1~4월 하순) 기준 비교. 비중(%)은 해당 기간 내 소스별 조회수 점유율.</p>
 
-    <h3>트래픽 소스별 CTR (2026 Q1)</h3>
+    <h3>트래픽 소스별 CTR (2026)</h3>
     <div class="tbl-wrap">
       <table>
         <thead><tr><th>트래픽 소스</th><th>조회수 비중</th><th>노출수</th><th>CTR</th></tr></thead>
@@ -702,7 +703,7 @@
       💡 <strong>사운드 페이지란?</strong> — 다른 크리에이터가 채널 영상의 오디오를 Shorts 배경음악으로 사용하면 YouTube가 해당 음원 전용 페이지를 자동 생성함. 사운드 페이지를 통해 원본 영상으로 유입되는 트래픽이 "사운드 페이지" 소스로 집계됨. 절대 조회수는 적지만 음원에 관심 있는 사람이 유입되어 <strong>평균 조회율이 70~100%+로 매우 높은 편</strong>.
     </p>
 
-    <h3>일별 좋아요 추이 (2026 Q1 · 1/20~4/19)</h3>
+    <h3>일별 좋아요 추이</h3>
     <div class="chart-wrap">
       <canvas id="chartLikes"></canvas>
     </div>
@@ -733,10 +734,51 @@
     <p class="note">주인공 미입력 항목 제외. 데이터가 쌓일수록 정확도 향상.</p>
   </section>
 
+
+  <!-- S11 -->
+  <section id="s11">
+    <h2><span class="num">11</span> 6/21~22 집중 업로드 영향 분석</h2>
+    <p class="note" style="margin-bottom:18px">묵혀뒀던 영상을 이틀간 대거 발행했을 때 채널 반응이 긍정적이었는지 부정적이었는지 평가합니다.</p>
+
+    <div class="card-grid" id="burst-cards">
+      <div class="card">
+        <div class="card-label">집중 업로드 영상 수</div>
+        <div class="card-val" id="burst-count">—</div>
+        <div class="card-delta muted">6/21 + 6/22</div>
+      </div>
+      <div class="card">
+        <div class="card-label">버스트 평균 CTR</div>
+        <div class="card-val" id="burst-ctr">—</div>
+        <div class="card-delta" id="burst-ctr-delta">채널 평균 대비</div>
+      </div>
+      <div class="card">
+        <div class="card-label">버스트 평균 조회수</div>
+        <div class="card-val" id="burst-views">—</div>
+        <div class="card-delta" id="burst-views-delta">채널 평균 대비</div>
+      </div>
+      <div class="card">
+        <div class="card-label">버스트 총 조회수</div>
+        <div class="card-val" id="burst-total">—</div>
+        <div class="card-delta muted" id="burst-date-label">—</div>
+      </div>
+    </div>
+
+    <div id="burst-verdict"></div>
+
+    <div class="chart-wrap"><canvas id="chartBurst"></canvas></div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>영상</th><th>분류</th><th>조회수</th><th>CTR</th></tr></thead>
+        <tbody id="burst-tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
 </div>
 
 <footer>
-  <div class="footer-copy">© 2026 <a href="https://www.instagram.com/min_jaja_/" target="_blank">@min_jaja_</a></div>
+  <div class="footer-copy">© 2026 <a href="https://www.instagram.com/minjaja.pdf/" target="_blank">@minjaja.pdf</a></div>
   데이터 출처: YouTube Studio 채널 분석 &nbsp;|&nbsp; 기간: 2026.01.20 ~ 04.19<br>
   분류 기준: 라인업·HOTDUG·하이파이브·핫클립·경기H/L·수훈인터뷰·퓨처스경기·취소공지 = 고정 콘텐츠
 </footer>
@@ -778,10 +820,10 @@ function render() {
   const D = window.REPORT_DATA;
   if (!D) { console.warn('data.js not loaded'); return; }
   const p = D.planned, yr = D.meta.curYear, yrP = D.meta.prevYear;
-  const yL = yrP+' Q1', yC = yr+' Q1';
+  const yL = String(yrP), yC = String(yr);
 
   // Header
-  setEl('meta-period', D.meta.period+' · '+D.meta.dateRange);
+  setEl('meta-period', D.meta.dateRange);
   setEl('meta-date',   '최종 업데이트: '+D.meta.generatedAt);
   if (D.meta.sources) {
     setEl('meta-src-cur',     '현재: ' + D.meta.sources.cur);
@@ -923,7 +965,7 @@ function buildCharts(D, yL, yC, yr, yrP) {
     type:'bar', data:{
       labels:D.top10.map(v=>v.title.length>22?v.title.slice(0,22)+'…':v.title),
       datasets:[{label:'조회수',data:D.top10.map(v=>v.views),backgroundColor:D.top10.map(v=>({'콜라보':C.navy,'생중계':C.red}[v.tag]||C.green))}]},
-    options:{indexAxis:'y',responsive:true,plugins:{title:T(yr+' Q1 기획 콘텐츠 TOP 10 (조회수)'),legend:{display:false},tooltip:{callbacks:{label:ctx=>` ${ctx.parsed.x.toLocaleString()}회`}}},
+    options:{indexAxis:'y',responsive:true,plugins:{title:T(yr+' 기획 콘텐츠 TOP 10 (조회수)'),legend:{display:false},tooltip:{callbacks:{label:ctx=>` ${ctx.parsed.x.toLocaleString()}회`}}},
       scales:{x:{grid:{color:C.grid},ticks:{callback:v=>(v/10000).toFixed(0)+'만'}},y:{grid:{display:false},ticks:{font:{size:11}}}}}
   });
 
@@ -968,9 +1010,69 @@ function buildCharts(D, yL, yC, yr, yrP) {
     type:'line', data:{
       labels:lk.map(r=>{const d=new Date(r.date);return (d.getMonth()+1)+'/'+(d.getDate());}),
       datasets:[{label:'일별 좋아요',data:lk.map(r=>r.likes),borderColor:C.red,backgroundColor:'rgba(168,56,72,0.07)',fill:true,tension:0.35,pointRadius:0,pointHoverRadius:4}]},
-    options:{responsive:true,plugins:{title:T('일별 좋아요 추이 ('+yr+' Q1)'),legend:{display:false},tooltip:{callbacks:{label:ctx=>` ${ctx.parsed.y.toLocaleString()}개`}}},
+    options:{responsive:true,plugins:{title:T('일별 좋아요 추이 ('+yr+')'),legend:{display:false},tooltip:{callbacks:{label:ctx=>` ${ctx.parsed.y.toLocaleString()}개`}}},
       scales:{x:{grid:{display:false},ticks:{maxTicksLimit:16,font:{size:10}}},y:{grid:{color:C.grid},ticks:{callback:v=>v>=1000?(v/1000).toFixed(0)+'k':v}}}}
   });
+
+  // 11. 버스트 분석
+  if (D.burst) {
+    const B = D.burst;
+    const ctrDiff = (B.avgCTR - B.channelAvgCTR).toFixed(2);
+    const viewsDiff = Math.round((B.avgViews - B.channelAvgViews) / B.channelAvgViews * 100);
+    const ctrUp = B.avgCTR >= B.channelAvgCTR;
+    const viewsUp = B.avgViews >= B.channelAvgViews;
+
+    setEl('burst-count', B.count + '개');
+    const ctrEl = document.getElementById('burst-ctr');
+    if (ctrEl) { ctrEl.textContent = B.avgCTR + '%'; ctrEl.className = 'card-val ' + (ctrUp ? 'up' : 'down'); }
+    const ctrDeltaEl = document.getElementById('burst-ctr-delta');
+    if (ctrDeltaEl) { ctrDeltaEl.textContent = (ctrUp ? '▲' : '▼') + ' ' + Math.abs(ctrDiff) + '%p vs 채널 평균 ' + B.channelAvgCTR + '%'; ctrDeltaEl.className = 'card-delta ' + (ctrUp ? 'up' : 'down'); }
+    const vEl = document.getElementById('burst-views');
+    if (vEl) { vEl.textContent = B.avgViews.toLocaleString(); vEl.className = 'card-val ' + (viewsUp ? 'up' : 'down'); }
+    const vDeltaEl = document.getElementById('burst-views-delta');
+    if (vDeltaEl) { vDeltaEl.textContent = (viewsUp ? '▲' : '▼') + ' ' + Math.abs(viewsDiff) + '% vs 채널 평균'; vDeltaEl.className = 'card-delta ' + (viewsUp ? 'up' : 'down'); }
+    setEl('burst-total', (B.totalViews / 10000).toFixed(1) + '만');
+    setEl('burst-date-label', B.byDate.map(d => d.date.slice(5) + ' ' + d.count + '개').join(' / '));
+
+    // 판정
+    const verdictEl = document.getElementById('burst-verdict');
+    if (verdictEl) {
+      const diff1 = B.avgCTR - B.channelAvgCTR;
+      const isPos = diff1 >= 0;
+      const isNeg = diff1 < -1;
+      const cls = isPos ? 'hc green' : (isNeg ? 'hc amber' : 'hc');
+      const icon = isPos ? '✅ 긍정적' : (isNeg ? '⚠️ 부분 부정적' : '➖ 중립');
+      const body = isPos
+        ? `버스트 CTR(${B.avgCTR}%)이 채널 평균(${B.channelAvgCTR}%)보다 높음. 영상을 한꺼번에 올려도 알고리즘 노출이 유지됐고 팬들이 클릭했다는 뜻. 개별 영상 간 노출 경쟁보다 콘텐츠 품질과 팬 관심도가 더 크게 작용한 결과. 앞으로도 이벤트성 집중 업로드는 부정적 영향이 없는 것으로 판단 가능.`
+        : isNeg
+          ? `버스트 CTR(${B.avgCTR}%)이 채널 평균(${B.channelAvgCTR}%)보다 ${Math.abs(diff1.toFixed(2))}%p 낮음. 한꺼번에 올라간 영상들이 서로 노출을 나눠가지면서 개별 영상의 도달이 희석됐을 가능성이 있음. 주요 기획 영상은 하루 1~2개씩 분산 발행이 더 유리함.`
+          : `버스트 CTR(${B.avgCTR}%)이 채널 평균(${B.channelAvgCTR}%)과 유사함. 집중 업로드가 채널 성과에 큰 영향을 주지 않은 중립적 결과.`;
+      verdictEl.innerHTML = `<div class="${cls}"><div class="hc-title">${icon} — 버스트 업로드 종합 판정</div><div class="hc-body">${body}</div></div>`;
+    }
+
+    // 날짜별 바 차트
+    new Chart(document.getElementById('chartBurst'), {
+      type: 'bar',
+      data: {
+        labels: B.byDate.map(d => d.date.slice(5) + ' (' + d.count + '개)'),
+        datasets: [
+          {label: '평균 CTR (%)', data: B.byDate.map(d => d.avgCTR), backgroundColor: C.navy2, yAxisID: 'yCTR'},
+          {label: '평균 조회수', data: B.byDate.map(d => d.avgViews), backgroundColor: C.red, yAxisID: 'yViews'}
+        ]
+      },
+      options: {responsive: true, plugins: {title: T('6/21~22 날짜별 평균 CTR·조회수'), tooltip: {callbacks: {label: ctx => ctx.datasetIndex === 0 ? ` CTR: ${ctx.parsed.y}%` : ` 조회수: ${ctx.parsed.y.toLocaleString()}회`}}},
+        scales: {x: {grid: {display: false}}, yCTR: {type: 'linear', position: 'left', grid: {color: C.grid}, ticks: {callback: v => v + '%'}}, yViews: {type: 'linear', position: 'right', grid: {display: false}, ticks: {callback: v => (v / 1000).toFixed(0) + 'k'}}}}
+    });
+
+    // 영상 목록 테이블
+    const tbody = document.getElementById('burst-tbody');
+    if (tbody) {
+      tbody.innerHTML = B.videos.map(v => {
+        const tagCls = v.category === '기획' ? 'tag green' : (v.category === '고정' ? 'tag red' : 'tag');
+        return `<tr><td>${v.title}</td><td><span class="${tagCls}">${v.category}</span></td><td class="num bold">${v.views.toLocaleString()}</td><td class="num">${v.ctr}%</td></tr>`;
+      }).join('');
+    }
+  }
 
   // 7-2. 퓨처스리그 (고정 데이터)
   new Chart(document.getElementById('chartFutures'), {
