@@ -4,7 +4,7 @@ window.REPORT_DATA = {
     "dateRange": "1월 1일 ~ 6월 23일",
     "startDate": "2026-01-01",
     "endDate": "2026-06-23",
-    "generatedAt": "2026-06-24 19:39",
+    "generatedAt": "2026-06-24 19:47",
     "curYear": 2026,
     "prevYear": 2025,
     "sources": {
@@ -545,18 +545,18 @@ window.REPORT_DATA = {
   "direction": [
     {
       "label": "감성/브랜딩형",
-      "count": 22,
-      "shortsCount": 17,
-      "longformCount": 5,
-      "avgViews": 121659,
-      "avgCTR": 6.5,
-      "avgImpr": 668020,
-      "conv": 29.1,
-      "convLongform": 50.0,
-      "avgNewViewerPct": 4.3,
-      "avgShares": 209,
-      "avgLikes": 644,
-      "avgRPM": 943,
+      "count": 42,
+      "shortsCount": 24,
+      "longformCount": 18,
+      "avgViews": 125083,
+      "avgCTR": 7.4,
+      "avgImpr": 749505,
+      "conv": 30.3,
+      "convLongform": 47.5,
+      "avgNewViewerPct": 4.4,
+      "avgShares": 110,
+      "avgLikes": 336,
+      "avgRPM": 1586,
       "videos": [
         {
           "title": "DAY6 성진이 부르는 오늘도 승리한다🔥#DAY6 #성진 #롯데자이언츠 #응원가",
@@ -583,6 +583,18 @@ window.REPORT_DATA = {
           "rpm": 1375
         },
         {
+          "title": "[미야자키 연습경기 생중계] vs 세이부라이온즈(2/22)",
+          "date": "02/22",
+          "views": 371114,
+          "ctr": 15.71,
+          "conv": 109.1,
+          "isShorts": false,
+          "newViewerPct": 9.7,
+          "shares": 6,
+          "likes": -27,
+          "rpm": 0
+        },
+        {
           "title": "DAY6 성진이 부르는 영광의 순간🔥",
           "date": "03/14",
           "views": 308630,
@@ -593,6 +605,54 @@ window.REPORT_DATA = {
           "shares": 47,
           "likes": 431,
           "rpm": 308
+        },
+        {
+          "title": "[미야자키 구춘리그] vs 지바롯데마린스 (3/1)",
+          "date": "03/01",
+          "views": 292968,
+          "ctr": 14.08,
+          "conv": 75.1,
+          "isShorts": false,
+          "newViewerPct": 8.5,
+          "shares": 3,
+          "likes": -15,
+          "rpm": 0
+        },
+        {
+          "title": "[미야자키 연습경기] vs SSG (3/3)",
+          "date": "03/03",
+          "views": 245924,
+          "ctr": 14.92,
+          "conv": 95.2,
+          "isShorts": false,
+          "newViewerPct": 5.7,
+          "shares": 6,
+          "likes": -8,
+          "rpm": 10162
+        },
+        {
+          "title": "[미야자키 연습경기 생중계] vs 요미우리자이언츠(2/23)",
+          "date": "02/23",
+          "views": 236768,
+          "ctr": 15.89,
+          "conv": 68.4,
+          "isShorts": false,
+          "newViewerPct": 10.5,
+          "shares": 3,
+          "likes": -7,
+          "rpm": 4906
+        },
+        {
+          "title": "[미야자키 구춘리그] vs 두산베어스(2/26)",
+          "date": "02/26",
+          "views": 228065,
+          "ctr": 15.92,
+          "conv": 53.1,
+          "isShorts": false,
+          "newViewerPct": 9.2,
+          "shares": 0,
+          "likes": -11,
+          "rpm": 1341
         },
         {
           "title": "[주간 예열🔥] 예열을 위한 미리 듣는 롯데자이언츠 응원가 시리즈 | 승리를 위한 전진 feat. 데이식스 성진",
@@ -607,76 +667,16 @@ window.REPORT_DATA = {
           "rpm": 1336
         },
         {
-          "title": "[주간 예열🔥] 예열을 위한 미리 듣는 롯데자이언츠 응원가 시리즈 | 오늘도 승리한다 feat. 데이식스 성진",
-          "date": "03/12",
-          "views": 212844,
-          "ctr": 6.71,
-          "conv": 77.5,
+          "title": "[미야자키 구춘리그] 빗속을 가르는 두 개의 홈런포🔥 #김민성 #레이예스",
+          "date": "02/26",
+          "views": 214875,
+          "ctr": 8.5,
+          "conv": 7.4,
           "isShorts": true,
-          "newViewerPct": 8.9,
-          "shares": 310,
-          "likes": 313,
-          "rpm": 1065
-        },
-        {
-          "title": "DAY6 성진이 부르는 승리를 위한 전진🔥 #DAY6 #성진 #롯데자이언츠 #응원가",
-          "date": "03/13",
-          "views": 147332,
-          "ctr": 6.26,
-          "conv": 8.8,
-          "isShorts": true,
-          "newViewerPct": 1.9,
-          "shares": 26,
-          "likes": 204,
-          "rpm": 316
-        },
-        {
-          "title": "[주간 예열🔥] 예열을 위한 미리 듣는 롯데자이언츠 응원가 시리즈 | 승리는 누구",
-          "date": "02/08",
-          "views": 101581,
-          "ctr": 6.33,
-          "conv": 68.9,
-          "isShorts": true,
-          "newViewerPct": 2.1,
-          "shares": 126,
-          "likes": 138,
-          "rpm": 1475
-        },
-        {
-          "title": "오랜만에 만난 DAY6 성진과 김원중 | 머리카락 근황 토크(?) #롯데자이언츠 #DAY6 #성진",
-          "date": "06/22",
-          "views": 94338,
-          "ctr": 7.13,
-          "conv": 3.2,
-          "isShorts": true,
-          "newViewerPct": null,
-          "shares": 106,
-          "likes": 1236,
-          "rpm": 0
-        },
-        {
-          "title": "오래 기다리셨습니다 | 마무리 김원중입니다",
-          "date": "03/23",
-          "views": 92453,
-          "ctr": 7.54,
-          "conv": 49.8,
-          "isShorts": false,
-          "newViewerPct": 3.4,
-          "shares": 22,
-          "likes": 166,
-          "rpm": 0
-        },
-        {
-          "title": "응원가 커버 M/V 제작 비하인드 with 데이식스 성진 📷🔥 #DAY6 #성진 #롯데자이언츠 #응원가 #주간예열",
-          "date": "03/15",
-          "views": 90845,
-          "ctr": 7.13,
-          "conv": 7.7,
-          "isShorts": true,
-          "newViewerPct": 1.2,
-          "shares": 2,
-          "likes": 99,
-          "rpm": 324
+          "newViewerPct": 1.4,
+          "shares": 0,
+          "likes": -7,
+          "rpm": 348
         }
       ]
     },
