@@ -788,6 +788,18 @@
 </footer>
 
 <script>
+// ── 탭 전환
+function switchTab(section, panel) {
+  const sec = document.getElementById(section);
+  if (!sec) return;
+  sec.querySelectorAll('[data-tab]').forEach(el => {
+    el.style.display = el.dataset.tab === `${section}-${panel}` ? '' : 'none';
+  });
+  sec.querySelectorAll('.tab-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', (i === 0 && panel === 'cur') || (i === 1 && panel === 'cmp'));
+  });
+}
+
 // ── Modal
 function openModal()  { document.getElementById('classModal').classList.add('open'); }
 function closeModal() { document.getElementById('classModal').classList.remove('open'); }
@@ -1082,23 +1094,6 @@ function buildCharts(D, yL, yC, yr, yrP) {
     }
   }
 
-  // 탭 전환 함수
-  function switchTab(section, panel) {
-    const sec = document.getElementById(section);
-    if (!sec) return;
-    sec.querySelectorAll('[data-tab]').forEach(el => {
-      if (el.dataset.tab === `${section}-${panel}`) {
-        el.removeAttribute('data-tab-hidden');
-        el.style.display = '';
-      } else {
-        el.setAttribute('data-tab-hidden', '');
-        el.style.display = 'none';
-      }
-    });
-    sec.querySelectorAll('.tab-btn').forEach((btn, i) => {
-      btn.classList.toggle('active', (i === 0 && panel === 'cur') || (i === 1 && panel === 'cmp'));
-    });
-  }
 
   // S2 2026 현황 카드 렌더
   const s2cards = document.getElementById('s2-cur-cards');
