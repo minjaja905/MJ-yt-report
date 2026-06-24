@@ -78,8 +78,8 @@
   }
 
   .container { max-width: 900px; margin: 0 auto; padding: 0 24px 80px; display:flex; flex-direction:column; }
-  #s2  { order:1; } #s13 { order:2; } #s3  { order:3; } #s12 { order:4; } #s4  { order:5; }
-  #s8  { order:6; } #s11 { order:7; } #s9  { order:8; } #s1  { order:9; } #s10 { order:10; }
+  #s2  { order:1; } #s13 { order:2; } #s14 { order:3; } #s3  { order:4; } #s12 { order:5; } #s4  { order:6; }
+  #s8  { order:7; } #s11 { order:8; } #s9  { order:9; } #s1  { order:10; } #s10 { order:11; }
   section { margin-top: 52px; }
 
   section h2 {
@@ -257,6 +257,7 @@
   <a href="comments.html">💬 댓글 분석</a>
   <a href="#s2">기획 KPI</a>
   <a href="#s13">유형 분석</a>
+  <a href="#s14">콘텐츠 방향</a>
   <a href="#s3">구독자 분석</a>
   <a href="#s12">업로드 타이밍</a>
   <a href="#s4">TOP 10</a>
@@ -606,6 +607,32 @@
     <p class="note">주인공 미입력 항목 제외. 데이터가 쌓일수록 정확도 향상.</p>
   </section>
 
+
+  <!-- S14 콘텐츠 방향성 비교 -->
+  <section id="s14">
+    <h2><span class="num">3</span> 콘텐츠 방향성 비교</h2>
+    <p class="note" style="margin-bottom:18px">감성/브랜딩형 = 음악·팬 감성·브랜드 협업 중심 / 예능/참여형 = 게임·먹방·브이로그·현장 참여 중심. 구독 전환율(10만뷰당)로 비팬 유입 효과 측정.</p>
+
+    <div class="card-grid" id="direction-cards"></div>
+
+    <h3 style="margin-top:28px">포맷 구성 비교</h3>
+    <div class="chart-wrap"><canvas id="chartDirection" style="max-height:280px"></canvas></div>
+
+    <div class="tbl-wrap" style="margin-top:20px">
+      <table>
+        <thead><tr><th>방향성</th><th>총 영상</th><th>숏츠</th><th>롱폼</th><th>평균 조회수</th><th>평균 노출수</th><th>CTR</th><th>구독 전환 (전체)</th><th>구독 전환 (롱폼)</th></tr></thead>
+        <tbody id="direction-tbody"></tbody>
+      </table>
+    </div>
+
+    <div id="direction-verdict"></div>
+
+    <h3 style="margin-top:28px">감성/브랜딩형 — 개별 성과</h3>
+    <div class="tbl-wrap"><table><thead><tr><th>날짜</th><th>포맷</th><th>조회수</th><th>CTR</th><th>구독 전환</th><th>제목</th></tr></thead><tbody id="dir-branding-tbody"></tbody></table></div>
+
+    <h3 style="margin-top:28px">예능/참여형 — 개별 성과</h3>
+    <div class="tbl-wrap"><table><thead><tr><th>날짜</th><th>포맷</th><th>조회수</th><th>CTR</th><th>구독 전환</th><th>제목</th></tr></thead><tbody id="dir-engaging-tbody"></tbody></table></div>
+  </section>
 
   <!-- S13 기획 콘텐츠 유형별 구독 전환 분석 -->
   <section id="s13">
@@ -1019,6 +1046,72 @@ function buildCharts(D, yL, yC, yr, yrP) {
         return `<tr><td>${v.title}</td><td>${fmtTag}</td><td><span class="${catCls}">${v.category}</span></td><td class="num bold">${v.views.toLocaleString()}</td><td class="num">${v.is_shorts?'—':v.ctr+'%'}</td></tr>`;
       }).join('');
     }
+  }
+
+  // 14. 콘텐츠 방향성 비교
+  if (D.direction && D.direction.length) {
+    const DIR = D.direction;
+    const colors = { "감성/브랜딩형": C.navy2, "예능/참여형": C.green };
+
+    // 요약 카드
+    const dcards = document.getElementById('direction-cards');
+    if (dcards) {
+      dcards.innerHTML = DIR.map(d => {
+        const cls = d.label === '예능/참여형' ? 'up' : '';
+        return `<div class="card"><div class="card-label">${d.label}</div>
+          <div class="card-val ${cls}">${d.conv.toFixed(1)}<span style="font-size:0.55em;font-weight:400"> /10만뷰</span></div>
+          <div class="card-delta muted">${d.count}개 · 숏츠 ${d.shortsCount} / 롱폼 ${d.longformCount}</div></div>`;
+      }).join('');
+    }
+
+    // 노출수 vs 구독전환 바 차트
+    new Chart(document.getElementById('chartDirection'), {
+      type: 'bar',
+      data: {
+        labels: DIR.map(d => d.label),
+        datasets: [
+          { label: '평균 노출수', data: DIR.map(d => d.avgImpr), backgroundColor: DIR.map(d => colors[d.label] || C.navy2), yAxisID: 'yI' },
+          { label: '구독 전환 (전체)', data: DIR.map(d => d.conv), backgroundColor: DIR.map(d => (colors[d.label] || C.navy2) + '88'), yAxisID: 'yC', type: 'line', borderColor: DIR.map(d => colors[d.label] || C.navy2), borderWidth: 2, pointRadius: 6 },
+        ]
+      },
+      options: { responsive: true,
+        plugins: { title: T('방향성별 평균 노출수 vs 구독 전환율'), tooltip: { callbacks: { label: ctx => ctx.dataset.yAxisID === 'yI' ? ` 노출 ${ctx.parsed.y.toLocaleString()}` : ` 구독 전환 ${ctx.parsed.y.toFixed(1)}/10만뷰` } } },
+        scales: { x: { grid: { display: false } }, yI: { type: 'linear', position: 'left', grid: { color: C.grid }, ticks: { callback: v => (v/10000).toFixed(0)+'만' } }, yC: { type: 'linear', position: 'right', grid: { display: false }, ticks: { callback: v => v.toFixed(0)+'명' } } }
+      }
+    });
+
+    // 요약 테이블
+    const dtbody = document.getElementById('direction-tbody');
+    if (dtbody) {
+      dtbody.innerHTML = DIR.map(d => {
+        const cls = d.label === '예능/참여형' ? 'up' : '';
+        return `<tr><td><strong>${d.label}</strong></td><td class="num">${d.count}</td><td class="num">${d.shortsCount}</td><td class="num">${d.longformCount}</td><td class="num">${d.avgViews.toLocaleString()}</td><td class="num ${cls}">${d.avgImpr.toLocaleString()}</td><td class="num">${d.avgCTR}%</td><td class="num ${cls}">${d.conv.toFixed(1)}</td><td class="num ${cls}">${d.convLongform.toFixed(1)}</td></tr>`;
+      }).join('');
+    }
+
+    // 판정
+    const dvEl = document.getElementById('direction-verdict');
+    if (dvEl && DIR.length >= 2) {
+      const br = DIR.find(d => d.label === '감성/브랜딩형');
+      const en = DIR.find(d => d.label === '예능/참여형');
+      if (br && en) {
+        const imprDiff = Math.round((en.avgImpr / br.avgImpr - 1) * 100);
+        const convDiff = (en.conv - br.conv).toFixed(1);
+        dvEl.innerHTML = `<div class="hc amber" style="margin-top:16px"><div class="hc-title">예능/참여형, 노출 ${imprDiff}% 더 많이 알고리즘이 밀어줌</div><div class="hc-body">감성/브랜딩형(${br.count}개 중 숏츠 ${br.shortsCount}개)은 조회수 자체는 DAY6 콜라보 효과로 높지만, 유튜브 알고리즘 노출은 예능/참여형의 ${Math.round(br.avgImpr/en.avgImpr*100)}% 수준. 구독 전환도 예능/참여형이 ${convDiff}명 높음. 롱폼 기준으로만 보면 감성형 ${br.convLongform.toFixed(1)} vs 참여형 ${en.convLongform.toFixed(1)}.</div></div>`;
+      }
+    }
+
+    // 개별 영상 테이블
+    ['branding', 'engaging'].forEach((key, i) => {
+      const d = DIR[i];
+      const tbody = document.getElementById(`dir-${key}-tbody`);
+      if (!tbody || !d) return;
+      tbody.innerHTML = d.videos.map(v => {
+        const fmt = v.isShorts ? '<span class="live-badge">숏츠</span>' : '롱폼';
+        const cls = v.conv < 0 ? 'down' : (v.conv >= 50 ? 'up' : '');
+        return `<tr><td>${v.date}</td><td>${fmt}</td><td class="num">${v.views.toLocaleString()}</td><td class="num">${v.ctr}%</td><td class="num ${cls}">${v.conv.toFixed(1)}</td><td style="font-size:0.85em">${v.title.substring(0, 48)}${v.title.length > 48 ? '…' : ''}</td></tr>`;
+      }).join('');
+    });
   }
 
   // 13. 기획 유형별 구독 전환 분석
