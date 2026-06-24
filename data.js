@@ -4,7 +4,7 @@ window.REPORT_DATA = {
     "dateRange": "1월 1일 ~ 6월 23일",
     "startDate": "2026-01-01",
     "endDate": "2026-06-23",
-    "generatedAt": "2026-06-24 19:47",
+    "generatedAt": "2026-06-24 19:53",
     "curYear": 2026,
     "prevYear": 2025,
     "sources": {
@@ -74,12 +74,12 @@ window.REPORT_DATA = {
   },
   "counts": {
     "planned": {
-      "cur": 109,
-      "prev": 175
+      "cur": 94,
+      "prev": 174
     },
     "fixed": {
-      "cur": 313,
-      "prev": 108
+      "cur": 328,
+      "prev": 109
     },
     "semi": {
       "cur": 0,
@@ -91,22 +91,22 @@ window.REPORT_DATA = {
     }
   },
   "planned": {
-    "count": 109,
-    "countPrev": 175,
-    "avgViews": 87692,
-    "avgViewsPrev": 129826,
-    "totalViews": 9558390,
-    "totalViewsPrev": 22719560,
-    "watchTimeH": 495420,
-    "watchTimeHPrev": 1546624,
-    "avgDurFmt": "2분 33초",
-    "avgDurFmtPrev": "2분 51초",
-    "avgCTR": 6.18,
-    "avgCTRPrev": 6.49,
-    "totalSubs": 3470,
-    "totalSubsPrev": 20711,
-    "subConv": 36.3,
-    "subConvPrev": 91.2,
+    "count": 94,
+    "countPrev": 174,
+    "avgViews": 84915,
+    "avgViewsPrev": 128079,
+    "totalViews": 7982038,
+    "totalViewsPrev": 22285773,
+    "watchTimeH": 358519,
+    "watchTimeHPrev": 1501768,
+    "avgDurFmt": "2분 19초",
+    "avgDurFmtPrev": "2분 50초",
+    "avgCTR": 5.96,
+    "avgCTRPrev": 6.48,
+    "totalSubs": 2598,
+    "totalSubsPrev": 19375,
+    "subConv": 32.5,
+    "subConvPrev": 86.9,
     "newViewers": 0,
     "newViewersPrev": 0,
     "reVisitors": 0,
@@ -115,10 +115,10 @@ window.REPORT_DATA = {
     "newViewersPctPrev": 0.0
   },
   "fixed": {
-    "count": 313,
-    "countPrev": 108,
-    "avgViews": 59744,
-    "watchTimeH": 1160063
+    "count": 328,
+    "countPrev": 109,
+    "avgViews": 61817,
+    "watchTimeH": 1296964
   },
   "hotdug": {
     "cur": {
@@ -154,22 +154,10 @@ window.REPORT_DATA = {
       "tag": "콜라보"
     },
     {
-      "title": "[Playlist] 2026 롯데자이언츠 팀 응원가 + 신규 응원가 포함! #직관전필수시청",
-      "views": 330669,
-      "ctr": 8.1,
-      "tag": "기획"
-    },
-    {
       "title": "DAY6 성진이 부르는 영광의 순간🔥",
       "views": 308630,
       "ctr": 6.2,
       "tag": "콜라보"
-    },
-    {
-      "title": "[Playlist] 야수 등장곡+응원가 안무 버전✨ #직관전필수시청",
-      "views": 255242,
-      "ctr": 7.4,
-      "tag": "기획"
     },
     {
       "title": "[주간 예열🔥] 예열을 위한 미리 듣는 롯데자이언츠 응원가 시리즈 | 승리를 위한 전진 feat. 데이식스 성진",
@@ -199,6 +187,18 @@ window.REPORT_DATA = {
       "title": "[AIM HIGH] 루키 박정민의 첫 등판부터 청백전 첫 홈런포까지🔥 l 청백전 2차전 #스프링캠프",
       "views": 160943,
       "ctr": 6.9,
+      "tag": "기획"
+    },
+    {
+      "title": "\"2026시즌, 더 높은 비상을 위한 준비. 지금, AIM HIGH.\"",
+      "views": 160529,
+      "ctr": 7.8,
+      "tag": "기획"
+    },
+    {
+      "title": "하늘마저 붙잡고 싶었던 마지막 인사 | 정훈의 이야기",
+      "views": 156048,
+      "ctr": 8.4,
       "tag": "기획"
     }
   ],
@@ -454,14 +454,6 @@ window.REPORT_DATA = {
         "avgSubs": 93.5
       },
       {
-        "type": "응원/플리",
-        "count": 4,
-        "conv": 58.1,
-        "avgViews": 203408,
-        "avgCTR": 8.2,
-        "avgSubs": 141.2
-      },
-      {
         "type": "전지훈련",
         "count": 10,
         "conv": 43.5,
@@ -471,27 +463,19 @@ window.REPORT_DATA = {
       },
       {
         "type": "기타기획",
-        "count": 21,
-        "conv": 36.2,
-        "avgViews": 82177,
-        "avgCTR": 7.0,
-        "avgSubs": 32.2
+        "count": 20,
+        "conv": 35.5,
+        "avgViews": 82055,
+        "avgCTR": 6.9,
+        "avgSubs": 31.7
       },
       {
         "type": "공식행사",
-        "count": 7,
-        "conv": 35.6,
-        "avgViews": 99843,
-        "avgCTR": 6.6,
-        "avgSubs": 40.3
-      },
-      {
-        "type": "G캠",
-        "count": 6,
-        "conv": 32.7,
-        "avgViews": 57386,
-        "avgCTR": 7.4,
-        "avgSubs": 21.2
+        "count": 5,
+        "conv": 29.4,
+        "avgViews": 97106,
+        "avgCTR": 6.3,
+        "avgSubs": 32.8
       },
       {
         "type": "화보",
@@ -508,23 +492,15 @@ window.REPORT_DATA = {
         "avgViews": 78457,
         "avgCTR": 6.9,
         "avgSubs": 19.0
-      },
-      {
-        "type": "주간시리즈",
-        "count": 3,
-        "conv": 22.0,
-        "avgViews": 77704,
-        "avgCTR": 7.1,
-        "avgSubs": 18.0
       }
     ],
     "catCompare": [
       {
         "label": "기획 롱폼",
-        "count": 67,
-        "conv": 42.0,
-        "avgViews": 90386,
-        "totalSubs": 2669
+        "count": 52,
+        "conv": 42.3,
+        "avgViews": 86145,
+        "totalSubs": 1797
       },
       {
         "label": "기획 숏츠",
@@ -535,10 +511,10 @@ window.REPORT_DATA = {
       },
       {
         "label": "고정 롱폼",
-        "count": 94,
-        "conv": 48.3,
-        "avgViews": 91262,
-        "totalSubs": 4292
+        "count": 109,
+        "conv": 47.4,
+        "avgViews": 93165,
+        "totalSubs": 5164
       }
     ]
   },
