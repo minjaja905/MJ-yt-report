@@ -84,7 +84,7 @@
   .tab-bar { display:flex; gap:8px; margin-bottom:20px; }
   .tab-btn { padding:5px 16px; border:1.5px solid var(--border); border-radius:20px; background:transparent; cursor:pointer; font-size:0.86em; color:var(--sub); transition:all .15s; }
   .tab-btn.active { background:var(--navy); color:#fff; border-color:var(--navy); font-weight:600; }
-  .tab-panel[hidden] { display:none !important; }
+  [data-tab-hidden] { display:none !important; }
   .chip { display:inline-block; padding:3px 10px; border-radius:12px; font-size:0.78em; margin:3px 3px 3px 0; line-height:1.5; }
   .chip-brand { background:#eef0fa; color:var(--navy); }
   .chip-engage { background:#edfaf3; color:var(--up); }
@@ -383,7 +383,7 @@
     </div>
 
     <!-- 2025 비교 패널 -->
-    <div data-tab="s2-cmp" hidden>
+    <div data-tab="s2-cmp" style="display:none">
       <div class="tbl-wrap">
         <table>
           <thead><tr><th>지표</th><th id="s2-th-prev">2025</th><th id="s2-th-cur">2026</th><th>증감</th></tr></thead>
@@ -417,7 +417,7 @@
       <div class="chart-wrap"><canvas id="chartSubs"></canvas></div>
     </div>
 
-    <div data-tab="s3-cmp" hidden>
+    <div data-tab="s3-cmp" style="display:none">
       <div class="hc">
         <div class="hc-title">신규 시청자 감소가 직접 원인</div>
         <div class="hc-body">10만뷰당 구독 전환이 10.5명 → 4.2명으로 -60% 하락. 핵심 원인은 신규 시청자 유입이 515,903 → 333,324명으로 -35% 감소. WBC 특수 없는 2026에서 비팬 유입 경로가 줄어든 것이 구조적 원인.</div>
@@ -1087,7 +1087,13 @@ function buildCharts(D, yL, yC, yr, yrP) {
     const sec = document.getElementById(section);
     if (!sec) return;
     sec.querySelectorAll('[data-tab]').forEach(el => {
-      el.hidden = (el.dataset.tab !== `${section}-${panel}`);
+      if (el.dataset.tab === `${section}-${panel}`) {
+        el.removeAttribute('data-tab-hidden');
+        el.style.display = '';
+      } else {
+        el.setAttribute('data-tab-hidden', '');
+        el.style.display = 'none';
+      }
     });
     sec.querySelectorAll('.tab-btn').forEach((btn, i) => {
       btn.classList.toggle('active', (i === 0 && panel === 'cur') || (i === 1 && panel === 'cmp'));
