@@ -81,6 +81,13 @@
   #s2  { order:1; } #s13 { order:2; } #s14 { order:3; } #s3  { order:4; } #s12 { order:5; } #s4  { order:6; }
   #s8  { order:7; } #s11 { order:8; } #s9  { order:9; } #s1  { order:10; } #s10 { order:11; }
   section { margin-top: 52px; }
+  .tab-bar { display:flex; gap:8px; margin-bottom:20px; }
+  .tab-btn { padding:5px 16px; border:1.5px solid var(--border); border-radius:20px; background:transparent; cursor:pointer; font-size:0.86em; color:var(--sub); transition:all .15s; }
+  .tab-btn.active { background:var(--navy); color:#fff; border-color:var(--navy); font-weight:600; }
+  .tab-panel[hidden] { display:none !important; }
+  .chip { display:inline-block; padding:3px 10px; border-radius:12px; font-size:0.78em; margin:3px 3px 3px 0; line-height:1.5; }
+  .chip-brand { background:#eef0fa; color:var(--navy); }
+  .chip-engage { background:#edfaf3; color:var(--up); }
 
   section h2 {
     font-size: 17px; font-weight: 700; letter-spacing: -0.3px;
@@ -359,55 +366,75 @@
   <section id="s2">
     <h2><span class="num">2</span> 기획 콘텐츠 핵심 지표</h2>
 
-    <div class="tbl-wrap">
-      <table>
-        <thead><tr><th>지표</th><th id="s2-th-prev">2025</th><th id="s2-th-cur">2026</th><th>증감</th></tr></thead>
-        <tbody id="s2-tbody">
-          <tr><td>기획 영상 수</td><td class="num">97개</td><td class="num">79개</td><td class="num down">▼ 18.5%</td></tr>
-          <tr><td>영상당 평균 조회수</td><td class="num">104,593</td><td class="num bold">106,742</td><td class="num up">▲ 2.1%</td></tr>
-          <tr><td>기획 총 조회수</td><td class="num">10,145,590</td><td class="num">8,432,606</td><td class="num down">▼ 16.9%</td></tr>
-          <tr class=""><td class="hl">시청 시간 (h)</td><td class="num hl">961,019</td><td class="num hl">643,253</td><td class="num down hl">▼ 33.1%</td></tr>
-          <tr><td>영상당 평균 시청시간</td><td class="num">5분 41초</td><td class="num">4분 35초</td><td class="num down">▼ 19.4%</td></tr>
-          <tr><td>10만뷰당 구독 전환</td><td class="num">10.5명</td><td class="num bold">4.2명</td><td class="num down">▼ 60%</td></tr>
-          <tr><td>신규 시청자</td><td class="num">515,903</td><td class="num">333,324</td><td class="num down">▼ 35.4%</td></tr>
-          <tr><td>신규 시청자 비중</td><td class="num">8.0%</td><td class="num">6.4%</td><td class="num down">▼ 1.6%p</td></tr>
-          <tr><td>평균 CTR</td><td class="num">6.87%</td><td class="num">7.02%</td><td class="num up">▲ 0.15%p</td></tr>
-        </tbody>
-      </table>
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('s2','cur')">2026 현황</button>
+      <button class="tab-btn" onclick="switchTab('s2','cmp')">2025 비교</button>
     </div>
 
-    <div class="hc amber">
-      <div class="hc-title">숨겨진 문제: 시청 시간 -33%</div>
-      <div class="hc-body">조회수는 -17%인데 시청 시간이 -33% 감소했음. 영상당 평균 시청 지속시간이 5분 41초 → 4분 35초로 단축. 팬이 클릭은 하지만 끝까지 안 보는 콘텐츠가 늘고 있다는 신호. 유튜브 알고리즘이 시청 시간을 중심으로 작동하므로 조회수보다 더 중요한 지표.</div>
+    <!-- 2026 현황 패널 -->
+    <div data-tab="s2-cur">
+      <div class="card-grid" id="s2-cur-cards"></div>
+      <div class="hc amber" style="margin-top:16px">
+        <div class="hc-title">주목: 시청 지속시간 4분 35초</div>
+        <div class="hc-body">팬이 클릭은 하지만 끝까지 안 보는 콘텐츠가 늘고 있다는 신호. 유튜브 알고리즘은 시청 시간 기반으로 추천을 결정하므로 조회수보다 더 중요한 지표.</div>
+      </div>
+      <div class="chart-wrap"><canvas id="chartWatchTime"></canvas></div>
+      <div class="chart-wrap"><canvas id="chartPlannedMetrics"></canvas></div>
     </div>
 
-    <div class="chart-wrap"><canvas id="chartWatchTime"></canvas></div>
-    <div class="chart-wrap"><canvas id="chartPlannedMetrics"></canvas></div>
+    <!-- 2025 비교 패널 -->
+    <div data-tab="s2-cmp" hidden>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>지표</th><th id="s2-th-prev">2025</th><th id="s2-th-cur">2026</th><th>증감</th></tr></thead>
+          <tbody id="s2-tbody">
+            <tr><td>기획 영상 수</td><td class="num">97개</td><td class="num">79개</td><td class="num down">▼ 18.5%</td></tr>
+            <tr><td>영상당 평균 조회수</td><td class="num">104,593</td><td class="num bold">106,742</td><td class="num up">▲ 2.1%</td></tr>
+            <tr><td>기획 총 조회수</td><td class="num">10,145,590</td><td class="num">8,432,606</td><td class="num down">▼ 16.9%</td></tr>
+            <tr><td class="hl">시청 시간 (h)</td><td class="num hl">961,019</td><td class="num hl">643,253</td><td class="num down hl">▼ 33.1%</td></tr>
+            <tr><td>영상당 평균 시청시간</td><td class="num">5분 41초</td><td class="num">4분 35초</td><td class="num down">▼ 19.4%</td></tr>
+            <tr><td>10만뷰당 구독 전환</td><td class="num">10.5명</td><td class="num bold">4.2명</td><td class="num down">▼ 60%</td></tr>
+            <tr><td>신규 시청자</td><td class="num">515,903</td><td class="num">333,324</td><td class="num down">▼ 35.4%</td></tr>
+            <tr><td>신규 시청자 비중</td><td class="num">8.0%</td><td class="num">6.4%</td><td class="num down">▼ 1.6%p</td></tr>
+            <tr><td>평균 CTR</td><td class="num">6.87%</td><td class="num">7.02%</td><td class="num up">▲ 0.15%p</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </section>
 
   <!-- S3 -->
   <section id="s3">
-    <h2><span class="num">3</span> 구독자 전환 감소 원인 분석</h2>
+    <h2><span class="num">3</span> 구독자 전환 분석</h2>
 
-    <div class="hc">
-      <div class="hc-title">신규 시청자 감소가 직접 원인</div>
-      <div class="hc-body">10만뷰당 구독 전환이 10.5명 → 4.2명으로 -60% 하락. 단순 비율 변화가 아닌 전환 효율 자체의 하락. 핵심 원인은 신규 시청자 유입이 515,903 → 333,324명으로 -35% 감소한 것. 들어오는 신규 팬 수가 줄었고, 들어온 팬도 구독으로 이어지지 않고 있음.</div>
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('s3','cur')">2026 현황</button>
+      <button class="tab-btn" onclick="switchTab('s3','cmp')">2025 비교</button>
     </div>
 
-    <div class="chart-wrap"><canvas id="chartSubs"></canvas></div>
-    <div class="chart-wrap"><canvas id="chartNewViewers"></canvas></div>
-
-    <div class="tbl-wrap">
-      <table>
-        <thead><tr><th>구분</th><th>2025</th><th>2026</th></tr></thead>
-        <tbody>
-          <tr><td>외부 이슈형</td><td>WBC 친선경기 2연전 (884k + 725k뷰)</td><td class="down">없음</td></tr>
-          <tr><td>생중계 유입</td><td>구춘리그 생중계 (271k뷰)</td><td class="up">미야자키 생중계 (370k뷰) ✓</td></tr>
-          <tr><td>콜라보 유입</td><td class="down">없음</td><td class="up">DAY6 성진 시리즈 (424k + 302k뷰) ✓</td></tr>
-        </tbody>
-      </table>
+    <div data-tab="s3-cur">
+      <div class="card-grid" id="s3-cur-cards"></div>
+      <div class="chart-wrap"><canvas id="chartSubs"></canvas></div>
     </div>
-    <p class="note">2026은 생중계·콜라보로 조회수는 확보했지만 WBC처럼 야구 비팬을 대거 유입시키는 전국구 이슈가 없었음. 신규 유입 규모 자체가 줄어든 것이 구독 전환 감소의 직접 원인.</p>
+
+    <div data-tab="s3-cmp" hidden>
+      <div class="hc">
+        <div class="hc-title">신규 시청자 감소가 직접 원인</div>
+        <div class="hc-body">10만뷰당 구독 전환이 10.5명 → 4.2명으로 -60% 하락. 핵심 원인은 신규 시청자 유입이 515,903 → 333,324명으로 -35% 감소. WBC 특수 없는 2026에서 비팬 유입 경로가 줄어든 것이 구조적 원인.</div>
+      </div>
+      <div class="chart-wrap"><canvas id="chartNewViewers"></canvas></div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>구분</th><th>2025</th><th>2026</th></tr></thead>
+          <tbody>
+            <tr><td>외부 이슈형</td><td>WBC 친선경기 2연전 (884k + 725k뷰)</td><td class="down">없음</td></tr>
+            <tr><td>생중계 유입</td><td>구춘리그 생중계 (271k뷰)</td><td class="up">미야자키 생중계 (370k뷰) ✓</td></tr>
+            <tr><td>콜라보 유입</td><td class="down">없음</td><td class="up">DAY6 성진 시리즈 (424k + 302k뷰) ✓</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">2026은 생중계·콜라보로 조회수는 확보했지만 WBC처럼 비팬을 대거 유입시키는 전국구 이슈가 없었음.</p>
+    </div>
   </section>
 
   <!-- S4 -->
@@ -612,6 +639,13 @@
   <section id="s14">
     <h2><span class="num">3</span> 콘텐츠 방향성 비교</h2>
     <p class="note" style="margin-bottom:18px">감성/브랜딩형 = 음악·팬 감성·브랜드 협업 중심 / 예능/참여형 = 게임·먹방·브이로그·현장 참여 중심. 구독 전환율(10만뷰당)로 비팬 유입 효과 측정.</p>
+
+    <div style="margin-bottom:20px">
+      <div style="font-size:0.84em;font-weight:600;color:var(--navy);margin-bottom:6px">감성/브랜딩형 예시</div>
+      <div id="chips-brand"></div>
+      <div style="font-size:0.84em;font-weight:600;color:var(--up);margin:12px 0 6px">예능/참여형 예시</div>
+      <div id="chips-engage"></div>
+    </div>
 
     <div class="card-grid" id="direction-cards"></div>
 
@@ -1048,10 +1082,55 @@ function buildCharts(D, yL, yC, yr, yrP) {
     }
   }
 
+  // 탭 전환 함수
+  function switchTab(section, panel) {
+    const sec = document.getElementById(section);
+    if (!sec) return;
+    sec.querySelectorAll('[data-tab]').forEach(el => {
+      el.hidden = (el.dataset.tab !== `${section}-${panel}`);
+    });
+    sec.querySelectorAll('.tab-btn').forEach((btn, i) => {
+      btn.classList.toggle('active', (i === 0 && panel === 'cur') || (i === 1 && panel === 'cmp'));
+    });
+  }
+
+  // S2 2026 현황 카드 렌더
+  const s2cards = document.getElementById('s2-cur-cards');
+  if (s2cards && D.planned) {
+    const P = D.planned;
+    s2cards.innerHTML = [
+      {label:'영상당 평균 조회수', val: (P.avgViews/10000).toFixed(1)+'만', sub: P.count+'개 기획 영상'},
+      {label:'평균 CTR',           val: P.avgCTR+'%',                        sub: '노출 대비 클릭률'},
+      {label:'영상당 시청 지속시간', val: P.avgDurFmt,                         sub: '평균 완시청 시간'},
+      {label:'구독 전환',           val: P.subConv+'명',                       sub: '10만뷰당'},
+    ].map(c => `<div class="card"><div class="card-label">${c.label}</div><div class="card-val">${c.val}</div><div class="card-delta muted">${c.sub}</div></div>`).join('');
+  }
+
+  // S3 2026 현황 카드 렌더
+  const s3cards = document.getElementById('s3-cur-cards');
+  if (s3cards && D.planned) {
+    const P = D.planned;
+    s3cards.innerHTML = [
+      {label:'구독자 증가 (기획)',   val: P.totalSubs?.toLocaleString()+'명',  sub: '기간 내 기획 영상 통한 구독'},
+      {label:'신규 시청자',          val: (P.newViewers/10000).toFixed(1)+'만', sub: '비구독자 첫 방문'},
+      {label:'신규 시청자 비중',     val: P.newViewersPct+'%',                  sub: '전체 시청자 중'},
+    ].map(c => `<div class="card"><div class="card-label">${c.label}</div><div class="card-val">${c.val}</div><div class="card-delta muted">${c.sub}</div></div>`).join('');
+  }
+
   // 14. 콘텐츠 방향성 비교
   if (D.direction && D.direction.length) {
     const DIR = D.direction;
     const colors = { "감성/브랜딩형": C.navy2, "예능/참여형": C.green };
+
+    // 예시 칩
+    const chipsBrand  = document.getElementById('chips-brand');
+    const chipsEngage = document.getElementById('chips-engage');
+    if (chipsBrand && DIR[0]) {
+      chipsBrand.innerHTML  = DIR[0].videos.map(v => `<span class="chip chip-brand">${v.title.substring(0,30)}${v.title.length>30?'…':''}</span>`).join('');
+    }
+    if (chipsEngage && DIR[1]) {
+      chipsEngage.innerHTML = DIR[1].videos.map(v => `<span class="chip chip-engage">${v.title.substring(0,30)}${v.title.length>30?'…':''}</span>`).join('');
+    }
 
     // 요약 카드
     const dcards = document.getElementById('direction-cards');
