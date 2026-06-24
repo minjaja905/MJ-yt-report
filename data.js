@@ -4,7 +4,7 @@ window.REPORT_DATA = {
     "dateRange": "1월 1일 ~ 6월 23일",
     "startDate": "2026-01-01",
     "endDate": "2026-06-23",
-    "generatedAt": "2026-06-24 19:28",
+    "generatedAt": "2026-06-24 19:39",
     "curYear": 2026,
     "prevYear": 2025,
     "sources": {
@@ -74,12 +74,12 @@ window.REPORT_DATA = {
   },
   "counts": {
     "planned": {
-      "cur": 124,
-      "prev": 177
+      "cur": 109,
+      "prev": 175
     },
     "fixed": {
-      "cur": 298,
-      "prev": 106
+      "cur": 313,
+      "prev": 108
     },
     "semi": {
       "cur": 0,
@@ -91,22 +91,22 @@ window.REPORT_DATA = {
     }
   },
   "planned": {
-    "count": 124,
-    "countPrev": 177,
-    "avgViews": 94545,
-    "avgViewsPrev": 130660,
-    "totalViews": 11723626,
-    "totalViewsPrev": 23126782,
-    "watchTimeH": 806499,
-    "watchTimeHPrev": 1604910,
-    "avgDurFmt": "2분 54초",
-    "avgDurFmtPrev": "2분 54초",
-    "avgCTR": 6.52,
-    "avgCTRPrev": 6.48,
-    "totalSubs": 4665,
-    "totalSubsPrev": 21657,
-    "subConv": 39.8,
-    "subConvPrev": 93.6,
+    "count": 109,
+    "countPrev": 175,
+    "avgViews": 87692,
+    "avgViewsPrev": 129826,
+    "totalViews": 9558390,
+    "totalViewsPrev": 22719560,
+    "watchTimeH": 495420,
+    "watchTimeHPrev": 1546624,
+    "avgDurFmt": "2분 33초",
+    "avgDurFmtPrev": "2분 51초",
+    "avgCTR": 6.18,
+    "avgCTRPrev": 6.49,
+    "totalSubs": 3470,
+    "totalSubsPrev": 20711,
+    "subConv": 36.3,
+    "subConvPrev": 91.2,
     "newViewers": 0,
     "newViewersPrev": 0,
     "reVisitors": 0,
@@ -115,10 +115,10 @@ window.REPORT_DATA = {
     "newViewersPctPrev": 0.0
   },
   "fixed": {
-    "count": 298,
-    "countPrev": 106,
-    "avgViews": 55485,
-    "watchTimeH": 848984
+    "count": 313,
+    "countPrev": 108,
+    "avgViews": 59744,
+    "watchTimeH": 1160063
   },
   "hotdug": {
     "cur": {
@@ -154,12 +154,6 @@ window.REPORT_DATA = {
       "tag": "콜라보"
     },
     {
-      "title": "[미야자키 연습경기 생중계] vs 세이부라이온즈(2/22)",
-      "views": 371114,
-      "ctr": 15.7,
-      "tag": "생중계"
-    },
-    {
       "title": "[Playlist] 2026 롯데자이언츠 팀 응원가 + 신규 응원가 포함! #직관전필수시청",
       "views": 330669,
       "ctr": 8.1,
@@ -172,34 +166,40 @@ window.REPORT_DATA = {
       "tag": "콜라보"
     },
     {
-      "title": "[미야자키 구춘리그] vs 지바롯데마린스 (3/1)",
-      "views": 292968,
-      "ctr": 14.1,
-      "tag": "생중계"
-    },
-    {
       "title": "[Playlist] 야수 등장곡+응원가 안무 버전✨ #직관전필수시청",
       "views": 255242,
       "ctr": 7.4,
       "tag": "기획"
     },
     {
-      "title": "[미야자키 연습경기] vs SSG (3/3)",
-      "views": 245924,
-      "ctr": 14.9,
-      "tag": "생중계"
+      "title": "[주간 예열🔥] 예열을 위한 미리 듣는 롯데자이언츠 응원가 시리즈 | 승리를 위한 전진 feat. 데이식스 성진",
+      "views": 219026,
+      "ctr": 6.6,
+      "tag": "콜라보"
     },
     {
-      "title": "[미야자키 연습경기 생중계] vs 요미우리자이언츠(2/23)",
-      "views": 236768,
-      "ctr": 15.9,
-      "tag": "생중계"
+      "title": "[주간 예열🔥] 예열을 위한 미리 듣는 롯데자이언츠 응원가 시리즈 | 오늘도 승리한다 feat. 데이식스 성진",
+      "views": 212844,
+      "ctr": 6.7,
+      "tag": "콜라보"
     },
     {
-      "title": "[미야자키 구춘리그] vs 두산베어스(2/26)",
-      "views": 228065,
-      "ctr": 15.9,
-      "tag": "생중계"
+      "title": "[AIM HIGH] 청백전 1차전 in 타이난🔥 #하이라이트",
+      "views": 168828,
+      "ctr": 6.5,
+      "tag": "기획"
+    },
+    {
+      "title": "롯데자이언츠X세븐일레븐 띠부씰 맞히기 게임🫵 | 대환장 인물퀴즈까지!",
+      "views": 161819,
+      "ctr": 5.2,
+      "tag": "기획"
+    },
+    {
+      "title": "[AIM HIGH] 루키 박정민의 첫 등판부터 청백전 첫 홈런포까지🔥 l 청백전 2차전 #스프링캠프",
+      "views": 160943,
+      "ctr": 6.9,
+      "tag": "기획"
     }
   ],
   "burst": {
@@ -439,11 +439,11 @@ window.REPORT_DATA = {
     "typeStats": [
       {
         "type": "생중계",
-        "count": 10,
-        "conv": 76.9,
-        "avgViews": 70623,
-        "avgCTR": 6.0,
-        "avgSubs": 62.1
+        "count": 8,
+        "conv": 73.9,
+        "avgViews": 12294,
+        "avgCTR": 3.6,
+        "avgSubs": 6.8
       },
       {
         "type": "예능",
@@ -463,11 +463,11 @@ window.REPORT_DATA = {
       },
       {
         "type": "전지훈련",
-        "count": 16,
-        "conv": 44.9,
-        "avgViews": 137033,
-        "avgCTR": 8.3,
-        "avgSubs": 73.2
+        "count": 10,
+        "conv": 43.5,
+        "avgViews": 132015,
+        "avgCTR": 7.0,
+        "avgSubs": 57.7
       },
       {
         "type": "기타기획",
@@ -521,24 +521,24 @@ window.REPORT_DATA = {
     "catCompare": [
       {
         "label": "기획 롱폼",
-        "count": 75,
-        "conv": 43.7,
-        "avgViews": 100482,
-        "totalSubs": 3830
+        "count": 67,
+        "conv": 42.0,
+        "avgViews": 90386,
+        "totalSubs": 2669
       },
       {
         "label": "기획 숏츠",
-        "count": 49,
-        "conv": 12.0,
-        "avgViews": 85459,
-        "totalSubs": 835
+        "count": 42,
+        "conv": 13.3,
+        "avgViews": 83393,
+        "totalSubs": 801
       },
       {
         "label": "고정 롱폼",
-        "count": 86,
-        "conv": 47.5,
-        "avgViews": 82539,
-        "totalSubs": 3131
+        "count": 94,
+        "conv": 48.3,
+        "avgViews": 91262,
+        "totalSubs": 4292
       }
     ]
   },
