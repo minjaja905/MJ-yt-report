@@ -4,7 +4,7 @@ window.REPORT_DATA = {
     "dateRange": "1월 1일 ~ 6월 23일",
     "startDate": "2026-01-01",
     "endDate": "2026-06-23",
-    "generatedAt": "2026-06-24 19:12",
+    "generatedAt": "2026-06-24 19:28",
     "curYear": 2026,
     "prevYear": 2025,
     "sources": {
@@ -14,8 +14,63 @@ window.REPORT_DATA = {
     }
   },
   "subscribers": {
-    "lotte": {},
-    "teams": []
+    "lotte": {
+      "name": "롯데",
+      "subs": 378000,
+      "delta": 0
+    },
+    "teams": [
+      {
+        "name": "한화",
+        "subs": 561000,
+        "delta": 0
+      },
+      {
+        "name": "기아",
+        "subs": 408000,
+        "delta": 0
+      },
+      {
+        "name": "삼성",
+        "subs": 386000,
+        "delta": 0
+      },
+      {
+        "name": "롯데",
+        "subs": 378000,
+        "delta": 0
+      },
+      {
+        "name": "lg",
+        "subs": 329000,
+        "delta": 0
+      },
+      {
+        "name": "두산",
+        "subs": 287000,
+        "delta": 0
+      },
+      {
+        "name": "ssg",
+        "subs": 226000,
+        "delta": 0
+      },
+      {
+        "name": "NC",
+        "subs": 131000,
+        "delta": 0
+      },
+      {
+        "name": "kt",
+        "subs": 126000,
+        "delta": 0
+      },
+      {
+        "name": "키움",
+        "subs": 124000,
+        "delta": 0
+      }
+    ]
   },
   "counts": {
     "planned": {
@@ -490,18 +545,18 @@ window.REPORT_DATA = {
   "direction": [
     {
       "label": "감성/브랜딩형",
-      "count": 18,
-      "shortsCount": 14,
-      "longformCount": 4,
-      "avgViews": 139429,
-      "avgCTR": 6.7,
-      "avgImpr": 702523,
-      "conv": 29.3,
-      "convLongform": 45.8,
-      "avgNewViewerPct": 4.7,
-      "avgShares": 252,
-      "avgLikes": 717,
-      "avgRPM": 982,
+      "count": 22,
+      "shortsCount": 17,
+      "longformCount": 5,
+      "avgViews": 121659,
+      "avgCTR": 6.5,
+      "avgImpr": 668020,
+      "conv": 29.1,
+      "convLongform": 50.0,
+      "avgNewViewerPct": 4.3,
+      "avgShares": 209,
+      "avgLikes": 644,
+      "avgRPM": 943,
       "videos": [
         {
           "title": "DAY6 성진이 부르는 오늘도 승리한다🔥#DAY6 #성진 #롯데자이언츠 #응원가",
@@ -627,19 +682,31 @@ window.REPORT_DATA = {
     },
     {
       "label": "예능/참여형",
-      "count": 10,
-      "shortsCount": 1,
-      "longformCount": 9,
-      "avgViews": 109559,
+      "count": 22,
+      "shortsCount": 4,
+      "longformCount": 18,
+      "avgViews": 91915,
       "avgCTR": 6.5,
-      "avgImpr": 1267040,
-      "conv": 34.2,
-      "convLongform": 37.4,
+      "avgImpr": 975465,
+      "conv": 27.4,
+      "convLongform": 32.7,
       "avgNewViewerPct": 1.3,
-      "avgShares": 207,
-      "avgLikes": 945,
-      "avgRPM": 1915,
+      "avgShares": 253,
+      "avgLikes": 1507,
+      "avgRPM": 1545,
       "videos": [
+        {
+          "title": "하늘마저 붙잡고 싶었던 마지막 인사 | 정훈의 이야기",
+          "date": "04/18",
+          "views": 156048,
+          "ctr": 8.43,
+          "conv": 26.9,
+          "isShorts": false,
+          "newViewerPct": 2.6,
+          "shares": 752,
+          "likes": 4989,
+          "rpm": 1770
+        },
         {
           "title": "등장곡 바꿀 선수는 여기로 오세요!✨ 2026 시즌 등장곡 드래프트",
           "date": "03/24",
@@ -689,6 +756,30 @@ window.REPORT_DATA = {
           "rpm": 2347
         },
         {
+          "title": "한태양의 NEW 응원가 공개🎶(with 윤동희, 이호준)",
+          "date": "03/25",
+          "views": 112718,
+          "ctr": 9.84,
+          "conv": 31.1,
+          "isShorts": false,
+          "newViewerPct": 2.9,
+          "shares": 128,
+          "likes": 352,
+          "rpm": 1763
+        },
+        {
+          "title": "건강한 복귀와 첫 승리!✨ 1승이 간절했던 순간들 l 주간 이슈",
+          "date": "04/15",
+          "views": 108989,
+          "ctr": 7.07,
+          "conv": 27.5,
+          "isShorts": false,
+          "newViewerPct": 1.0,
+          "shares": 170,
+          "likes": 3118,
+          "rpm": 2322
+        },
+        {
           "title": "전지훈련 비행 브이로그 ✈️ | with 이스타항공, 그런데 이제.. 롯데고사를 곁들인",
           "date": "02/04",
           "views": 104642,
@@ -701,6 +792,18 @@ window.REPORT_DATA = {
           "rpm": 0
         },
         {
+          "title": "팬 여러분, 엘빈 선수 등장곡을 추천해 주세요!🎵",
+          "date": "03/24",
+          "views": 104485,
+          "ctr": 6.18,
+          "conv": 4.8,
+          "isShorts": true,
+          "newViewerPct": 0.5,
+          "shares": 3,
+          "likes": 322,
+          "rpm": 319
+        },
+        {
           "title": "“와… 멋있는데?✨” 비주얼 대폭발한 프로필 촬영 현장! [1편] #프로필촬영 #비하인드",
           "date": "01/31",
           "views": 104295,
@@ -711,54 +814,6 @@ window.REPORT_DATA = {
           "shares": 9,
           "likes": 75,
           "rpm": 2569
-        },
-        {
-          "title": "전지훈련 가는데 이건 왜 챙겨?🤣 전지훈련 가방 탈탈 털어봤습니다! | What's in your bag?",
-          "date": "02/02",
-          "views": 101012,
-          "ctr": 6.38,
-          "conv": 27.7,
-          "isShorts": false,
-          "newViewerPct": 0.3,
-          "shares": 19,
-          "likes": 181,
-          "rpm": 1200
-        },
-        {
-          "title": "손호영의 파격 선언💥in 프로필 촬영장 l 2026 프로필 촬영 비하인드 2편 #프로필촬영 #롯데자이언츠",
-          "date": "02/05",
-          "views": 95109,
-          "ctr": 6.3,
-          "conv": 25.2,
-          "isShorts": false,
-          "newViewerPct": 0.3,
-          "shares": 15,
-          "likes": 110,
-          "rpm": 2337
-        },
-        {
-          "title": "조지훈 단장님의 20주년을 축하드립니다 | 단장님을 울린 깜짝이벤트",
-          "date": "04/23",
-          "views": 73048,
-          "ctr": 6.76,
-          "conv": 5.5,
-          "isShorts": true,
-          "newViewerPct": 1.5,
-          "shares": 61,
-          "likes": 2809,
-          "rpm": 316
-        },
-        {
-          "title": "어버이날 시구 비하인드 | 김진욱과 손성빈의 깜짝 효도 프로젝트✨",
-          "date": "06/18",
-          "views": 61200,
-          "ctr": 6.12,
-          "conv": 40.8,
-          "isShorts": false,
-          "newViewerPct": 1.5,
-          "shares": 297,
-          "likes": 2403,
-          "rpm": 0
         }
       ]
     }
