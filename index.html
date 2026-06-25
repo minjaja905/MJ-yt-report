@@ -81,9 +81,12 @@
   #s2  { order:1; } #s13 { order:2; } #s14 { order:3; } #s3  { order:4; } #s12 { order:5; } #s4  { order:6; }
   #s8  { order:7; } #s11 { order:8; } #s9  { order:9; } #s1  { order:10; } #s10 { order:11; }
   section { margin-top: 52px; }
-  .tab-bar { display:flex; gap:8px; margin-bottom:20px; }
+  .tab-bar { display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
   .tab-btn { padding:5px 16px; border:1.5px solid var(--border); border-radius:20px; background:transparent; cursor:pointer; font-size:0.86em; color:var(--sub); transition:all .15s; }
   .tab-btn.active { background:var(--navy); color:#fff; border-color:var(--navy); font-weight:600; }
+  .badge-planned { display:inline-block; padding:1px 7px; border-radius:10px; font-size:11px; background:#e8edf9; color:var(--navy); font-weight:600; }
+  .badge-fixed   { display:inline-block; padding:1px 7px; border-radius:10px; font-size:11px; background:#f0f0f0; color:var(--sub); }
+  .criteria-panel { margin-top:16px; }
   [data-tab-hidden] { display:none !important; }
   .chip { display:inline-block; padding:3px 10px; border-radius:12px; font-size:0.78em; margin:3px 3px 3px 0; line-height:1.5; }
   .chip-brand { background:#eef0fa; color:var(--navy); }
@@ -273,6 +276,7 @@
   <a href="#s9">트래픽 소스</a>
   <a href="#s1">콘텐츠 구성</a>
   <a href="#s10">메타 인사이트</a>
+  <a href="#s15">영상 평가 기준</a>
 </nav>
 
 <!-- MODAL -->
@@ -779,6 +783,102 @@
     </div>
   </section>
 
+  <!-- S15 좋은 영상 평가 기준 -->
+  <section id="s15">
+    <h2><span class="num">12</span> 좋은 영상 기준별 순위</h2>
+    <p class="note" style="margin-bottom:20px">유튜브에서 "좋은 영상"의 정의는 목적에 따라 달라집니다. 아래 6가지 기준으로 롱폼 영상을 각각 평가했습니다. 같은 영상이라도 기준마다 순위가 완전히 달라집니다.</p>
+
+    <div class="card-grid" style="margin-bottom:24px">
+      <div class="card" style="border-left:3px solid var(--navy)">
+        <div class="card-label">① 발견력 (CTR)</div>
+        <div style="font-size:12px;color:var(--sub);margin-top:4px">썸네일·제목이 클릭을 얼마나 유도하나. 알고리즘 추천 효율의 핵심. 높을수록 유튜브가 더 많이 추천해줌.</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--navy2)">
+        <div class="card-label">② 시청 유지력 (평균 조회율)</div>
+        <div style="font-size:12px;color:var(--sub);margin-top:4px">영상의 몇 %를 끝까지 보나. 유튜브 알고리즘이 가장 중시하는 콘텐츠 품질 지표.</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--up)">
+        <div class="card-label">③ 팬 반응력 (좋아요율)</div>
+        <div style="font-size:12px;color:var(--sub);margin-top:4px">1,000뷰당 좋아요. 팬의 감정적 반응 강도. 커뮤니티 결집·팬덤 형성 측정.</div>
+      </div>
+      <div class="card" style="border-left:3px solid #b07730">
+        <div class="card-label">④ 바이럴 잠재력 (공유율)</div>
+        <div style="font-size:12px;color:var(--sub);margin-top:4px">1,000뷰당 공유. 외부로 퍼뜨리고 싶은 콘텐츠의 강도. 비팬 유입 가능성.</div>
+      </div>
+      <div class="card" style="border-left:3px solid #7b4ca8">
+        <div class="card-label">⑤ 채널 성장 기여 (구독 전환)</div>
+        <div style="font-size:12px;color:var(--sub);margin-top:4px">10만뷰당 구독자 증가. 신규 팬을 얼마나 만드는가. 장기 채널 성장의 핵심.</div>
+      </div>
+      <div class="card" style="border-left:3px solid #2a8fa0">
+        <div class="card-label">⑥ 총 소비량 (시청 시간)</div>
+        <div style="font-size:12px;color:var(--sub);margin-top:4px">총 시청 시간(h). 조회수×체류시간의 합산. 채널이 실제로 소비된 절대 크기.</div>
+      </div>
+    </div>
+
+    <div class="tab-bar" style="margin-bottom:0">
+      <button class="tab-btn active" onclick="switchCriteria('ctr',this)">① 발견력</button>
+      <button class="tab-btn" onclick="switchCriteria('retention',this)">② 유지력</button>
+      <button class="tab-btn" onclick="switchCriteria('likeRate',this)">③ 팬반응</button>
+      <button class="tab-btn" onclick="switchCriteria('shareRate',this)">④ 바이럴</button>
+      <button class="tab-btn" onclick="switchCriteria('subConv',this)">⑤ 성장기여</button>
+      <button class="tab-btn" onclick="switchCriteria('watchH',this)">⑥ 총소비</button>
+    </div>
+
+    <div id="crit-ctr" class="criteria-panel">
+      <div class="hc navy" style="margin-bottom:12px"><div class="hc-body">높을수록 알고리즘이 더 넓은 사람에게 추천. CTR 평균 채널값보다 낮은 영상은 노출 대비 클릭을 못 받은 것. 숏츠는 집계 제외.</div></div>
+      <div id="crit-avg-ctr" class="note" style="text-align:right;margin-bottom:8px"></div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>#</th><th>업로드일</th><th>제목</th><th>분류</th><th>CTR</th><th>조회수</th></tr></thead>
+        <tbody id="crit-tbody-ctr"></tbody>
+      </table></div>
+    </div>
+
+    <div id="crit-retention" class="criteria-panel" style="display:none">
+      <div class="hc navy" style="margin-bottom:12px"><div class="hc-body">영상을 평균 몇 % 시점까지 보는가. 50%면 절반 지점에서 대부분 이탈. 80%+ 영상은 유튜브가 매우 선호함. 롱폼 기준 30~50%가 일반적.</div></div>
+      <div id="crit-avg-retention" class="note" style="text-align:right;margin-bottom:8px"></div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>#</th><th>업로드일</th><th>제목</th><th>분류</th><th>평균 조회율</th><th>조회수</th></tr></thead>
+        <tbody id="crit-tbody-retention"></tbody>
+      </table></div>
+    </div>
+
+    <div id="crit-likeRate" class="criteria-panel" style="display:none">
+      <div class="hc navy" style="margin-bottom:12px"><div class="hc-body">1,000뷰당 좋아요. 조회수가 낮아도 좋아요율이 높으면 팬들이 강하게 반응한 영상. 감성 콘텐츠·브랜딩 영상에서 높게 나오는 경향. ※ 최근 90일 데이터 기준.</div></div>
+      <div id="crit-avg-likeRate" class="note" style="text-align:right;margin-bottom:8px"></div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>#</th><th>업로드일</th><th>제목</th><th>분류</th><th>좋아요/1000뷰</th><th>조회수</th></tr></thead>
+        <tbody id="crit-tbody-likeRate"></tbody>
+      </table></div>
+    </div>
+
+    <div id="crit-shareRate" class="criteria-panel" style="display:none">
+      <div class="hc navy" style="margin-bottom:12px"><div class="hc-body">1,000뷰당 공유. 비팬이 퍼뜨리는 콘텐츠. 조회수 대비 공유율이 높으면 SNS 바이럴 가능성 높음. 예능·충격적 장면·특집 영상에서 두드러짐. ※ 최근 90일 데이터 기준.</div></div>
+      <div id="crit-avg-shareRate" class="note" style="text-align:right;margin-bottom:8px"></div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>#</th><th>업로드일</th><th>제목</th><th>분류</th><th>공유/1000뷰</th><th>조회수</th></tr></thead>
+        <tbody id="crit-tbody-shareRate"></tbody>
+      </table></div>
+    </div>
+
+    <div id="crit-subConv" class="criteria-panel" style="display:none">
+      <div class="hc navy" style="margin-bottom:12px"><div class="hc-body">10만뷰당 구독자 증가. 신규 팬을 채널로 끌어오는 힘. 기존 팬 대상 영상은 낮고, 비팬 유입 영상은 높은 경향. 채널 성장에 직결.</div></div>
+      <div id="crit-avg-subConv" class="note" style="text-align:right;margin-bottom:8px"></div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>#</th><th>업로드일</th><th>제목</th><th>분류</th><th>구독자/10만뷰</th><th>조회수</th></tr></thead>
+        <tbody id="crit-tbody-subConv"></tbody>
+      </table></div>
+    </div>
+
+    <div id="crit-watchH" class="criteria-panel" style="display:none">
+      <div class="hc navy" style="margin-bottom:12px"><div class="hc-body">총 시청 시간(h). 조회수 × 체류시간의 합산. 조회수가 낮아도 긴 영상을 끝까지 본다면 높아짐. 유튜브 파트너 프로그램 수익 기반 지표.</div></div>
+      <div id="crit-avg-watchH" class="note" style="text-align:right;margin-bottom:8px"></div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>#</th><th>업로드일</th><th>제목</th><th>분류</th><th>총 시청시간</th><th>조회수</th></tr></thead>
+        <tbody id="crit-tbody-watchH"></tbody>
+      </table></div>
+    </div>
+  </section>
+
 </div>
 
 <footer>
@@ -788,6 +888,57 @@
 </footer>
 
 <script>
+// ── 기준별 탭 전환
+function switchCriteria(key, btn) {
+  document.querySelectorAll('.criteria-panel').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('#s15 .tab-btn').forEach(b => b.classList.remove('active'));
+  const panel = document.getElementById('crit-' + key);
+  if (panel) panel.style.display = '';
+  if (btn) btn.classList.add('active');
+}
+
+// ── 기준별 순위 렌더
+function buildCriteria() {
+  const D = window.REPORT_DATA;
+  if (!D || !D.criteria) return;
+  const C = D.criteria;
+  const avgs = C.averages;
+
+  const DEFS = [
+    { key:'ctr',       label:'CTR',          unit:'%',       avgKey:'avgCTR',       fmt: v => v+'%' },
+    { key:'retention', label:'평균 조회율',   unit:'%',       avgKey:'avgRetention', fmt: v => v+'%' },
+    { key:'likeRate',  label:'좋아요/1,000뷰',unit:'',        avgKey:'avgLikeRate',  fmt: v => v },
+    { key:'shareRate', label:'공유/1,000뷰',  unit:'',        avgKey:'avgShareRate', fmt: v => v },
+    { key:'subConv',   label:'구독자/10만뷰', unit:'',        avgKey:'avgSubConv',   fmt: v => v },
+    { key:'watchH',    label:'시청시간',      unit:'h',       avgKey:'avgWatchH',    fmt: v => Number(v).toLocaleString()+'h' },
+  ];
+
+  DEFS.forEach(def => {
+    const rows  = (C.rankings[def.key] || []);
+    const avg   = avgs[def.avgKey];
+    const avgEl = document.getElementById('crit-avg-' + def.key);
+    if (avgEl) avgEl.textContent = '채널 평균 ' + def.label + ': ' + def.fmt(avg);
+
+    const tbody = document.getElementById('crit-tbody-' + def.key);
+    if (!tbody) return;
+    tbody.innerHTML = rows.map((r, i) => {
+      const rankCol = i < 3 ? 'color:var(--red);font-weight:700' : 'color:var(--sub)';
+      const catHtml = r.category === '기획'
+        ? '<span class="badge-planned">기획</span>'
+        : '<span class="badge-fixed">고정</span>';
+      const mVal = def.fmt(r[def.key] ?? 0);
+      return `<tr>
+        <td class="num" style="${rankCol}">${i+1}</td>
+        <td class="num" style="color:var(--sub);font-size:12px;white-space:nowrap">${r.date}</td>
+        <td style="max-width:340px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${r.title}">${r.title}</td>
+        <td>${catHtml}</td>
+        <td class="num" style="font-weight:600;color:var(--navy)">${mVal}</td>
+        <td class="num">${r.views.toLocaleString()}</td>
+      </tr>`;
+    }).join('');
+  });
+}
+
 // ── 탭 전환
 function switchTab(section, panel) {
   const sec = document.getElementById(section);
@@ -923,6 +1074,7 @@ function render() {
   }).join(''));
 
   buildCharts(D, yL, yC, yr, yrP);
+  buildCriteria();
 }
 
 function buildCharts(D, yL, yC, yr, yrP) {
