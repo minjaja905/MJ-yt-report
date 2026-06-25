@@ -87,28 +87,21 @@
   .badge-planned { display:inline-block; padding:1px 7px; border-radius:10px; font-size:11px; background:#e8edf9; color:var(--navy); font-weight:600; }
   .badge-fixed   { display:inline-block; padding:1px 7px; border-radius:10px; font-size:11px; background:#f0f0f0; color:var(--sub); }
   .criteria-panel { margin-top:16px; }
+  .rival-panel { margin-top:16px; }
+  #s16 h2 { display:block; border-bottom:1.5px solid var(--border); padding-bottom:12px; }
   /* S15 전용 헤더 */
   #s15 > h2 { display:block; border-bottom:1.5px solid var(--border); padding-bottom:12px; }
   .fw-eyebrow { display:block; font-size:10px; font-weight:700; letter-spacing:2.5px; color:var(--navy2); text-transform:uppercase; margin-bottom:5px; }
   .fw-title { font-size:20px; font-weight:700; letter-spacing:-0.4px; color:var(--text); }
   /* Tooltip */
-  .tip { position:relative; cursor:help; border-bottom:1px dotted var(--sub); }
-  .tip::after {
-    content:attr(data-tip);
-    position:absolute; bottom:calc(100% + 8px); left:50%; transform:translateX(-50%);
+  .tip { cursor:help; border-bottom:1px dotted var(--sub); }
+  #g-tip {
+    position:fixed; z-index:9999; pointer-events:none; display:none;
     background:#1e2235; color:#e8edf8;
-    font-size:12px; line-height:1.6; font-weight:400;
-    padding:10px 14px; border-radius:8px;
-    width:270px; white-space:normal;
-    pointer-events:none; opacity:0; transition:opacity .15s;
-    z-index:300; box-shadow:0 6px 24px rgba(0,0,0,.25);
+    font-size:12px; line-height:1.6; padding:10px 14px;
+    border-radius:8px; width:270px; white-space:normal;
+    box-shadow:0 6px 24px rgba(0,0,0,.3);
   }
-  .tip::before {
-    content:''; position:absolute; bottom:calc(100% + 2px); left:50%; transform:translateX(-50%);
-    border:6px solid transparent; border-top-color:#1e2235;
-    pointer-events:none; opacity:0; transition:opacity .15s; z-index:300;
-  }
-  .tip:hover::after, .tip:hover::before { opacity:1; }
   [data-tab-hidden] { display:none !important; }
   .chip { display:inline-block; padding:3px 10px; border-radius:12px; font-size:0.78em; margin:3px 3px 3px 0; line-height:1.5; }
   .chip-brand { background:#eef0fa; color:var(--navy); }
@@ -299,6 +292,7 @@
   <a href="#s1">콘텐츠 구성</a>
   <a href="#s10">메타 인사이트</a>
   <a href="#s15">영상 평가 기준</a>
+  <a href="#s16">타구단 비교</a>
 </nav>
 
 <!-- MODAL -->
@@ -904,6 +898,58 @@
     </div>
   </section>
 
+  <!-- S16 타구단 비교 -->
+  <section id="s16">
+    <h2>
+      <span class="fw-eyebrow">Competitor Analysis</span>
+      <span class="fw-title">롯데보다 잘하는 구단 분석</span>
+    </h2>
+    <p class="note" style="margin-bottom:20px">롱폼 평균 조회수 기준 상위 3개 구단 (한화·기아·삼성) vs 롯데. 롯데 롱폼 평균 88,363뷰 대비 2~2.5배 차이.</p>
+
+    <div class="tbl-wrap" style="margin-bottom:28px">
+      <table>
+        <thead><tr><th>구단</th><th>롱폼 평균</th><th>롱폼 10만+ 비율</th><th>숏츠 10만+ 비율</th><th>롱폼 콘텐츠 특징</th></tr></thead>
+        <tbody id="rivals-summary-tbody"></tbody>
+      </table>
+    </div>
+
+    <div class="tab-bar" style="margin-bottom:0">
+      <button class="tab-btn active" onclick="switchRival('hanwha',this)">한화</button>
+      <button class="tab-btn" onclick="switchRival('kia',this)">기아</button>
+      <button class="tab-btn" onclick="switchRival('samsung',this)">삼성</button>
+    </div>
+
+    <div id="rival-hanwha" class="rival-panel">
+      <div class="hc navy" style="margin:16px 0 12px"><div class="hc-body">
+        <strong>전략 요약:</strong> 선수 캐릭터 스토리텔링 + 대결·팀 케미 예능. "불시점검·쏜다·화합퀴즈쇼" 등 한 문장으로 궁금증을 유발하는 롱폼 제목. 숏츠는 임팩트 장면을 15자 이내로 압축.
+      </div></div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>#</th><th>조회수</th><th>제목</th></tr></thead>
+        <tbody id="rival-tbody-hanwha"></tbody>
+      </table></div>
+    </div>
+
+    <div id="rival-kia" class="rival-panel" style="display:none">
+      <div class="hc navy" style="margin:16px 0 12px"><div class="hc-body">
+        <strong>전략 요약:</strong> SNS 바이럴형 단문 제목. "김도영 또 춤·생일빵 안 받아요·김호령 선수는 보지 마세요" 등 5~10자 제목이 클릭을 유도. 특정 선수(김도영)에 대한 집중 콘텐츠로 알고리즘 반복 추천.
+      </div></div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>#</th><th>조회수</th><th>제목</th></tr></thead>
+        <tbody id="rival-tbody-kia"></tbody>
+      </table></div>
+    </div>
+
+    <div id="rival-samsung" class="rival-panel" style="display:none">
+      <div class="hc navy" style="margin:16px 0 12px"><div class="hc-body">
+        <strong>전략 요약:</strong> 숏츠를 롱폼 피드에도 동시 노출 (#shorts 태그 사용). 짧은 클립이 높은 조회수를 견인. 생중계도 적극 활용해 총 영상 수 대비 10만+ 비율 유지.
+      </div></div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>#</th><th>조회수</th><th>제목</th></tr></thead>
+        <tbody id="rival-tbody-samsung"></tbody>
+      </table></div>
+    </div>
+  </section>
+
 </div>
 
 <footer>
@@ -920,6 +966,63 @@ function switchCriteria(key, btn) {
   const panel = document.getElementById('crit-' + key);
   if (panel) panel.style.display = '';
   if (btn) btn.classList.add('active');
+}
+
+// ── 타구단 탭 전환
+function switchRival(key, btn) {
+  document.querySelectorAll('.rival-panel').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('#s16 .tab-btn').forEach(b => b.classList.remove('active'));
+  const panel = document.getElementById('rival-' + key);
+  if (panel) panel.style.display = '';
+  if (btn) btn.classList.add('active');
+}
+
+// ── 타구단 비교 렌더
+function buildRivals() {
+  const D = window.REPORT_DATA;
+  if (!D || !D.rivals || !D.rivals.length) return;
+
+  const KEYS = ['hanwha','kia','samsung'];
+  const STRATEGY = {
+    hanwha:  ['선수 캐릭터 스토리·대결 예능','불시점검·쏜다·화합퀴즈쇼'],
+    kia:     ['SNS 바이럴형 단문 제목','김도영 집중 콘텐츠'],
+    samsung: ['숏츠·롱폼 동시 노출 (#shorts)','생중계 적극 활용'],
+  };
+  const LOTTE_AVG = (D.planned && D.planned.avgViews) ? D.planned.avgViews : 88363;
+
+  const summaryTbody = document.getElementById('rivals-summary-tbody');
+  if (summaryTbody) {
+    const lotteRow = `<tr style="background:#fff8e8">
+      <td><strong>롯데</strong> <span style="color:var(--sub);font-size:11px">(기준)</span></td>
+      <td class="num">${LOTTE_AVG.toLocaleString()}</td>
+      <td class="num">31.3%</td>
+      <td class="num">14.4%</td>
+      <td style="color:var(--sub);font-size:12px">경기 하이라이트·고정 중심</td>
+    </tr>`;
+    const rivalRows = D.rivals.map(r => {
+      const key = r.name === '한화' ? 'hanwha' : r.name === '기아' ? 'kia' : 'samsung';
+      const st = STRATEGY[key] || [];
+      return `<tr>
+        <td><strong>${r.name}</strong></td>
+        <td class="num up">${r.longform.avg.toLocaleString()}</td>
+        <td class="num up">${r.longform.over100kPct}%</td>
+        <td class="num ${r.shorts.count > 0 ? 'up' : 'muted'}">${r.shorts.count > 0 ? r.shorts.over100kPct+'%' : '—'}</td>
+        <td style="font-size:12px">${st.join(' · ')}</td>
+      </tr>`;
+    }).join('');
+    summaryTbody.innerHTML = lotteRow + rivalRows;
+  }
+
+  D.rivals.forEach((r, idx) => {
+    const key = KEYS[idx];
+    const tbody = document.getElementById('rival-tbody-' + key);
+    if (!tbody) return;
+    tbody.innerHTML = r.top5.map((v, i) => `<tr>
+      <td class="num" style="${i<3?'color:var(--red);font-weight:700':'color:var(--sub)'}">${i+1}</td>
+      <td class="num">${v.views.toLocaleString()}</td>
+      <td style="max-width:380px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${v.title}">${v.title}</td>
+    </tr>`).join('');
+  });
 }
 
 // ── 기준별 순위 렌더
@@ -1104,6 +1207,7 @@ function render() {
 
   buildCharts(D, yL, yC, yr, yrP);
   buildCriteria();
+  buildRivals();
 }
 
 function buildCharts(D, yL, yC, yr, yrP) {
@@ -1512,6 +1616,22 @@ if (document.readyState==='loading') {
   document.addEventListener('DOMContentLoaded', render);
 } else {
   render();
+
+  // 전역 툴팁 (position:fixed — tbl-wrap overflow 무관하게 동작)
+  const gTip = document.getElementById('g-tip');
+  document.querySelectorAll('[data-tip]').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      gTip.textContent = el.dataset.tip;
+      gTip.style.display = 'block';
+    });
+    el.addEventListener('mousemove', e => {
+      const x = Math.min(e.clientX + 14, window.innerWidth - 290);
+      const y = e.clientY - gTip.offsetHeight - 10;
+      gTip.style.left = x + 'px';
+      gTip.style.top  = Math.max(y, 4) + 'px';
+    });
+    el.addEventListener('mouseleave', () => { gTip.style.display = 'none'; });
+  });
 }
 
 // ── Notion 메타 인사이트
@@ -1604,5 +1724,6 @@ if (document.readyState==='loading') {
   }
 })();
 </script>
+<div id="g-tip"></div>
 </body>
 </html>
