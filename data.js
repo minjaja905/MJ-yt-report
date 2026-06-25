@@ -4,7 +4,7 @@ window.REPORT_DATA = {
     "dateRange": "1월 1일 ~ 6월 23일",
     "startDate": "2026-01-01",
     "endDate": "2026-06-23",
-    "generatedAt": "2026-06-25 12:24",
+    "generatedAt": "2026-06-25 13:20",
     "curYear": 2026,
     "prevYear": 2025,
     "sources": {
@@ -14,63 +14,8 @@ window.REPORT_DATA = {
     }
   },
   "subscribers": {
-    "lotte": {
-      "name": "롯데",
-      "subs": 378000,
-      "delta": 0
-    },
-    "teams": [
-      {
-        "name": "한화",
-        "subs": 561000,
-        "delta": 0
-      },
-      {
-        "name": "기아",
-        "subs": 408000,
-        "delta": 0
-      },
-      {
-        "name": "삼성",
-        "subs": 386000,
-        "delta": 0
-      },
-      {
-        "name": "롯데",
-        "subs": 378000,
-        "delta": 0
-      },
-      {
-        "name": "lg",
-        "subs": 329000,
-        "delta": 0
-      },
-      {
-        "name": "두산",
-        "subs": 287000,
-        "delta": 0
-      },
-      {
-        "name": "ssg",
-        "subs": 226000,
-        "delta": 0
-      },
-      {
-        "name": "NC",
-        "subs": 131000,
-        "delta": 0
-      },
-      {
-        "name": "kt",
-        "subs": 126000,
-        "delta": 0
-      },
-      {
-        "name": "키움",
-        "subs": 124000,
-        "delta": 0
-      }
-    ]
+    "lotte": {},
+    "teams": []
   },
   "counts": {
     "planned": {
@@ -816,6 +761,7 @@ window.REPORT_DATA = {
           "shareRate": 3.13,
           "likeRate": 10.96,
           "subConv": -90.5,
+          "subs": -156,
           "watchH": 7594.6
         },
         {
@@ -828,6 +774,7 @@ window.REPORT_DATA = {
           "shareRate": 0,
           "likeRate": 0,
           "subConv": 53.1,
+          "subs": 121,
           "watchH": 28052.1
         },
         {
@@ -840,6 +787,7 @@ window.REPORT_DATA = {
           "shareRate": 0.01,
           "likeRate": 0,
           "subConv": 68.4,
+          "subs": 162,
           "watchH": 48930.2
         },
         {
@@ -852,6 +800,7 @@ window.REPORT_DATA = {
           "shareRate": 0.02,
           "likeRate": 0,
           "subConv": 109.1,
+          "subs": 405,
           "watchH": 78262.7
         },
         {
@@ -864,6 +813,7 @@ window.REPORT_DATA = {
           "shareRate": 0.02,
           "likeRate": 0,
           "subConv": 95.2,
+          "subs": 234,
           "watchH": 52362.6
         },
         {
@@ -876,6 +826,7 @@ window.REPORT_DATA = {
           "shareRate": 0.01,
           "likeRate": 0,
           "subConv": 75.1,
+          "subs": 220,
           "watchH": 91274.5
         },
         {
@@ -888,6 +839,7 @@ window.REPORT_DATA = {
           "shareRate": 5.15,
           "likeRate": 20.86,
           "subConv": -23.3,
+          "subs": -19,
           "watchH": 2092.3
         },
         {
@@ -900,6 +852,7 @@ window.REPORT_DATA = {
           "shareRate": 1.14,
           "likeRate": 3.12,
           "subConv": 31.1,
+          "subs": 35,
           "watchH": 3368.0
         },
         {
@@ -912,6 +865,7 @@ window.REPORT_DATA = {
           "shareRate": 17.06,
           "likeRate": 52.5,
           "subConv": 124.0,
+          "subs": 102,
           "watchH": 2590.4
         },
         {
@@ -924,6 +878,7 @@ window.REPORT_DATA = {
           "shareRate": 0.01,
           "likeRate": 0,
           "subConv": 18.1,
+          "subs": 28,
           "watchH": 5495.4
         },
         {
@@ -936,6 +891,7 @@ window.REPORT_DATA = {
           "shareRate": 4.28,
           "likeRate": 43.66,
           "subConv": 50.8,
+          "subs": 43,
           "watchH": 4052.7
         },
         {
@@ -948,6 +904,7 @@ window.REPORT_DATA = {
           "shareRate": 0.03,
           "likeRate": 0.14,
           "subConv": 39.5,
+          "subs": 14,
           "watchH": 2954.7
         },
         {
@@ -960,6 +917,7 @@ window.REPORT_DATA = {
           "shareRate": 1.54,
           "likeRate": 31.52,
           "subConv": 22.4,
+          "subs": 13,
           "watchH": 4385.0
         },
         {
@@ -972,6 +930,7 @@ window.REPORT_DATA = {
           "shareRate": 0.02,
           "likeRate": 0,
           "subConv": 19.1,
+          "subs": 8,
           "watchH": 1174.3
         },
         {
@@ -984,6 +943,7 @@ window.REPORT_DATA = {
           "shareRate": 1.07,
           "likeRate": 27.87,
           "subConv": 27.8,
+          "subs": 25,
           "watchH": 7154.7
         },
         {
@@ -996,6 +956,7 @@ window.REPORT_DATA = {
           "shareRate": 1.53,
           "likeRate": 28.26,
           "subConv": 37.9,
+          "subs": 26,
           "watchH": 7174.2
         },
         {
@@ -1008,6 +969,7 @@ window.REPORT_DATA = {
           "shareRate": 1.26,
           "likeRate": 28.77,
           "subConv": 25.5,
+          "subs": 24,
           "watchH": 7567.7
         },
         {
@@ -1020,6 +982,7 @@ window.REPORT_DATA = {
           "shareRate": 4.82,
           "likeRate": 31.97,
           "subConv": 26.9,
+          "subs": 42,
           "watchH": 7433.7
         },
         {
@@ -1032,6 +995,7 @@ window.REPORT_DATA = {
           "shareRate": 0.94,
           "likeRate": 23.43,
           "subConv": 37.3,
+          "subs": 33,
           "watchH": 11366.8
         },
         {
@@ -1044,6 +1008,7 @@ window.REPORT_DATA = {
           "shareRate": 0.18,
           "likeRate": 0.54,
           "subConv": 99.2,
+          "subs": 50,
           "watchH": 5888.7
         }
       ],
@@ -1058,6 +1023,7 @@ window.REPORT_DATA = {
           "shareRate": 12.25,
           "likeRate": 60.25,
           "subConv": 46.3,
+          "subs": 39,
           "watchH": 3027.7
         },
         {
@@ -1070,6 +1036,7 @@ window.REPORT_DATA = {
           "shareRate": 1.03,
           "likeRate": 18.06,
           "subConv": 39.8,
+          "subs": 61,
           "watchH": 15133.0
         },
         {
@@ -1082,6 +1049,7 @@ window.REPORT_DATA = {
           "shareRate": 0.78,
           "likeRate": 18.12,
           "subConv": 37.4,
+          "subs": 33,
           "watchH": 8987.3
         },
         {
@@ -1094,6 +1062,7 @@ window.REPORT_DATA = {
           "shareRate": 0.79,
           "likeRate": 15.77,
           "subConv": 44.0,
+          "subs": 80,
           "watchH": 27649.2
         },
         {
@@ -1106,6 +1075,7 @@ window.REPORT_DATA = {
           "shareRate": 5.64,
           "likeRate": 34.69,
           "subConv": 25.0,
+          "subs": 25,
           "watchH": 3120.3
         },
         {
@@ -1118,6 +1088,7 @@ window.REPORT_DATA = {
           "shareRate": 1.26,
           "likeRate": 28.77,
           "subConv": 25.5,
+          "subs": 24,
           "watchH": 7567.7
         },
         {
@@ -1130,6 +1101,7 @@ window.REPORT_DATA = {
           "shareRate": 0.67,
           "likeRate": 17.16,
           "subConv": 29.6,
+          "subs": 33,
           "watchH": 17254.6
         },
         {
@@ -1142,6 +1114,7 @@ window.REPORT_DATA = {
           "shareRate": 0.93,
           "likeRate": 17.77,
           "subConv": 28.8,
+          "subs": 35,
           "watchH": 15449.8
         },
         {
@@ -1154,6 +1127,7 @@ window.REPORT_DATA = {
           "shareRate": 0.49,
           "likeRate": 3.04,
           "subConv": 42.6,
+          "subs": 65,
           "watchH": 11955.5
         },
         {
@@ -1166,6 +1140,7 @@ window.REPORT_DATA = {
           "shareRate": 0.9,
           "likeRate": 17.9,
           "subConv": 46.8,
+          "subs": 72,
           "watchH": 23838.9
         },
         {
@@ -1178,6 +1153,7 @@ window.REPORT_DATA = {
           "shareRate": 1.0,
           "likeRate": 18.6,
           "subConv": 33.1,
+          "subs": 58,
           "watchH": 25768.0
         },
         {
@@ -1190,6 +1166,7 @@ window.REPORT_DATA = {
           "shareRate": 0.71,
           "likeRate": 15.62,
           "subConv": 25.2,
+          "subs": 23,
           "watchH": 12964.4
         },
         {
@@ -1202,6 +1179,7 @@ window.REPORT_DATA = {
           "shareRate": 0.61,
           "likeRate": 17.54,
           "subConv": 17.9,
+          "subs": 13,
           "watchH": 10408.0
         },
         {
@@ -1214,6 +1192,7 @@ window.REPORT_DATA = {
           "shareRate": 1.54,
           "likeRate": 29.51,
           "subConv": 60.9,
+          "subs": 66,
           "watchH": 8831.6
         },
         {
@@ -1226,6 +1205,7 @@ window.REPORT_DATA = {
           "shareRate": 1.07,
           "likeRate": 27.87,
           "subConv": 27.8,
+          "subs": 25,
           "watchH": 7154.7
         },
         {
@@ -1238,6 +1218,7 @@ window.REPORT_DATA = {
           "shareRate": 0.6,
           "likeRate": 18.45,
           "subConv": 21.8,
+          "subs": 19,
           "watchH": 11001.5
         },
         {
@@ -1250,6 +1231,7 @@ window.REPORT_DATA = {
           "shareRate": 0.19,
           "likeRate": 1.79,
           "subConv": 27.7,
+          "subs": 28,
           "watchH": 6281.6
         },
         {
@@ -1262,6 +1244,7 @@ window.REPORT_DATA = {
           "shareRate": 1.09,
           "likeRate": 17.69,
           "subConv": 33.4,
+          "subs": 44,
           "watchH": 18483.7
         },
         {
@@ -1274,6 +1257,7 @@ window.REPORT_DATA = {
           "shareRate": 1.27,
           "likeRate": 20.81,
           "subConv": 57.0,
+          "subs": 93,
           "watchH": 18869.1
         },
         {
@@ -1286,6 +1270,7 @@ window.REPORT_DATA = {
           "shareRate": 0.98,
           "likeRate": 15.35,
           "subConv": 34.6,
+          "subs": 39,
           "watchH": 14252.7
         }
       ],
@@ -1300,6 +1285,7 @@ window.REPORT_DATA = {
           "shareRate": 12.25,
           "likeRate": 60.25,
           "subConv": 46.3,
+          "subs": 39,
           "watchH": 3027.7
         },
         {
@@ -1312,6 +1298,7 @@ window.REPORT_DATA = {
           "shareRate": 10.21,
           "likeRate": 54.0,
           "subConv": 35.8,
+          "subs": 37,
           "watchH": 4495.9
         },
         {
@@ -1324,6 +1311,7 @@ window.REPORT_DATA = {
           "shareRate": 5.33,
           "likeRate": 53.22,
           "subConv": 33.3,
+          "subs": 13,
           "watchH": 1762.4
         },
         {
@@ -1336,6 +1324,7 @@ window.REPORT_DATA = {
           "shareRate": 17.06,
           "likeRate": 52.5,
           "subConv": 124.0,
+          "subs": 102,
           "watchH": 2590.4
         },
         {
@@ -1348,6 +1337,7 @@ window.REPORT_DATA = {
           "shareRate": 3.32,
           "likeRate": 46.51,
           "subConv": 0.0,
+          "subs": 0,
           "watchH": 1.2
         },
         {
@@ -1360,6 +1350,7 @@ window.REPORT_DATA = {
           "shareRate": 4.93,
           "likeRate": 46.29,
           "subConv": 24.1,
+          "subs": 9,
           "watchH": 3429.3
         },
         {
@@ -1372,6 +1363,7 @@ window.REPORT_DATA = {
           "shareRate": 5.03,
           "likeRate": 44.51,
           "subConv": 72.7,
+          "subs": 92,
           "watchH": 5135.9
         },
         {
@@ -1384,6 +1376,7 @@ window.REPORT_DATA = {
           "shareRate": 1.71,
           "likeRate": 43.8,
           "subConv": 20.9,
+          "subs": 10,
           "watchH": 2404.9
         },
         {
@@ -1396,6 +1389,7 @@ window.REPORT_DATA = {
           "shareRate": 4.28,
           "likeRate": 43.66,
           "subConv": 50.8,
+          "subs": 43,
           "watchH": 4052.7
         },
         {
@@ -1408,6 +1402,7 @@ window.REPORT_DATA = {
           "shareRate": 7.64,
           "likeRate": 41.5,
           "subConv": 76.4,
+          "subs": 3,
           "watchH": 42.1
         },
         {
@@ -1420,6 +1415,7 @@ window.REPORT_DATA = {
           "shareRate": 9.86,
           "likeRate": 41.35,
           "subConv": 33.8,
+          "subs": 12,
           "watchH": 909.1
         },
         {
@@ -1432,6 +1428,7 @@ window.REPORT_DATA = {
           "shareRate": 4.85,
           "likeRate": 39.26,
           "subConv": 40.8,
+          "subs": 25,
           "watchH": 7136.0
         },
         {
@@ -1444,6 +1441,7 @@ window.REPORT_DATA = {
           "shareRate": 2.88,
           "likeRate": 38.94,
           "subConv": 27.3,
+          "subs": 13,
           "watchH": 5096.4
         },
         {
@@ -1456,6 +1454,7 @@ window.REPORT_DATA = {
           "shareRate": 9.65,
           "likeRate": 36.93,
           "subConv": 36.0,
+          "subs": 23,
           "watchH": 5832.9
         },
         {
@@ -1468,6 +1467,7 @@ window.REPORT_DATA = {
           "shareRate": 1.6,
           "likeRate": 36.33,
           "subConv": 35.6,
+          "subs": 16,
           "watchH": 4273.8
         },
         {
@@ -1480,6 +1480,7 @@ window.REPORT_DATA = {
           "shareRate": 1.74,
           "likeRate": 35.63,
           "subConv": 16.1,
+          "subs": 10,
           "watchH": 3068.7
         },
         {
@@ -1492,6 +1493,7 @@ window.REPORT_DATA = {
           "shareRate": 1.45,
           "likeRate": 35.07,
           "subConv": 23.4,
+          "subs": 11,
           "watchH": 4203.9
         },
         {
@@ -1504,6 +1506,7 @@ window.REPORT_DATA = {
           "shareRate": 2.02,
           "likeRate": 35.03,
           "subConv": 11.3,
+          "subs": 6,
           "watchH": 4828.5
         },
         {
@@ -1516,6 +1519,7 @@ window.REPORT_DATA = {
           "shareRate": 2.51,
           "likeRate": 34.76,
           "subConv": 28.6,
+          "subs": 9,
           "watchH": 1030.1
         },
         {
@@ -1528,6 +1532,7 @@ window.REPORT_DATA = {
           "shareRate": 5.64,
           "likeRate": 34.69,
           "subConv": 25.0,
+          "subs": 25,
           "watchH": 3120.3
         }
       ],
@@ -1542,6 +1547,7 @@ window.REPORT_DATA = {
           "shareRate": 17.72,
           "likeRate": 13.5,
           "subConv": 98.7,
+          "subs": 252,
           "watchH": 23775.6
         },
         {
@@ -1554,6 +1560,7 @@ window.REPORT_DATA = {
           "shareRate": 17.06,
           "likeRate": 52.5,
           "subConv": 124.0,
+          "subs": 102,
           "watchH": 2590.4
         },
         {
@@ -1566,6 +1573,7 @@ window.REPORT_DATA = {
           "shareRate": 13.65,
           "likeRate": 15.86,
           "subConv": 74.1,
+          "subs": 245,
           "watchH": 47870.2
         },
         {
@@ -1578,6 +1586,7 @@ window.REPORT_DATA = {
           "shareRate": 13.63,
           "likeRate": 29.83,
           "subConv": 59.3,
+          "subs": 6,
           "watchH": 221.2
         },
         {
@@ -1590,6 +1599,7 @@ window.REPORT_DATA = {
           "shareRate": 12.25,
           "likeRate": 60.25,
           "subConv": 46.3,
+          "subs": 39,
           "watchH": 3027.7
         },
         {
@@ -1602,6 +1612,7 @@ window.REPORT_DATA = {
           "shareRate": 10.93,
           "likeRate": 20.7,
           "subConv": 52.2,
+          "subs": 73,
           "watchH": 14559.2
         },
         {
@@ -1614,6 +1625,7 @@ window.REPORT_DATA = {
           "shareRate": 10.55,
           "likeRate": 20.88,
           "subConv": 35.2,
+          "subs": 5,
           "watchH": 218.1
         },
         {
@@ -1626,6 +1638,7 @@ window.REPORT_DATA = {
           "shareRate": 10.21,
           "likeRate": 54.0,
           "subConv": 35.8,
+          "subs": 37,
           "watchH": 4495.9
         },
         {
@@ -1638,6 +1651,7 @@ window.REPORT_DATA = {
           "shareRate": 9.86,
           "likeRate": 41.35,
           "subConv": 33.8,
+          "subs": 12,
           "watchH": 909.1
         },
         {
@@ -1650,6 +1664,7 @@ window.REPORT_DATA = {
           "shareRate": 9.65,
           "likeRate": 36.93,
           "subConv": 36.0,
+          "subs": 23,
           "watchH": 5832.9
         },
         {
@@ -1662,6 +1677,7 @@ window.REPORT_DATA = {
           "shareRate": 7.85,
           "likeRate": 24.49,
           "subConv": -20.3,
+          "subs": -3,
           "watchH": 297.6
         },
         {
@@ -1674,6 +1690,7 @@ window.REPORT_DATA = {
           "shareRate": 7.64,
           "likeRate": 41.5,
           "subConv": 76.4,
+          "subs": 3,
           "watchH": 42.1
         },
         {
@@ -1686,6 +1703,7 @@ window.REPORT_DATA = {
           "shareRate": 6.24,
           "likeRate": 29.61,
           "subConv": 22.1,
+          "subs": 13,
           "watchH": 3426.8
         },
         {
@@ -1698,6 +1716,7 @@ window.REPORT_DATA = {
           "shareRate": 5.64,
           "likeRate": 34.69,
           "subConv": 25.0,
+          "subs": 25,
           "watchH": 3120.3
         },
         {
@@ -1710,6 +1729,7 @@ window.REPORT_DATA = {
           "shareRate": 5.53,
           "likeRate": 24.56,
           "subConv": 70.4,
+          "subs": 114,
           "watchH": 17883.3
         },
         {
@@ -1722,6 +1742,7 @@ window.REPORT_DATA = {
           "shareRate": 5.33,
           "likeRate": 53.22,
           "subConv": 33.3,
+          "subs": 13,
           "watchH": 1762.4
         },
         {
@@ -1734,6 +1755,7 @@ window.REPORT_DATA = {
           "shareRate": 5.15,
           "likeRate": 20.86,
           "subConv": -23.3,
+          "subs": -19,
           "watchH": 2092.3
         },
         {
@@ -1746,6 +1768,7 @@ window.REPORT_DATA = {
           "shareRate": 5.03,
           "likeRate": 44.51,
           "subConv": 72.7,
+          "subs": 92,
           "watchH": 5135.9
         },
         {
@@ -1758,6 +1781,7 @@ window.REPORT_DATA = {
           "shareRate": 4.93,
           "likeRate": 46.29,
           "subConv": 24.1,
+          "subs": 9,
           "watchH": 3429.3
         },
         {
@@ -1770,6 +1794,7 @@ window.REPORT_DATA = {
           "shareRate": 4.85,
           "likeRate": 39.26,
           "subConv": 40.8,
+          "subs": 25,
           "watchH": 7136.0
         }
       ],
@@ -1784,6 +1809,7 @@ window.REPORT_DATA = {
           "shareRate": 2.29,
           "likeRate": 30.15,
           "subConv": 200.4,
+          "subs": 21,
           "watchH": 263.3
         },
         {
@@ -1796,6 +1822,7 @@ window.REPORT_DATA = {
           "shareRate": 1.5,
           "likeRate": 6.47,
           "subConv": 145.5,
+          "subs": 63,
           "watchH": 3919.7
         },
         {
@@ -1808,6 +1835,7 @@ window.REPORT_DATA = {
           "shareRate": 1.74,
           "likeRate": 8.53,
           "subConv": 138.6,
+          "subs": 51,
           "watchH": 3249.1
         },
         {
@@ -1820,6 +1848,7 @@ window.REPORT_DATA = {
           "shareRate": 2.22,
           "likeRate": 6.78,
           "subConv": 130.4,
+          "subs": 77,
           "watchH": 6620.5
         },
         {
@@ -1832,6 +1861,7 @@ window.REPORT_DATA = {
           "shareRate": 1.11,
           "likeRate": 15.29,
           "subConv": 129.0,
+          "subs": 7,
           "watchH": 90.3
         },
         {
@@ -1844,6 +1874,7 @@ window.REPORT_DATA = {
           "shareRate": 1.64,
           "likeRate": 9.02,
           "subConv": 126.7,
+          "subs": 41,
           "watchH": 3064.2
         },
         {
@@ -1856,6 +1887,7 @@ window.REPORT_DATA = {
           "shareRate": 17.06,
           "likeRate": 52.5,
           "subConv": 124.0,
+          "subs": 102,
           "watchH": 2590.4
         },
         {
@@ -1868,6 +1900,7 @@ window.REPORT_DATA = {
           "shareRate": 2.23,
           "likeRate": 7.78,
           "subConv": 121.6,
+          "subs": 55,
           "watchH": 4076.7
         },
         {
@@ -1880,6 +1913,7 @@ window.REPORT_DATA = {
           "shareRate": 1.96,
           "likeRate": 7.53,
           "subConv": 112.9,
+          "subs": 45,
           "watchH": 4427.9
         },
         {
@@ -1892,6 +1926,7 @@ window.REPORT_DATA = {
           "shareRate": 2.32,
           "likeRate": 8.48,
           "subConv": 111.3,
+          "subs": 61,
           "watchH": 5918.8
         },
         {
@@ -1904,6 +1939,7 @@ window.REPORT_DATA = {
           "shareRate": 1.0,
           "likeRate": 6.88,
           "subConv": 109.4,
+          "subs": 48,
           "watchH": 3982.7
         },
         {
@@ -1916,6 +1952,7 @@ window.REPORT_DATA = {
           "shareRate": 0.02,
           "likeRate": 0,
           "subConv": 109.1,
+          "subs": 405,
           "watchH": 78262.7
         },
         {
@@ -1928,6 +1965,7 @@ window.REPORT_DATA = {
           "shareRate": 1.53,
           "likeRate": 9.98,
           "subConv": 109.0,
+          "subs": 32,
           "watchH": 2227.8
         },
         {
@@ -1940,6 +1978,7 @@ window.REPORT_DATA = {
           "shareRate": 2.47,
           "likeRate": 30.65,
           "subConv": 103.6,
+          "subs": 174,
           "watchH": 20019.9
         },
         {
@@ -1952,6 +1991,7 @@ window.REPORT_DATA = {
           "shareRate": 0.18,
           "likeRate": 0.54,
           "subConv": 99.2,
+          "subs": 50,
           "watchH": 5888.7
         },
         {
@@ -1964,6 +2004,7 @@ window.REPORT_DATA = {
           "shareRate": 17.72,
           "likeRate": 13.5,
           "subConv": 98.7,
+          "subs": 252,
           "watchH": 23775.6
         },
         {
@@ -1976,6 +2017,7 @@ window.REPORT_DATA = {
           "shareRate": 2.1,
           "likeRate": 9.64,
           "subConv": 96.8,
+          "subs": 29,
           "watchH": 3151.8
         },
         {
@@ -1988,6 +2030,7 @@ window.REPORT_DATA = {
           "shareRate": 1.72,
           "likeRate": 22.85,
           "subConv": 95.6,
+          "subs": 185,
           "watchH": 25736.2
         },
         {
@@ -2000,6 +2043,7 @@ window.REPORT_DATA = {
           "shareRate": 1.2,
           "likeRate": 7.48,
           "subConv": 95.3,
+          "subs": 58,
           "watchH": 5730.9
         },
         {
@@ -2012,6 +2056,7 @@ window.REPORT_DATA = {
           "shareRate": 0.02,
           "likeRate": 0,
           "subConv": 95.2,
+          "subs": 234,
           "watchH": 52362.6
         }
       ],
@@ -2026,6 +2071,7 @@ window.REPORT_DATA = {
           "shareRate": 0.01,
           "likeRate": 0,
           "subConv": 75.1,
+          "subs": 220,
           "watchH": 91274.5
         },
         {
@@ -2038,6 +2084,7 @@ window.REPORT_DATA = {
           "shareRate": 0.02,
           "likeRate": 0,
           "subConv": 109.1,
+          "subs": 405,
           "watchH": 78262.7
         },
         {
@@ -2050,6 +2097,7 @@ window.REPORT_DATA = {
           "shareRate": 0.02,
           "likeRate": 0,
           "subConv": 95.2,
+          "subs": 234,
           "watchH": 52362.6
         },
         {
@@ -2062,6 +2110,7 @@ window.REPORT_DATA = {
           "shareRate": 0.01,
           "likeRate": 0,
           "subConv": 68.4,
+          "subs": 162,
           "watchH": 48930.2
         },
         {
@@ -2074,6 +2123,7 @@ window.REPORT_DATA = {
           "shareRate": 13.65,
           "likeRate": 15.86,
           "subConv": 74.1,
+          "subs": 245,
           "watchH": 47870.2
         },
         {
@@ -2086,6 +2136,7 @@ window.REPORT_DATA = {
           "shareRate": 0,
           "likeRate": 0,
           "subConv": 53.1,
+          "subs": 121,
           "watchH": 28052.1
         },
         {
@@ -2098,6 +2149,7 @@ window.REPORT_DATA = {
           "shareRate": 0.79,
           "likeRate": 15.77,
           "subConv": 44.0,
+          "subs": 80,
           "watchH": 27649.2
         },
         {
@@ -2110,6 +2162,7 @@ window.REPORT_DATA = {
           "shareRate": 1.0,
           "likeRate": 18.6,
           "subConv": 33.1,
+          "subs": 58,
           "watchH": 25768.0
         },
         {
@@ -2122,6 +2175,7 @@ window.REPORT_DATA = {
           "shareRate": 1.72,
           "likeRate": 22.85,
           "subConv": 95.6,
+          "subs": 185,
           "watchH": 25736.2
         },
         {
@@ -2134,6 +2188,7 @@ window.REPORT_DATA = {
           "shareRate": 0.9,
           "likeRate": 17.9,
           "subConv": 46.8,
+          "subs": 72,
           "watchH": 23838.9
         },
         {
@@ -2146,6 +2201,7 @@ window.REPORT_DATA = {
           "shareRate": 17.72,
           "likeRate": 13.5,
           "subConv": 98.7,
+          "subs": 252,
           "watchH": 23775.6
         },
         {
@@ -2158,6 +2214,7 @@ window.REPORT_DATA = {
           "shareRate": 0.79,
           "likeRate": 16.18,
           "subConv": 40.9,
+          "subs": 59,
           "watchH": 23349.4
         },
         {
@@ -2170,6 +2227,7 @@ window.REPORT_DATA = {
           "shareRate": 0.68,
           "likeRate": 14.38,
           "subConv": 28.4,
+          "subs": 44,
           "watchH": 21670.7
         },
         {
@@ -2182,6 +2240,7 @@ window.REPORT_DATA = {
           "shareRate": 0.02,
           "likeRate": 0.02,
           "subConv": 43.2,
+          "subs": 73,
           "watchH": 20729.4
         },
         {
@@ -2194,6 +2253,7 @@ window.REPORT_DATA = {
           "shareRate": 2.47,
           "likeRate": 30.65,
           "subConv": 103.6,
+          "subs": 174,
           "watchH": 20019.9
         },
         {
@@ -2206,6 +2266,7 @@ window.REPORT_DATA = {
           "shareRate": 1.54,
           "likeRate": 22.96,
           "subConv": 46.8,
+          "subs": 81,
           "watchH": 19997.4
         },
         {
@@ -2218,6 +2279,7 @@ window.REPORT_DATA = {
           "shareRate": 2.32,
           "likeRate": 28.44,
           "subConv": 51.9,
+          "subs": 84,
           "watchH": 19875.4
         },
         {
@@ -2230,6 +2292,7 @@ window.REPORT_DATA = {
           "shareRate": 0.01,
           "likeRate": 0.08,
           "subConv": 27.7,
+          "subs": 42,
           "watchH": 19522.6
         },
         {
@@ -2242,6 +2305,7 @@ window.REPORT_DATA = {
           "shareRate": 1.27,
           "likeRate": 20.81,
           "subConv": 57.0,
+          "subs": 93,
           "watchH": 18869.1
         },
         {
@@ -2254,6 +2318,7 @@ window.REPORT_DATA = {
           "shareRate": 2.22,
           "likeRate": 27.05,
           "subConv": 87.3,
+          "subs": 149,
           "watchH": 18727.0
         }
       ]
